@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">PlasticDiary</string>
+    <string name="welcome_text">Welcome to \n Plastic Diary</string>
+    <string name="save_the_planet_heading">Save the planet</string>
+    <string name="save_the_planet_subtitle">Our aim is to encourage users into pro-environmental behaviour through visualizing the effects of plastic waste through statistics, videos and more.</string>
+    <string name="learn_and_improve_heading">Learn and improve</string>
+    <string name="learn_and_improve_subtitle">Educate yourself on best and sustainable practices on the use of plastics: which to reuse, how to reuse and how to dispose them off properly.</string>
+    <string name="smart_recycling_heading">Smart recycling</string>
+    <string name="smart_recycling_subtitle">You\'ll recycling points in the country on a map and the closest ones to you will be highlighted</string>
+    <string name="intro_welcome_text">You just took the first of a collaborative effort to save the planet </string>
+    <string name="push_notif_info">Choose the time at which to receive notifications of general tips or to make an entry of plastics used today.</string>
+    <string name="how_it_works_1">Users will get points (5) for reading a news item, research paper, watching a video, taking a quiz or making an entry in “the diary”.
+        The accumulated points will add up and show in the leaderboard which will be divided into weekly and all time. Top 2 users at the end of the week are verified on the app. </string>
+    <string name="how_it_works_2"><b>Badges</b> <br> Users will earn badges when they reach a certain number of views for a content or activity.
+        E.g. A user will earn a badge for watching 5 videos, 10, 20, 50, 10 etc. Same for news items, articles etc. Users will be able to share their badges to the internet.</br>
+    </string>
+    <string name="article_title">Environmental impacts of food waste: Learnings and challenges from a case study on UK</string>
+    <string name="article_subtitle">Here\'s how workers at SembWaste’s Materials Recovery Facility sort recyclable waste into. Solid waste management is a universal issue</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/quiz_nav"
+    app:startDestination="@+id/quizFragment">
+
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="com.engineerskasa.plasticdiary.view.fragment.QuizFragment"
+        android:label="quiz_fragment"
+        tools:layout="@layout/quiz_fragment" />
+</navigation>

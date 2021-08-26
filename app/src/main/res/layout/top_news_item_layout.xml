@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/icon_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp">
+        <ImageView
+            android:id="@+id/article_image"
+            android:layout_width="match_parent"
+            android:layout_height="138dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cover" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/article_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icon_card"
+            android:ellipsize="end"
+            android:fontFamily="@font/sf_pro_rounded_bold"
+            android:lineHeight="19dp"
+            android:maxLines="2"
+            android:textColor="@color/text_black"
+            android:textSize="16sp"
+            android:text="@string/article_title" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/article_title"
+            android:textColor="@color/text_grey_50"
+            android:text="January 2021" />
+
+        <ImageView
+            android:id="@+id/bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/article_title"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_bookmark_outline" />
+    </RelativeLayout>
+</layout>

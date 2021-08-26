@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.profile.SettingsFragment">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/bg_white"
+            android:elevation="8dp"
+            app:navigationIcon="@drawable/ic_chevron_left"
+            app:navigationIconTint="@color/blue_700"
+            app:title="Settings"
+            app:titleCentered="true" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/push_hd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
+            android:text="Push Notification"
+            android:textColor="@color/text_black"
+            android:textSize="16sp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/push_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/push_hd"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="34dp"
+            android:fontFamily="@font/sf_pro_regular"
+            android:text="@string/push_notif_info"
+            android:textColor="@color/text_grey_50"
+            android:textSize="14sp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/select_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/push_desc"
+            android:layout_marginStart="34dp"
+            android:padding="10dp"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
+            android:text="Select time"
+            android:textColor="@color/text_black"
+            android:textSize="16sp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/push_desc"
+            android:layout_marginStart="34dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="56dp"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:background="@drawable/orange_outline_border"
+            android:fontFamily="@font/sf_pro_display_semi_bold"
+            android:padding="10dp"
+            android:text="00:00 AM"
+            android:textColor="@color/orange_outline"
+            android:textSize="16sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="39dp"
+            android:layout_marginEnd="39dp"
+            android:layout_marginBottom="100dp"
+            android:backgroundTint="@color/logout_btn_color"
+            android:text="sign out"
+            android:textColor="@color/white"
+            app:cornerRadius="15dp" />
+
+    </RelativeLayout>
+</layout>

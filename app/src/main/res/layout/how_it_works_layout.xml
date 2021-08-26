@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/how_it_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/sf_pro_rounded_bold"
+        android:text="How it works"
+        android:textColor="@color/text_black" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="@font/sf_pro_regular"
+        android:text="Close"
+        android:textColor="@color/text_grey_50" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/how_it_txt"
+        android:id="@+id/how_it_works_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineHeight="25dp"
+        android:fontFamily="@font/sf_pro_regular"
+        android:text="@string/how_it_works_1"
+        android:justificationMode="inter_word"
+        android:textColor="@color/text_black" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/how_it_works_2_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/how_it_works_txt"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/sf_pro_regular"
+        android:justificationMode="inter_word"
+        android:lineHeight="25dp"
+        android:text="@string/how_it_works_2"
+        android:textColor="@color/text_black" />
+</RelativeLayout>

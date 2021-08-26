@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.ProfileFragment">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:src="@drawable/ghost_background"
+            app:tint="@color/text_black" />
+
+        <RelativeLayout
+            android:id="@+id/avatar_lyt"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:clipToPadding="false">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_avatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/circleImageView"
+                app:srcCompat="@drawable/avatar" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                app:srcCompat="@drawable/badge" />
+        </RelativeLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/avatar_lyt"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/sf_pro_rounded_bold"
+            android:text="Fritz Gerald Afful"
+            android:lineHeight="29dp"
+            android:textAlignment="center"
+            android:textColor="@color/text_black"
+            android:textSize="24sp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/user_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/username"
+            android:layout_centerHorizontal="true"
+            android:text="email@user.com"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:textColor="@color/text_grey_50"
+            app:lineHeight="19sp" />
+        <!--Rewards layout-->
+        <LinearLayout
+            android:id="@+id/badges_lyt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_email"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/reward_viewer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/sf_pro_regular"
+                android:gravity="center"
+                app:drawableTopCompat="@drawable/ic_reward"
+                android:text="Viewer" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/reward_bookmark"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:fontFamily="@font/sf_pro_regular"
+                android:drawableTop="@drawable/ic_reward"
+                android:text="Bookmark" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/reward_brilliant"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:fontFamily="@font/sf_pro_regular"
+                android:drawableTop="@drawable/ic_reward"
+                android:text="Brilliant" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/reward_watcher"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:fontFamily="@font/sf_pro_regular"
+                android:drawableTop="@drawable/ic_reward"
+                android:text="Watcher" />
+        </LinearLayout>
+        <!-- card view-->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_margin="20dp"
+            android:layout_below="@+id/badges_lyt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:strokeColor="@color/border_color"
+            app:strokeWidth="1dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!--Bookmarks-->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/book_marks"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:drawablePadding="10dp"
+                    android:layout_height="?attr/actionBarSize"
+                    android:drawableStart="@drawable/ic_bookmark_border"
+                    android:drawableEnd="@drawable/ic_chevron_right"
+                    android:text="Bookmarks" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/border_color"/>
+                <!--Leaderboard-->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/leaderboard"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:drawablePadding="10dp"
+                    android:layout_height="?attr/actionBarSize"
+                    android:drawableStart="@drawable/ic_trophy"
+                    android:drawableEnd="@drawable/ic_chevron_right"
+                    android:text="Leaderboard" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/border_color"/>
+                <!--Feedback-->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/feedback"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:drawablePadding="10dp"
+                    android:layout_height="?attr/actionBarSize"
+                    android:drawableStart="@drawable/ic_comment"
+                    android:drawableEnd="@drawable/ic_chevron_right"
+                    android:text="Feedback" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/border_color"/>
+                <!--Settings-->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/settings"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:drawablePadding="10dp"
+                    android:layout_height="?attr/actionBarSize"
+                    android:drawableStart="@drawable/ic_settings"
+                    android:drawableEnd="@drawable/ic_chevron_right"
+                    android:text="Settings" />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
+</layout>

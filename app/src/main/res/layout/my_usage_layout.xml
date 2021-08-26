@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/usage_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_rounded_bold"
+            android:text="My Usage"
+            android:textColor="@color/text_black"
+            android:textSize="20sp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/usage_lyt"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@+id/usage_txt"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="10dp"
+            app:strokeColor="@color/border_color"
+            app:strokeWidth="1dp">
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/sf_pro_regular"
+            android:text="Cancel"
+            android:textColor="@color/text_grey_50" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/usageInputLyt"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/usage_lyt"
+            android:layout_marginTop="30dp"
+            android:hint="Enter number here"
+            app:boxBackgroundColor="@color/border_color">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usageInputField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_regular" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/save_btn"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_below="@+id/usageInputLyt"
+            android:layout_marginTop="20dp"
+            android:text="Save"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/heading_text_green"
+            app:cornerRadius="10dp" />
+
+    </RelativeLayout>
+</layout>

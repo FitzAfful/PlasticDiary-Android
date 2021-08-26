@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".view.fragment.HomeFragment">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/bg_white"
+            android:fontFamily="@font/sf_pro_rounded_bold"
+            app:layout_collapseMode="pin">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/app_bar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/sf_pro_rounded_bold"
+                    android:text="My Usage"
+                    android:textColor="@color/text_black"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/notification"
+                    android:layout_width="40dp"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/ic_notifs" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/bg_red_circle"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/streaks"
+                    android:layout_width="40dp"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toStartOf="@+id/notification"
+                    android:src="@drawable/ic_fire" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="-25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@+id/streaks"
+                    android:background="@drawable/bg_red_circle"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:gravity="center"
+                    android:text="5"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_marginBottom="?attr/actionBarSize">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="20dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    app:cardCornerRadius="10dp"
+                    app:strokeColor="@color/border_color"
+                    app:strokeWidth="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="250dp">
+                    <!--TODO: show usage stats-->
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_grey_50"
+                    android:text="How many plastics have you used today?" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/record_usage"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:text="record today's usage"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@color/heading_text_green"
+                    app:cornerRadius="10dp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/article_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/sf_pro_rounded_bold"
+                    android:lineHeight="19dp"
+                    android:textColor="@color/text_black"
+                    android:textSize="20sp"
+                    android:text="Top News" />
+
+                <include layout="@layout/top_news_header_layout" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <include layout="@layout/top_news_item_layout" />
+
+                        <include layout="@layout/top_news_item_layout" />
+
+                        <include layout="@layout/top_news_item_layout" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:drawableEnd="@drawable/ic_arrow_right_alt"
+                    android:drawableTint="@color/heading_text_green"
+                    android:textColor="@color/heading_text_green"
+                    android:text="see more news"
+                    android:layout_marginStart="10dp"/>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/sf_pro_rounded_bold"
+                    android:lineHeight="19dp"
+                    android:textColor="@color/text_black"
+                    android:textSize="20sp"
+                    android:text="Articles" />
+
+                <include layout="@layout/article_item_layout" />
+
+                <include layout="@layout/article_item_layout" />
+
+                <include layout="@layout/article_item_layout" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:drawableEnd="@drawable/ic_arrow_right_alt"
+                    android:drawableTint="@color/heading_text_green"
+                    android:textColor="@color/heading_text_green"
+                    android:text="see more articles" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

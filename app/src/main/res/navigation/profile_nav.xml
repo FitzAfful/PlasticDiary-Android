@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_nav"
+    app:startDestination="@+id/profileFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.engineerskasa.plasticdiary.view.fragment.ProfileFragment"
+        android:label="Profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_rewardDetailsFragment"
+            app:destination="@id/rewardDetailsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_leaderboardFragment"
+            app:destination="@id/leaderboardFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_bookmarksFragment"
+            app:destination="@id/bookmarksFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookmarksFragment"
+        android:name="com.engineerskasa.plasticdiary.view.fragment.profile.BookmarksFragment"
+        android:label="profile_bookmarks_fragment"
+        tools:layout="@layout/profile_bookmarks_fragment" />
+    <fragment
+        android:id="@+id/leaderboardFragment"
+        android:name="com.engineerskasa.plasticdiary.view.fragment.profile.LeaderboardFragment"
+        android:label="profile_leaderboard_fragment"
+        tools:layout="@layout/profile_leaderboard_fragment" />
+    <fragment
+        android:id="@+id/rewardDetailsFragment"
+        android:name="com.engineerskasa.plasticdiary.view.fragment.profile.RewardDetailsFragment"
+        android:label="profile_reward_details_fragment"
+        tools:layout="@layout/profile_reward_details_fragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.engineerskasa.plasticdiary.view.fragment.profile.SettingsFragment"
+        android:label="profile_settings_fragment"
+        tools:layout="@layout/profile_settings_fragment" />
+</navigation>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="blue_500">#4285F4</color>
+    <color name="blue_700">#4285F4</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="text_black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="bg_white">#FFFFFFFF</color>
+    <color name="text_grey_50">#757575</color>
+    <color name="border_color">#DFDFDF</color>
+    <color name="card_bg_grey">#E3E3E3</color>
+    <color name="alternate_text_color">#0D0D0D</color>
+    <color name="logout_btn_color">#B71234</color>
+    <color name="orange_outline">#FA9917</color>
+
+    <color name="sub_heading_text">#646464</color>
+    <color name="heading_text_green">#4BC662</color>
+    <color name="progress_tint">#454BC662</color>
+    <color name="heading_text_purple">#A24BC6</color>
+    <color name="heading_text_red">#C64B4B</color>
+    <color name="leader_card_bg">#F9F9F9</color>
+    <color name="featured_btn">#F04A4A</color>
+    <color name="overlay_dark_10">#1A000000</color>
+    <color name="overlay_dark_20">#33000000</color>
+    <color name="overlay_dark_30">#4D000000</color>
+    <color name="overlay_dark_40">#66000000</color>
+    <color name="overlay_dark_50">#80000000</color>
+    <color name="overlay_dark_60">#99000000</color>
+    <color name="overlay_dark_70">#B3000000</color>
+    <color name="overlay_dark_80">#CC000000</color>
+    <color name="overlay_dark_90">#E6000000</color>
+    <!--<color name="mtrl_textinput_default_box_stroke_color">#DFDFDF</color>-->
+</resources>

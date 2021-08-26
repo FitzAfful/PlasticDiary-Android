@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/card_bg_grey"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/placeholder"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cover" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_play_button" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/article_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/placeholder"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/sf_pro_rounded_bold"
+                android:lineHeight="19dp"
+                android:textColor="@color/text_black"
+                android:textSize="16sp"
+                android:text="@string/article_title" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/article_title"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="10dp"
+                android:ellipsize="end"
+                android:lineHeight="16dp"
+                android:maxLines="2"
+                android:textColor="@color/text_grey_50"
+                android:text="@string/article_subtitle" />
+
+            <ImageView
+                android:id="@+id/bookmark"
+                android:layout_margin="8dp"
+                android:layout_below="@+id/article_title"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_bookmark_outline" />
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+
+    <RelativeLayout
+        android:id="@+id/parentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.ui.WelcomeActivity">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ghost_background"
+            app:tint="@color/text_black" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/welcome_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp"
+            android:fontFamily="@font/sf_pro_rounded_bold"
+            android:padding="10dp"
+            android:text="@string/welcome_text"
+            android:textColor="@color/text_black"
+            android:textSize="28sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/welcome_heading"
+            android:orientation="vertical">
+            <!--Save the planet-->
+            <RelativeLayout
+                android:id="@+id/planet_lyt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp">
+
+                <ImageView
+                    android:id="@+id/planet_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/group" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/planet_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/planet_icon"
+                    android:fontFamily="@font/sf_pro_display_semi_bold"
+                    android:text="@string/save_the_planet_heading"
+                    android:textColor="@color/heading_text_green"
+                    android:textSize="22sp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/planet_heading"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toEndOf="@id/planet_icon"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:text="@string/save_the_planet_subtitle"
+                    android:textSize="16sp"
+                    app:lineHeight="20sp" />
+
+            </RelativeLayout>
+            <!--Learn and improve -->
+            <RelativeLayout
+                android:id="@+id/learn_lyt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp">
+
+                <ImageView
+                    android:id="@+id/learn_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/book_icon" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/learn_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/learn_icon"
+                    android:fontFamily="@font/sf_pro_display_semi_bold"
+                    android:text="@string/learn_and_improve_heading"
+                    android:textColor="@color/heading_text_purple"
+                    android:textSize="22sp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/learn_heading"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toEndOf="@id/learn_icon"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:text="@string/learn_and_improve_subtitle"
+                    android:textSize="16sp"
+                    app:lineHeight="20sp" />
+
+            </RelativeLayout>
+            <!--Smart recycling-->
+            <RelativeLayout
+                android:id="@+id/smart_lyt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/smart_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/recycle_icon" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/smart_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/smart_icon"
+                    android:fontFamily="@font/sf_pro_display_semi_bold"
+                    android:text="@string/smart_recycling_heading"
+                    android:textColor="@color/heading_text_red"
+                    android:textSize="22sp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/smart_heading"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toEndOf="@id/smart_icon"
+                    android:fontFamily="@font/sf_pro_regular"
+                    android:text="@string/smart_recycling_subtitle"
+                    android:textSize="16sp"
+                    app:lineHeight="20sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/google_sign_in_btn"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_above="@+id/apple_sign_in_btn"
+            android:layout_marginStart="33dp"
+            android:layout_marginEnd="33dp"
+            android:text="sign in with google"
+            android:textColor="@color/white"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/ic_google"
+            app:iconGravity="textStart"
+            app:iconPadding="20dp"
+            app:iconTint="@color/white" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/apple_sign_in_btn"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="33dp"
+            android:layout_marginEnd="33dp"
+            android:layout_marginBottom="10dp"
+            android:text="Sign up with apple"
+            app:backgroundTint="@color/text_black"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/ic_apple"
+            app:iconGravity="textStart"
+            app:iconPadding="20dp" />
+    </RelativeLayout>
+</layout>
