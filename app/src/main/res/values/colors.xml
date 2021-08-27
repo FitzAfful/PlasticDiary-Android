@@ -10,6 +10,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bg_white">#FFFFFFFF</color>
     <color name="text_grey_50">#757575</color>
+    <color name="text_grey_night">#757575</color>
     <color name="border_color">#DFDFDF</color>
     <color name="card_bg_grey">#E3E3E3</color>
     <color name="alternate_text_color">#0D0D0D</color>
@@ -23,6 +24,9 @@
     <color name="heading_text_red">#C64B4B</color>
     <color name="leader_card_bg">#F9F9F9</color>
     <color name="featured_btn">#F04A4A</color>
+    <color name="notif_color">#334BC662</color>
+
+
     <color name="overlay_dark_10">#1A000000</color>
     <color name="overlay_dark_20">#33000000</color>
     <color name="overlay_dark_30">#4D000000</color>
@@ -32,5 +36,4 @@
     <color name="overlay_dark_70">#B3000000</color>
     <color name="overlay_dark_80">#CC000000</color>
     <color name="overlay_dark_90">#E6000000</color>
-    <!--<color name="mtrl_textinput_default_box_stroke_color">#DFDFDF</color>-->
 </resources>

@@ -6,6 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
 import com.engineerskasa.plasticdiary.R
 import com.engineerskasa.plasticdiary.databinding.ProfileBookmarksFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -13,6 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class BookmarksFragment : Fragment() {
     private lateinit var binding: ProfileBookmarksFragmentBinding
+    private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -31,7 +37,18 @@ class BookmarksFragment : Fragment() {
             false
         )
         binding.lifecycleOwner = viewLifecycleOwner
+        initViews()
         return binding.root
+    }
+
+    private fun initViews() {
+        navController = findNavController()
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+        binding.apply {
+            toolbar.setNavigationOnClickListener {
+                navController.navigateUp(appBarConfiguration)
+            }
+        }
     }
 
 }

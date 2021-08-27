@@ -32,19 +32,21 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/icon_card"
             android:ellipsize="end"
-            android:fontFamily="@font/sf_pro_rounded_bold"
+            android:fontFamily="@font/sf_pro__display_heavy"
             android:lineHeight="19dp"
             android:maxLines="2"
+            android:text="@string/article_title"
             android:textColor="@color/text_black"
-            android:textSize="16sp"
-            android:text="@string/article_title" />
+            android:textSize="16sp" />
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/date"
+            android:fontFamily="@font/sf_pro_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/article_title"
-            android:textColor="@color/text_grey_50"
-            android:text="January 2021" />
+            android:text="January 2021"
+            android:textColor="@color/text_grey_50" />
 
         <ImageView
             android:id="@+id/bookmark"

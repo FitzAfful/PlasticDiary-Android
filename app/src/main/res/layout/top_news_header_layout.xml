@@ -19,7 +19,7 @@
             <ImageView
                 android:id="@+id/placeholder"
                 android:layout_width="match_parent"
-                android:layout_height="260dp"
+                android:layout_height="270dp"
                 android:foreground="@color/overlay_dark_70"
                 android:scaleType="centerCrop"
                 android:src="@drawable/cover" />
@@ -71,6 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
+                    android:fontFamily="@font/arial"
                     android:text="1h ago"
                     android:textColor="@color/text_grey_50" />
             </LinearLayout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="placeholder"
+            type="String" />
+        <variable
+            name="description"
+            type="String" />
+        <variable
+            name="type"
+            type="String" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_bg_filled_rounded"
+        android:layout_margin="10dp"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="15dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_rounded_bold"
+            android:lineHeight="36dp"
+            android:text="@{placeholder}"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            tools:text="80%" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_toEndOf="@+id/title"
+            app:set_icon="@{type}"
+            tools:src="@drawable/ic_quiz_bolt"
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:text="@{description}"
+            tools:text="description"
+            android:textColor="@color/text_grey_night" />
+    </RelativeLayout>
+</layout>

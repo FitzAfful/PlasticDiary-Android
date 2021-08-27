@@ -16,6 +16,8 @@
     </string>
     <string name="article_title">Environmental impacts of food waste: Learnings and challenges from a case study on UK</string>
     <string name="article_subtitle">Here\'s how workers at SembWaste’s Materials Recovery Facility sort recyclable waste into. Solid waste management is a universal issue</string>
+    <string name="article_notif">Take a look at the articles section for fresh insightful articles</string>
+    <string name="renewable_energy">Renewable energy is useful energy that is collected from renewable resources, which are naturally replenished on a human</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

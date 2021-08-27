@@ -3,63 +3,36 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable-night/ic_apple.xml" value="0.737037037037037" />
-        <entry key="app/src/main/res/drawable-night/ic_google.xml" value="0.737037037037037" />
         <entry key="app/src/main/res/drawable/article_icon_border.xml" value="0.6109375" />
-        <entry key="app/src/main/res/drawable/badge_icon_bg.xml" value="0.43333333333333335" />
-        <entry key="app/src/main/res/drawable/bg_red_circle.xml" value="0.5963541666666666" />
-        <entry key="app/src/main/res/drawable/card_bg_filled_rounded.xml" value="0.7078125" />
-        <entry key="app/src/main/res/drawable/ic_apple.xml" value="0.737037037037037" />
-        <entry key="app/src/main/res/drawable/ic_arrow_right_alt.xml" value="0.3194444444444444" />
-        <entry key="app/src/main/res/drawable/ic_bolt.xml" value="0.43333333333333335" />
-        <entry key="app/src/main/res/drawable/ic_bookmark_border.xml" value="0.6935185185185185" />
-        <entry key="app/src/main/res/drawable/ic_bookmark_outline.xml" value="0.6109375" />
-        <entry key="app/src/main/res/drawable/ic_chevron_left.xml" value="0.6064814814814815" />
-        <entry key="app/src/main/res/drawable/ic_chevron_right.xml" value="0.6064814814814815" />
-        <entry key="app/src/main/res/drawable/ic_comment.xml" value="0.6935185185185185" />
-        <entry key="app/src/main/res/drawable/ic_fire.xml" value="0.5963541666666666" />
-        <entry key="app/src/main/res/drawable/ic_google.xml" value="0.737037037037037" />
-        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.43333333333333335" />
-        <entry key="app/src/main/res/drawable/ic_info.xml" value="0.43333333333333335" />
-        <entry key="app/src/main/res/drawable/ic_newspaper.xml" value="0.6109375" />
-        <entry key="app/src/main/res/drawable/ic_notifs.xml" value="0.5963541666666666" />
-        <entry key="app/src/main/res/drawable/ic_play_button.xml" value="0.6109375" />
-        <entry key="app/src/main/res/drawable/ic_reward.xml" value="0.6935185185185185" />
-        <entry key="app/src/main/res/drawable/ic_trophy.xml" value="0.6935185185185185" />
-        <entry key="app/src/main/res/drawable/ic_user.xml" value="0.43333333333333335" />
-        <entry key="app/src/main/res/drawable/orange_outline_border.xml" value="0.6824074074074075" />
-        <entry key="app/src/main/res/drawable/reward_icon_border.xml" value="0.6064814814814815" />
-        <entry key="app/src/main/res/layout/activity_intro.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.4069306930693069" />
-        <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/article_item_layout.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/explore_fragment.xml" value="0.46799116997792495" />
-        <entry key="app/src/main/res/layout/fragment_bookmarks.xml" value="0.6734375" />
-        <entry key="app/src/main/res/layout/fragment_reward_details.xml" value="0.6875" />
-        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.6734375" />
-        <entry key="app/src/main/res/layout/home_fragment.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/how_it_works_layout.xml" value="0.5947916666666667" />
-        <entry key="app/src/main/res/layout/leader_board_item_layout.xml" value="0.5802083333333333" />
-        <entry key="app/src/main/res/layout/my_usage_layout.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/profile_bookmarks_fragment.xml" value="0.735897435897436" />
-        <entry key="app/src/main/res/layout/profile_feedback_bottom_sheet.xml" value="0.6875" />
-        <entry key="app/src/main/res/layout/profile_feedback_layout.xml" value="0.55" />
-        <entry key="app/src/main/res/layout/profile_fragment.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/profile_leaderboard_fragment.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/profile_reward_details_fragment.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/profile_settings_fragment.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/quiz_fragment.xml" value="0.5776041666666667" />
-        <entry key="app/src/main/res/layout/top_news_header_layout.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/top_news_item_layout.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/video_item_layout.xml" value="0.1" />
-        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.8083333333333333" />
+        <entry key="app/src/main/res/drawable/card_bg_filled_rounded.xml" value="0.6109375" />
+        <entry key="app/src/main/res/drawable/ic_arrow_right_alt.xml" value="0.7104166666666667" />
+        <entry key="app/src/main/res/drawable/ic_bolt.xml" value="0.6851282051282052" />
+        <entry key="app/src/main/res/drawable/ic_bookmark_border.xml" value="0.7104166666666667" />
+        <entry key="app/src/main/res/drawable/ic_chevron_right.xml" value="0.7104166666666667" />
+        <entry key="app/src/main/res/drawable/ic_comment.xml" value="0.7104166666666667" />
+        <entry key="app/src/main/res/drawable/ic_crown.xml" value="0.6546296296296297" />
+        <entry key="app/src/main/res/drawable/ic_fire.xml" value="0.6109375" />
+        <entry key="app/src/main/res/drawable/ic_play_button.xml" value="0.6546296296296297" />
+        <entry key="app/src/main/res/drawable/ic_quiz_bolt.xml" value="0.6851282051282052" />
+        <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.7104166666666667" />
+        <entry key="app/src/main/res/drawable/ic_trophy.xml" value="0.7104166666666667" />
+        <entry key="app/src/main/res/layout/activity_intro.xml" value="0.6942708333333333" />
+        <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.6138888888888889" />
+        <entry key="app/src/main/res/layout/article_item_layout.xml" value="0.5856410256410256" />
+        <entry key="app/src/main/res/layout/home_fragment.xml" value="0.4399339933993399" />
+        <entry key="app/src/main/res/layout/notification_item_layout.xml" value="0.5947916666666667" />
+        <entry key="app/src/main/res/layout/profile_bookmarks_fragment.xml" value="0.6942708333333333" />
+        <entry key="app/src/main/res/layout/profile_fragment.xml" value="0.5856410256410256" />
+        <entry key="app/src/main/res/layout/profile_settings_fragment.xml" value="0.5947916666666667" />
+        <entry key="app/src/main/res/layout/quiz_fragment.xml" value="0.5947916666666667" />
+        <entry key="app/src/main/res/layout/quiz_stats_item_layout.xml" value="0.9" />
+        <entry key="app/src/main/res/layout/quiz_type_item_layout.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/top_news_header_layout.xml" value="0.6138888888888889" />
+        <entry key="app/src/main/res/layout/top_news_item_layout.xml" value="0.6942708333333333" />
+        <entry key="app/src/main/res/layout/video_item_layout.xml" value="0.5856410256410256" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/build/classes" />
-  </component>
-  <component name="ProjectType">
-    <option name="id" value="Android" />
-  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>
