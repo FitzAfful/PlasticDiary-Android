@@ -53,15 +53,16 @@
             android:textColor="@color/text_black"
             android:textSize="18sp"
             android:text="All Quizzes" />
+
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/sf_pro_display_medium"
+            android:layout_marginHorizontal="10dp"
             android:drawableEnd="@drawable/ic_arrow_right_alt"
             android:drawableTint="@color/heading_text_green"
-            android:textColor="@color/heading_text_green"
-            android:text="see more news"
-            android:layout_marginHorizontal="10dp"/>
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:text="Leaderboard"
+            android:textColor="@color/heading_text_green" />
     </LinearLayout>
         <include
             android:layout_marginHorizontal="20dp"

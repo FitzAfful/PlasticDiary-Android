@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/parentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.ui.MapItemActivity">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/back_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:paddingTop="10dp"
+            app:iconGravity="textTop"
+            android:background="@drawable/bg_circle"
+            app:backgroundTint="@color/white"
+            app:icon="@drawable/ic_chevron_left"
+            app:iconTint="@color/blue_700" />
+
+
+        <fragment
+            android:id="@+id/map_fragment"
+            class="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+</layout>

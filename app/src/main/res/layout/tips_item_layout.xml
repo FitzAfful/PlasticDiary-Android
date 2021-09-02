@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="tips"
+            type="com.glivion.plasticdiary.model.explore.Tip" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="307dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:strokeColor="@color/card_bg_grey"
+        app:strokeWidth="1dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="10dp">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_notif_circle"
+                android:backgroundTint="@color/tip_icon_tint"
+                android:padding="10dp"
+                android:src="@drawable/ic_idea"
+                app:tint="@color/tip_icon_tint" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@+id/icon"
+                android:fontFamily="@font/sf_pro_regular"
+                android:text="@{tips.content}"
+                android:textColor="@color/text_grey_50"
+                tools:text="@string/tips" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/view_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/description"
+                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toEndOf="@+id/icon"
+                android:drawableEnd="@drawable/ic_arrow_right_alt"
+                android:drawableTint="@color/heading_text_green"
+                android:fontFamily="@font/sf_pro_display_medium"
+                android:text="View tip"
+                android:textColor="@color/heading_text_green"
+                android:textSize="14sp" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

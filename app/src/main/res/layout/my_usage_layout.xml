@@ -45,11 +45,12 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/usageInputLyt"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/TextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/usage_lyt"
             android:layout_marginTop="30dp"
+            app:hintTextColor="@color/black"
             android:hint="Enter number here"
             app:boxBackgroundColor="@color/border_color">
 
@@ -57,6 +58,7 @@
                 android:id="@+id/usageInputField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:fontFamily="@font/sf_pro_regular" />
         </com.google.android.material.textfield.TextInputLayout>
 

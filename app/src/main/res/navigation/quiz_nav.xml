@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/quizFragment"
-        android:name="com.engineerskasa.plasticdiary.view.fragment.QuizFragment"
+        android:name="com.glivion.plasticdiary.view.fragment.QuizFragment"
         android:label="quiz_fragment"
         tools:layout="@layout/quiz_fragment" />
 </navigation>

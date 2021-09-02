@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.engineerskasa.plasticdiary">
+    package="com.glivion.plasticdiary">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".PlasticDiaryApp"
         android:allowBackup="true"
@@ -11,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlasticDiary">
+        <activity
+            android:name=".view.ui.MapItemActivity"
+            android:exported="true" />
         <activity
             android:name=".view.ui.IntroActivity"
             android:exported="true" />
@@ -26,6 +30,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${GOOGLE_MAPS_API_KEY}" />
     </application>
 
 </manifest>

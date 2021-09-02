@@ -4,10 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="user"
+            type="com.glivion.plasticdiary.model.User" />
     </data>
 
     <RelativeLayout
+        android:id="@+id/parentLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.fragment.ProfileFragment">
@@ -34,8 +37,9 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
+                app:set_profile="@{user}"
                 app:shapeAppearanceOverlay="@style/circleImageView"
-                app:srcCompat="@drawable/avatar" />
+                tools:srcCompat="@drawable/avatar" />
 
             <ImageView
                 android:layout_width="50dp"
@@ -53,7 +57,8 @@
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/sf_pro__display_heavy"
             android:lineHeight="29dp"
-            android:text="Fritz Gerald Afful"
+            android:text="@{user.name}"
+            tools:text="Fritz Gerald Afful"
             android:textAlignment="center"
             android:textColor="@color/text_black"
             android:textSize="24sp" />
@@ -64,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/username"
             android:layout_centerHorizontal="true"
-            android:text="email@user.com"
+            tools:text="email@user.com"
             android:fontFamily="@font/sf_pro_regular"
             android:textAlignment="center"
             android:textColor="@color/text_grey_50"
