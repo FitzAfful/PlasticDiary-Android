@@ -55,6 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/welcome_heading"
             android:layout_marginStart="20sp"
+            android:fontFamily="@font/sf_pro_regular"
             android:layout_marginTop="20sp"
             android:layout_marginEnd="20sp"
             android:layout_marginBottom="20sp"

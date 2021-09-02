@@ -1,201 +1,84 @@
 {
   "project_info": {
-    "project_number": "786408218821",
-    "firebase_url": "https://bookcrit-424f7.firebaseio.com",
-    "project_id": "bookcrit-424f7",
-    "storage_bucket": "bookcrit-424f7.appspot.com"
+    "project_number": "406336361086",
+    "project_id": "plasticdiary-bf516",
+    "storage_bucket": "plasticdiary-bf516.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:786408218821:android:9a22c1a1537ea8160a50ac",
+        "mobilesdk_app_id": "1:406336361086:android:69ec9ce83f0429bb29be2f",
         "android_client_info": {
           "package_name": "com.engineerskasa.plasticdiary"
         }
       },
       "oauth_client": [
         {
-          "client_id": "786408218821-jfumh7tb13n8qf0j6rjkd9h3rj9ttgnm.apps.googleusercontent.com",
+          "client_id": "406336361086-13glh58li4gkibd0pllb4beuge6b7tsn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKOsSxiY6x6Os1PaGn16KH5vD-al_bf5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406336361086-13glh58li4gkibd0pllb4beuge6b7tsn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "406336361086-7k2a0og24hstv58kciu9frl09if4mo8d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "glivion.plasticdiary"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406336361086:android:8e56d4149984601529be2f",
+        "android_client_info": {
+          "package_name": "com.glivion.plasticdiary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406336361086-mj2dddnrks99aaqb9g4764bik0j0deif.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.engineerskasa.plasticdiary",
+            "package_name": "com.glivion.plasticdiary",
             "certificate_hash": "6b493ae8395bcc6b64a2e8193b8f232950d74561"
           }
         },
         {
-          "client_id": "786408218821-096r04o2gfbcmk4it09ejbla0pf7k99s.apps.googleusercontent.com",
+          "client_id": "406336361086-13glh58li4gkibd0pllb4beuge6b7tsn.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDOExNXhwB95YMolcW_CHptl2sA_iKZM1w"
+          "current_key": "AIzaSyBKOsSxiY6x6Os1PaGn16KH5vD-al_bf5c"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "786408218821-096r04o2gfbcmk4it09ejbla0pf7k99s.apps.googleusercontent.com",
+              "client_id": "406336361086-13glh58li4gkibd0pllb4beuge6b7tsn.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "786408218821-2nb51lg9lc0dr2ns1ps0t763pp0sjf85.apps.googleusercontent.com",
+              "client_id": "406336361086-7k2a0og24hstv58kciu9frl09if4mo8d.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "glivion.logger"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:786408218821:android:b47d0fb28ed760950a50ac",
-        "android_client_info": {
-          "package_name": "com.example.customlogger"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "786408218821-096r04o2gfbcmk4it09ejbla0pf7k99s.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDOExNXhwB95YMolcW_CHptl2sA_iKZM1w"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "786408218821-096r04o2gfbcmk4it09ejbla0pf7k99s.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "786408218821-2nb51lg9lc0dr2ns1ps0t763pp0sjf85.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "glivion.logger"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:786408218821:android:b84b7b1532dad1520a50ac",
-        "android_client_info": {
-          "package_name": "com.example.jayslogger"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "786408218821-096r04o2gfbcmk4it09ejbla0pf7k99s.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDOExNXhwB95YMolcW_CHptl2sA_iKZM1w"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "786408218821-096r04o2gfbcmk4it09ejbla0pf7k99s.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "786408218821-2nb51lg9lc0dr2ns1ps0t763pp0sjf85.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "glivion.logger"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:786408218821:android:97fb0ac91e70ca850a50ac",
-        "android_client_info": {
-          "package_name": "com.example.logmeapp"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "786408218821-096r04o2gfbcmk4it09ejbla0pf7k99s.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDOExNXhwB95YMolcW_CHptl2sA_iKZM1w"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "786408218821-096r04o2gfbcmk4it09ejbla0pf7k99s.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "786408218821-2nb51lg9lc0dr2ns1ps0t763pp0sjf85.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "glivion.logger"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:786408218821:android:b1cd027438fda8010a50ac",
-        "android_client_info": {
-          "package_name": "com.libtrack"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "786408218821-e6nj20irugl1gbv1f2e84r4lp5i4utbe.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.libtrack",
-            "certificate_hash": "f44a8829d31a01d51dd2b60a1e13ba3354a369b8"
-          }
-        },
-        {
-          "client_id": "786408218821-096r04o2gfbcmk4it09ejbla0pf7k99s.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDOExNXhwB95YMolcW_CHptl2sA_iKZM1w"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "786408218821-096r04o2gfbcmk4it09ejbla0pf7k99s.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "786408218821-2nb51lg9lc0dr2ns1ps0t763pp0sjf85.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "glivion.logger"
+                "bundle_id": "glivion.plasticdiary"
               }
             }
           ]

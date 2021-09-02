@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="video"
+            type="com.glivion.plasticdiary.model.home.Video" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -39,11 +41,12 @@
                 android:layout_below="@id/placeholder"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="5dp"
-                android:fontFamily="@font/sf_pro_rounded_bold"
+                android:fontFamily="@font/sf_pro__display_heavy"
                 android:lineHeight="19dp"
                 android:textColor="@color/text_black"
                 android:textSize="16sp"
-                android:text="@string/article_title" />
+                android:text="@{video.title}"
+                tools:text="@string/article_title" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/description"
@@ -52,11 +55,13 @@
                 android:layout_below="@+id/article_title"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/arial"
                 android:ellipsize="end"
                 android:lineHeight="16dp"
                 android:maxLines="2"
-                android:textColor="@color/text_grey_50"
-                android:text="@string/article_subtitle" />
+                android:text="@{video.description}"
+                tools:text="@string/article_subtitle"
+                android:textColor="@color/text_grey_50" />
 
             <ImageView
                 android:id="@+id/bookmark"

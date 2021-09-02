@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="resources"
+            type="com.glivion.plasticdiary.model.explore.Resource" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/card_bg_grey_light"
+        app:cardCornerRadius="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="20dp">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_notif_circle"
+                android:padding="10dp"
+                android:src="@drawable/ic_link"
+                android:backgroundTint="@color/res_icon_tint"
+                app:tint="@color/blue_700" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/icon"
+                android:fontFamily="@font/sf_pro_display_bold"
+                android:lineHeight="13dp"
+                android:text="@{resources.title}"
+                tools:text="New articles available!"
+                android:textColor="@color/text_black_night"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@+id/icon"
+                android:fontFamily="@font/sf_pro_regular"
+                android:text="@{resources.description}"
+                tools:text="@string/article_notif"
+                android:textColor="@color/text_grey_night" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/visit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/description"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/icon"
+                android:drawableEnd="@drawable/ic_arrow_right_alt"
+                android:drawableTint="@color/heading_text_green"
+                android:fontFamily="@font/sf_pro_display_medium"
+                android:text="Visit"
+                android:textColor="@color/heading_text_green"
+                android:textSize="14sp" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

@@ -24,7 +24,10 @@
             android:id="@+id/welcome_heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20sp"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="20sp"
             android:fontFamily="@font/sf_pro_rounded_bold"
             android:padding="10dp"
             android:text="@string/welcome_text"
@@ -58,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_toEndOf="@+id/planet_icon"
-                    android:fontFamily="@font/sf_pro_display_semi_bold"
+                    android:fontFamily="@font/sf_pro_display_bold"
                     android:text="@string/save_the_planet_heading"
                     android:textColor="@color/heading_text_green"
                     android:textSize="22sp" />
@@ -98,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_toEndOf="@+id/learn_icon"
-                    android:fontFamily="@font/sf_pro_display_semi_bold"
+                    android:fontFamily="@font/sf_pro_display_bold"
                     android:text="@string/learn_and_improve_heading"
                     android:textColor="@color/heading_text_purple"
                     android:textSize="22sp" />
@@ -138,7 +141,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_toEndOf="@+id/smart_icon"
-                    android:fontFamily="@font/sf_pro_display_semi_bold"
+                    android:fontFamily="@font/sf_pro_display_bold"
                     android:text="@string/smart_recycling_heading"
                     android:textColor="@color/heading_text_red"
                     android:textSize="22sp" />

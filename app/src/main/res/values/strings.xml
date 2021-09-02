@@ -16,6 +16,16 @@
     </string>
     <string name="article_title">Environmental impacts of food waste: Learnings and challenges from a case study on UK</string>
     <string name="article_subtitle">Here\'s how workers at SembWaste’s Materials Recovery Facility sort recyclable waste into. Solid waste management is a universal issue</string>
+    <string name="article_notif">Take a look at the articles section for fresh insightful articles</string>
+    <string name="renewable_energy">Renewable energy is useful energy that is collected from renewable resources, which are naturally replenished on a human</string>
+    <string name="tips">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ullamcorper semper est non suscipit. Duis aliquet, leo ut pretium laoreet, erat nisi volutpat leo,
+        id vulputate lectus enim id dolor. Donec ultrices ornare nulla, in fringilla massa cursus id. Duis euismod suscipit justo sed tempor.
+        Morbi ac nisl eget tortor lacinia imperdiet id vitae tortor. Integer vel fermentum tellus. Nullam eget pretium ante. Sed quis nisi ut nunc tincidunt pharetra.
+        Nam blandit eros nisi, vel hendrerit nibh feugiat at. Phasellus in congue justo. Duis scelerisque est eu mauris aliquet, eu pulvinar tellus lobortis.
+        Praesent vehicula hendrerit sodales. Vestibulum libero orci, pulvinar elementum libero ac, mattis facilisis eros.</string>
+    <string name="close_to_you">See the most polluted areas, find recycling plants and landfills that are located around you. Tap on the map below</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="google_maps_api_key">AIzaSyBs2YjswfAH5yF4UrBZfgTxyVCiLQDtSpc</string>
 </resources>
