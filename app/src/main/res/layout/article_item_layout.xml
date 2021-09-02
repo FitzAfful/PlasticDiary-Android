@@ -13,16 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="20dp"
-        android:paddingTop="20dp"
+        android:layout_marginTop="15dp"
         >
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/icon"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/article_icon_border"
-            android:padding="10dp"
+            android:scaleType="centerCrop"
             app:set_cover_image="@{article.image}"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
             tools:src="@drawable/ic_newspaper" />
 
         <com.google.android.material.textview.MaterialTextView

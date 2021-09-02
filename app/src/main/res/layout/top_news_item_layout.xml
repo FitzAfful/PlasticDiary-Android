@@ -13,27 +13,22 @@
         android:orientation="vertical"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp">
+        android:layout_marginEnd="10dp">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/icon_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="10dp">
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/article_image"
             android:layout_width="match_parent"
             android:layout_height="138dp"
             android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
             app:set_cover_image="@{news.image}"
             tools:src="@drawable/cover" />
-        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/article_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/icon_card"
+            android:layout_below="@+id/article_image"
             android:ellipsize="end"
             android:fontFamily="@font/sf_pro__display_heavy"
             android:lineHeight="19dp"
