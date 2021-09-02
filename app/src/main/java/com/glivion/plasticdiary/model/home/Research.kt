@@ -1,7 +1,7 @@
 package com.glivion.plasticdiary.model.home
 
 data class Research(
-    var `abstract`: String? = null,
+    var abstract: String? = null,
     var author: String? = null,
     var doi: String? = null,
     var id: Int? = null,

@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.glivion.plasticdiary.R
 import com.glivion.plasticdiary.databinding.HomeItemLayoutBinding
 import com.glivion.plasticdiary.model.HomeObject
+import com.glivion.plasticdiary.model.home.FeaturedNews
+import timber.log.Timber
 
 class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -17,6 +19,7 @@ class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>) :
     private val NEWS = 2
     private val VIDEOS = 3
     private val ARTICLES = 4
+    private val RESEARCH = 5
     private val NO_DATA_VIEW = -1
 
     init {
@@ -36,13 +39,14 @@ class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>) :
             if (homeObject.footer.isNullOrEmpty()) {
                 binding.homeFooter.visibility = View.GONE
             }
-            //val childAdapter = HomePageChildAdapter(context, homeObject.data )
+
+            val childAdapter = HomePageChildAdapter(context, homeObject.data )
             binding.apply {
                 homeHeader.text = homeObject.title
                 homeFooter.text = homeObject.footer
                 homeItemRecyclerview.apply {
                     layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-                    //adapter = childAdapter
+                    adapter = childAdapter
                 }
             }
         }
@@ -57,13 +61,13 @@ class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>) :
             if (homeObject.footer.isNullOrEmpty()) {
                 binding.homeFooter.visibility = View.GONE
             }
-            //val childAdapter = HomePageChildAdapter(context, homeObject.data )
+            val childAdapter = HomePageChildAdapter(context, homeObject.data )
             binding.apply {
                 homeHeader.text = homeObject.title
                 homeFooter.text = homeObject.footer
                 homeItemRecyclerview.apply {
                     layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                    //adapter = childAdapter
+                    adapter = childAdapter
                 }
             }
         }
@@ -78,13 +82,13 @@ class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>) :
             if (homeObject.footer.isNullOrEmpty()) {
                 binding.homeFooter.visibility = View.GONE
             }
-            //val childAdapter = HomePageChildAdapter(context, homeObject.data )
+            val childAdapter = HomePageChildAdapter(context, homeObject.data )
             binding.apply {
                 homeHeader.text = homeObject.title
                 homeFooter.text = homeObject.footer
                 homeItemRecyclerview.apply {
                     layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-                    //adapter = childAdapter
+                    adapter = childAdapter
                 }
             }
         }
@@ -99,13 +103,33 @@ class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>) :
             if (homeObject.footer.isNullOrEmpty()) {
                 binding.homeFooter.visibility = View.GONE
             }
-            //val childAdapter = HomePageChildAdapter(context, homeObject.data )
+            val childAdapter = HomePageChildAdapter(context, homeObject.data )
             binding.apply {
                 homeHeader.text = homeObject.title
                 homeFooter.text = homeObject.footer
                 homeItemRecyclerview.apply {
                     layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-                    //adapter = childAdapter
+                    adapter = childAdapter
+                }
+            }
+        }
+    }
+    class ResearchViewHolder(private val binding: HomeItemLayoutBinding):
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(homeObject: HomeObject, context: Context, homeAdapter: HomePageAdapter) {
+            if (homeObject.title.isNullOrEmpty()) {
+                binding.homeHeader.visibility = View.GONE
+            }
+            if (homeObject.footer.isNullOrEmpty()) {
+                binding.homeFooter.visibility = View.GONE
+            }
+            val childAdapter = HomePageChildAdapter(context, homeObject.data )
+            binding.apply {
+                homeHeader.text = homeObject.title
+                homeFooter.text = homeObject.footer
+                homeItemRecyclerview.apply {
+                    layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                    adapter = childAdapter
                 }
             }
         }
@@ -132,6 +156,9 @@ class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>) :
             ARTICLES -> {
                 viewHolder =  ArticlesViewHolder(binding)
             }
+            RESEARCH -> {
+                viewHolder =  ResearchViewHolder(binding)
+            }
        }
         return viewHolder
 
@@ -156,6 +183,9 @@ class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>) :
             "articles" -> {
                 ARTICLES
             }
+            "research" -> {
+                RESEARCH
+            }
             else -> NO_DATA_VIEW
         }
     }
@@ -179,6 +209,9 @@ class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>) :
                 holder.bind(homeItem, context,this)
             }
             is ArticlesViewHolder -> {
+                holder.bind(homeItem, context,this)
+            }
+            is ResearchViewHolder -> {
                 holder.bind(homeItem, context,this)
             }
         }

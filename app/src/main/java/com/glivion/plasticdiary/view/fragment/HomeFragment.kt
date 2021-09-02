@@ -109,7 +109,7 @@ class HomeFragment : Fragment() {
             // research
             researchList.clear()
             researchList.addAll(it.research!!)
-            //homeArrayList.add(HomeObject("Research", null, "research", researchList))
+            homeArrayList.add(HomeObject("Research", null, "research", researchList))
 
 
             homePageAdapter.setUpHomPageItems(homeArrayList)

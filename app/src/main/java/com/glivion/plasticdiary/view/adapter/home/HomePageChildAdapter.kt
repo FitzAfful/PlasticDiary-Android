@@ -6,26 +6,17 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.glivion.plasticdiary.R
-import com.glivion.plasticdiary.databinding.ArticleItemLayoutBinding
-import com.glivion.plasticdiary.databinding.TopNewsHeaderLayoutBinding
-import com.glivion.plasticdiary.databinding.TopNewsItemLayoutBinding
-import com.glivion.plasticdiary.databinding.VideoItemLayoutBinding
-import com.glivion.plasticdiary.model.home.Article
-import com.glivion.plasticdiary.model.home.FeaturedNews
-import com.glivion.plasticdiary.model.home.News
-import com.glivion.plasticdiary.model.home.Video
+import com.glivion.plasticdiary.databinding.*
+import com.glivion.plasticdiary.model.home.*
 
-class HomePageChildAdapter(val context: Context, val data: ArrayList<Any>?):
+class HomePageChildAdapter(val context: Context, val childItems: ArrayList<Any>?):
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val FEATURED_NEWS = 1
     private val NEWS = 2
     private val VIDEOS = 3
     private val ARTICLES = 4
+    private val RESEARCH = 5
     private val NO_DATA_VIEW = -1
-
-    companion object {
-        private var childItems = ArrayList<Any>()
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         lateinit var viewHolder: RecyclerView.ViewHolder
@@ -66,6 +57,15 @@ class HomePageChildAdapter(val context: Context, val data: ArrayList<Any>?):
                 )
                 viewHolder = ArticlesViewHolder(binding)
             }
+            RESEARCH -> {
+                val binding: ResearchItemLayoutBinding = DataBindingUtil.inflate(
+                    LayoutInflater.from(parent.context),
+                    R.layout.research_item_layout,
+                    parent,
+                    false
+                )
+                viewHolder = ResearchViewHolder(binding)
+            }
         }
         return viewHolder
     }
@@ -73,30 +73,34 @@ class HomePageChildAdapter(val context: Context, val data: ArrayList<Any>?):
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is FeaturedNewsViewHolder -> {
-                val featuredNews = childItems[position] as FeaturedNews
+                val featuredNews = childItems?.get(position) as FeaturedNews
                 holder.bind(featuredNews, context, this)
             }
             is NewsViewHolder -> {
-                val news = childItems[position] as News
+                val news = childItems?.get(position) as News
                 holder.bind(news, context, this)
             }
             is VideosViewHolder -> {
-                val videos = childItems[position] as Video
+                val videos = childItems?.get(position) as Video
                 holder.bind(videos, context, this)
             }
             is ArticlesViewHolder -> {
-                val articles = childItems[position] as Article
+                val articles = childItems?.get(position) as Article
                 holder.bind(articles, context, this)
+            }
+            is ResearchViewHolder -> {
+                val research = childItems?.get(position) as Research
+                holder.bind(research, context, this)
             }
         }
     }
 
-    override fun getItemCount(): Int = data!!.size
+    override fun getItemCount(): Int = childItems!!.size
 
     override fun getItemId(position: Int): Long = position.toLong()
 
     override fun getItemViewType(position: Int): Int {
-        val homeObject = childItems[position]
+        val homeObject = childItems?.get(position)
         return when (homeObject) {
             is FeaturedNews -> {
                 FEATURED_NEWS
@@ -109,6 +113,9 @@ class HomePageChildAdapter(val context: Context, val data: ArrayList<Any>?):
             }
            is Article -> {
                 ARTICLES
+            }
+            is Research -> {
+                RESEARCH
             }
             else -> NO_DATA_VIEW
         }
@@ -150,6 +157,18 @@ class HomePageChildAdapter(val context: Context, val data: ArrayList<Any>?):
         ) {
             binding.apply {
                 article = _article
+            }
+        }
+    }
+    class ResearchViewHolder(private val binding: ResearchItemLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(
+            _research: Research,
+            childAdapter: Context,
+            homePageChildAdapter: HomePageChildAdapter
+        ) {
+            binding.apply {
+                research = _research
             }
         }
     }
