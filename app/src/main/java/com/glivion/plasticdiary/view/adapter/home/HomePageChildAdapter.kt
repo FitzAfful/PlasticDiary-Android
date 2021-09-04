@@ -6,10 +6,15 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.glivion.plasticdiary.R
+import com.glivion.plasticdiary.data.callbacks.HomePageCallback
 import com.glivion.plasticdiary.databinding.*
 import com.glivion.plasticdiary.model.home.*
 
-class HomePageChildAdapter(val context: Context, val childItems: ArrayList<Any>?):
+class HomePageChildAdapter(
+    val context: Context,
+    val childItems: ArrayList<Any>?,
+    val callback: HomePageCallback
+):
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val FEATURED_NEWS = 1
     private val NEWS = 2
@@ -74,23 +79,23 @@ class HomePageChildAdapter(val context: Context, val childItems: ArrayList<Any>?
         when (holder) {
             is FeaturedNewsViewHolder -> {
                 val featuredNews = childItems?.get(position) as FeaturedNews
-                holder.bind(featuredNews, context, this)
+                holder.bind(featuredNews, context, callback)
             }
             is NewsViewHolder -> {
                 val news = childItems?.get(position) as News
-                holder.bind(news, context, this)
+                holder.bind(news, context, callback)
             }
             is VideosViewHolder -> {
                 val videos = childItems?.get(position) as Video
-                holder.bind(videos, context, this)
+                holder.bind(videos, context, callback)
             }
             is ArticlesViewHolder -> {
                 val articles = childItems?.get(position) as Article
-                holder.bind(articles, context, this)
+                holder.bind(articles, context, callback)
             }
             is ResearchViewHolder -> {
                 val research = childItems?.get(position) as Research
-                holder.bind(research, context, this)
+                holder.bind(research, context, callback)
             }
         }
     }
@@ -123,27 +128,45 @@ class HomePageChildAdapter(val context: Context, val childItems: ArrayList<Any>?
 
     class FeaturedNewsViewHolder(private val binding: TopNewsHeaderLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(news: FeaturedNews, context: Context, childAdapter: HomePageChildAdapter) {
+        fun bind(news: FeaturedNews, context: Context, callback: HomePageCallback) {
             binding.apply {
                 featured = news
+                binding.parentLayout.setOnClickListener {
+                    callback.onSelectFeaturedNews(news)
+                }
             }
         }
     }
 
     class NewsViewHolder(private val binding: TopNewsItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(_news: News, context: Context, childAdapter: HomePageChildAdapter) {
+        fun bind(_news: News, context: Context, callback: HomePageCallback) {
             binding.apply {
                 news = _news
+                articleImage.setOnClickListener {
+                    callback.onSelectNewsItem(_news)
+                }
+                articleTitle.setOnClickListener {
+                    callback.onSelectNewsItem(_news)
+                }
             }
         }
     }
 
     class VideosViewHolder(private val binding: VideoItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(_video: Video, childAdapter: Context, homePageChildAdapter: HomePageChildAdapter) {
+        fun bind(_video: Video, childAdapter: Context, callback: HomePageCallback) {
             binding.apply {
                 video = _video
+                articleTitle.setOnClickListener {
+                    callback.onSelectVideos(_video)
+                }
+                placeholder.setOnClickListener {
+                    callback.onSelectVideos(_video)
+                }
+                playBtn.setOnClickListener {
+                    callback.onSelectVideos(_video)
+                }
             }
         }
     }
@@ -153,10 +176,19 @@ class HomePageChildAdapter(val context: Context, val childItems: ArrayList<Any>?
         fun bind(
             _article: Article,
             childAdapter: Context,
-            homePageChildAdapter: HomePageChildAdapter
+            callback: HomePageCallback
         ) {
             binding.apply {
                 article = _article
+                icon.setOnClickListener {
+                    callback.onSelectArticles(_article)
+                }
+                readMore.setOnClickListener {
+                    callback.onSelectArticles(_article)
+                }
+                articleTitle.setOnClickListener {
+                    callback.onSelectArticles(_article)
+                }
             }
         }
     }
@@ -165,10 +197,19 @@ class HomePageChildAdapter(val context: Context, val childItems: ArrayList<Any>?
         fun bind(
             _research: Research,
             childAdapter: Context,
-            homePageChildAdapter: HomePageChildAdapter
+            callback: HomePageCallback
         ) {
             binding.apply {
                 research = _research
+                icon.setOnClickListener {
+                    callback.onSelectResearchItem(_research)
+                }
+                readMore.setOnClickListener {
+                    callback.onSelectResearchItem(_research)
+                }
+                articleTitle.setOnClickListener {
+                    callback.onSelectResearchItem(_research)
+                }
             }
         }
     }

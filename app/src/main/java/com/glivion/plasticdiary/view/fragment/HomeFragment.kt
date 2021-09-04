@@ -1,6 +1,7 @@
 package com.glivion.plasticdiary.view.fragment
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,14 +12,17 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.glivion.plasticdiary.R
+import com.glivion.plasticdiary.data.callbacks.HomePageCallback
 import com.glivion.plasticdiary.databinding.HomeFragmentBinding
 import com.glivion.plasticdiary.databinding.MyUsageLayoutBinding
 import com.glivion.plasticdiary.model.HomeObject
-import com.glivion.plasticdiary.model.home.Usage
+import com.glivion.plasticdiary.model.home.*
+import com.glivion.plasticdiary.util.WEB_VIEW_URL
 import com.glivion.plasticdiary.util.showErrorMessage
 import com.glivion.plasticdiary.util.showSnackBarMessage
 import com.glivion.plasticdiary.view.adapter.home.HomePageAdapter
 import com.glivion.plasticdiary.view.dialog.LoadingDialog
+import com.glivion.plasticdiary.view.ui.WebViewActivity
 import com.glivion.plasticdiary.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -26,7 +30,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), HomePageCallback {
     private lateinit var binding: HomeFragmentBinding
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var loadingDialog: LoadingDialog
@@ -121,7 +125,7 @@ class HomeFragment : Fragment() {
     private fun initViews() {
         loadingDialog = LoadingDialog(requireContext())
 
-        homePageAdapter = HomePageAdapter(requireContext(), ArrayList())
+        homePageAdapter = HomePageAdapter(requireContext(), ArrayList(), this)
 
         binding.apply {
             swipeRefresh.setOnRefreshListener {
@@ -131,7 +135,8 @@ class HomeFragment : Fragment() {
                 openUsageDialog()
             }
             homeRecyclerView.apply {
-                layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 adapter = homePageAdapter
             }
         }
@@ -166,9 +171,36 @@ class HomeFragment : Fragment() {
         dialog.show()
     }
 
+    private fun showInWebView(url: String?) {
+        Intent(requireContext(), WebViewActivity::class.java).apply {
+            putExtra(WEB_VIEW_URL, url)
+            startActivity(this)
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
+
+    override fun onSelectFeaturedNews(news: FeaturedNews) {
+        showInWebView(news.url)
+    }
+
+    override fun onSelectNewsItem(news: News) {
+        showInWebView(news.url)
+    }
+
+    override fun onSelectVideos(video: Video) {
+        showInWebView(video.link)
+    }
+
+    override fun onSelectArticles(article: Article) {
+      showInWebView(article.url)
+    }
+
+    override fun onSelectResearchItem(research: Research) {
+       showInWebView(research.link)
     }
 
 }

@@ -21,12 +21,13 @@
         <entry key="app/src/main/res/drawable/ic_trophy.xml" value="0.7104166666666667" />
         <entry key="app/src/main/res/layout/activity_intro.xml" value="0.6942708333333333" />
         <entry key="app/src/main/res/layout/activity_map_item.xml" value="0.6765625" />
+        <entry key="app/src/main/res/layout/activity_web_view.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.6138888888888889" />
-        <entry key="app/src/main/res/layout/article_item_layout.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/explore_fragment.xml" value="0.11053540587219343" />
+        <entry key="app/src/main/res/layout/article_item_layout.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/explore_fragment.xml" value="0.5363128491620112" />
         <entry key="app/src/main/res/layout/explore_resource_item_layout.xml" value="0.6796875" />
-        <entry key="app/src/main/res/layout/home_fragment.xml" value="0.1636828644501279" />
-        <entry key="app/src/main/res/layout/home_item_layout.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/home_fragment.xml" value="0.36210526315789476" />
+        <entry key="app/src/main/res/layout/home_item_layout.xml" value="0.4359375" />
         <entry key="app/src/main/res/layout/my_usage_layout.xml" value="0.5861111111111111" />
         <entry key="app/src/main/res/layout/notification_item_layout.xml" value="0.5947916666666667" />
         <entry key="app/src/main/res/layout/profile_bookmarks_fragment.xml" value="0.6942708333333333" />
@@ -36,16 +37,16 @@
         <entry key="app/src/main/res/layout/quiz_fragment.xml" value="0.5947916666666667" />
         <entry key="app/src/main/res/layout/quiz_stats_item_layout.xml" value="0.15588235294117647" />
         <entry key="app/src/main/res/layout/quiz_type_item_layout.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/research_item_layout.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/research_item_layout.xml" value="0.67" />
         <entry key="app/src/main/res/layout/resource_item_layout.xml" value="0.6942708333333333" />
         <entry key="app/src/main/res/layout/submit_tip_layout.xml" value="0.6942708333333333" />
         <entry key="app/src/main/res/layout/tips_item_layout.xml" value="0.6942708333333333" />
-        <entry key="app/src/main/res/layout/top_news_header_layout.xml" value="0.4624183006535948" />
+        <entry key="app/src/main/res/layout/top_news_header_layout.xml" value="0.5667752442996743" />
         <entry key="app/src/main/res/layout/top_news_item_layout.xml" value="0.36553524804177545" />
         <entry key="app/src/main/res/layout/video_item_layout.xml" value="0.335" />
       </map>
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>

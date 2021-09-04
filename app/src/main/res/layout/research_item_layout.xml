@@ -32,7 +32,9 @@
             android:layout_toEndOf="@+id/icon"
             android:fontFamily="@font/sf_pro_display_bold"
             android:lineHeight="13dp"
-            android:text="@{research.title}"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="@{research.abstract}"
             tools:text="@string/article_title"
             android:textColor="@color/text_black"
             android:textSize="12sp" />
