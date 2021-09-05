@@ -20,6 +20,7 @@ import org.json.JSONObject
 import retrofit2.HttpException
 import java.io.IOException
 import java.time.Instant
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
@@ -118,6 +119,19 @@ fun getCurrentDateTimeParams(): Quintuple<String, String, String, String, String
     val currentTime = parser.toLocalTime().toString()
 
     return Quintuple(currentDate, currentTime, month, day, dayInWords)
+}
+
+fun getDayAndMonth(date: String?): String {
+
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+    val localDate = LocalDate.parse(date, formatter)
+
+    val month = localDate.month.getDisplayName(
+        TextStyle.SHORT, Locale.US
+    )
+    val day = localDate.dayOfMonth.toString()
+
+    return "$day\n$month"
 }
 
 fun getYoutubeVideoIdFromUrl(url: String): String? {

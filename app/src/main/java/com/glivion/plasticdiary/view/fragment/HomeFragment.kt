@@ -12,9 +12,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.glivion.plasticdiary.R
 import com.glivion.plasticdiary.data.callbacks.HomePageCallback
@@ -23,7 +25,7 @@ import com.glivion.plasticdiary.databinding.MyUsageLayoutBinding
 import com.glivion.plasticdiary.model.HomeObject
 import com.glivion.plasticdiary.model.home.*
 import com.glivion.plasticdiary.util.WEB_VIEW_URL
-import com.glivion.plasticdiary.util.getYoutubeThumbnailUrlFromVideoUrl
+import com.glivion.plasticdiary.util.getDayAndMonth
 import com.glivion.plasticdiary.util.showErrorMessage
 import com.glivion.plasticdiary.util.showSnackBarMessage
 import com.glivion.plasticdiary.view.adapter.home.HomePageAdapter
@@ -124,7 +126,7 @@ class HomeFragment : Fragment(), HomePageCallback {
             homePageAdapter.setUpHomPageItems(homeArrayList)
 
             for ((index, usage) in usageList.withIndex()) {
-                entriesList.add(BarEntry((2014 + index).toFloat(), usage.amount!!.toFloat()))
+                entriesList.add(BarEntry(index.toFloat(), usage.amount!!.toFloat()))
             }
             val dataSet = BarDataSet(entriesList, "Usage History")
             dataSet.apply {
@@ -152,9 +154,39 @@ class HomeFragment : Fragment(), HomePageCallback {
     private fun initViews() {
         loadingDialog = LoadingDialog(requireContext())
 
-        val url = getYoutubeThumbnailUrlFromVideoUrl("https://www.youtube.com/watch?v=5FWEgG-ucBA")
-        Timber.e("$url")
+        val xAxis = binding.usageBarChat.xAxis
+        xAxis.apply {
+            position = XAxis.XAxisPosition.BOTTOM
+            textSize = 10f
+            textColor = ContextCompat.getColor(requireContext(), R.color.text_black)
+            setDrawAxisLine(false)
+            setDrawGridLines(false)
 
+            valueFormatter = object: IndexAxisValueFormatter(){
+                override fun getFormattedValue(value: Float): String {
+                    val x = value.toInt()
+                    return if (x >= 0 && x < usageList.size) {
+                        getDayAndMonth(usageList[x].date.toString())
+                    } else {
+                        ""
+                    }
+                }
+            }
+        }
+        val yAxisRight = binding.usageBarChat.axisRight
+        val yAxisLeft = binding.usageBarChat.axisLeft
+        yAxisRight.apply {
+            textColor = ContextCompat.getColor(requireContext(), R.color.text_black)
+        }
+        yAxisLeft.apply {
+            textColor = ContextCompat.getColor(requireContext(), R.color.text_black)
+        }
+        val legend = binding.usageBarChat.legend
+        legend.apply {
+            textColor = ContextCompat.getColor(requireContext(), R.color.text_black)
+            textSize = 11f
+            formSize = 9f
+        }
         homePageAdapter = HomePageAdapter(requireContext(), ArrayList(), this)
 
         binding.apply {
