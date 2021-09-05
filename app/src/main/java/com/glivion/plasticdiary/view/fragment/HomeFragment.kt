@@ -50,6 +50,7 @@ class HomeFragment : Fragment(), HomePageCallback {
     private val researchList = ArrayList<Any>()
     private val articleList = ArrayList<Any>()
     private val usageList = ArrayList<Usage>()
+    private val lastFiveUsagesList = ArrayList<Usage>()
     private val entriesList = ArrayList<BarEntry>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -101,8 +102,10 @@ class HomeFragment : Fragment(), HomePageCallback {
         viewModel.data.observe(viewLifecycleOwner, {
             binding.swipeRefresh.isRefreshing = false
             homeArrayList.clear()
-            usageList.clear()
-            usageList.addAll(it.usage!!)
+           // usageList.clear()
+            //usageList.addAll(it.usage!!)
+            lastFiveUsagesList.clear()
+            lastFiveUsagesList.addAll(it.usage!!.takeLast(5))
             // add featured
             featuredList.clear()
             featuredList.addAll(it.featuredNews!!)
@@ -125,7 +128,7 @@ class HomeFragment : Fragment(), HomePageCallback {
             homeArrayList.add(HomeObject("Research", null, "research", researchList))
             homePageAdapter.setUpHomPageItems(homeArrayList)
 
-            for ((index, usage) in usageList.withIndex()) {
+            for ((index, usage) in lastFiveUsagesList.withIndex()) {
                 entriesList.add(BarEntry(index.toFloat(), usage.amount!!.toFloat()))
             }
             val dataSet = BarDataSet(entriesList, "Usage History")
@@ -145,9 +148,11 @@ class HomeFragment : Fragment(), HomePageCallback {
                 animateY(1000)
                 setDrawGridBackground(false)
                 description.isEnabled = false
+                notifyDataSetChanged()
                 invalidate()
             }
-            Timber.e("home: $entriesList")
+            Timber.e("original : ${it.usage}")
+            Timber.e("last 5: ${lastFiveUsagesList.takeLast(5)}")
         })
     }
 
@@ -165,8 +170,8 @@ class HomeFragment : Fragment(), HomePageCallback {
             valueFormatter = object: IndexAxisValueFormatter(){
                 override fun getFormattedValue(value: Float): String {
                     val x = value.toInt()
-                    return if (x >= 0 && x < usageList.size) {
-                        getDayAndMonth(usageList[x].date.toString())
+                    return if (x >= 0 && x <= lastFiveUsagesList.size) {
+                        getDayAndMonth(lastFiveUsagesList[x].date.toString())
                     } else {
                         ""
                     }
