@@ -6,11 +6,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.utils.ColorTemplate
 import com.glivion.plasticdiary.R
 import com.glivion.plasticdiary.data.callbacks.HomePageCallback
 import com.glivion.plasticdiary.databinding.HomeFragmentBinding
@@ -18,6 +23,7 @@ import com.glivion.plasticdiary.databinding.MyUsageLayoutBinding
 import com.glivion.plasticdiary.model.HomeObject
 import com.glivion.plasticdiary.model.home.*
 import com.glivion.plasticdiary.util.WEB_VIEW_URL
+import com.glivion.plasticdiary.util.getYoutubeThumbnailUrlFromVideoUrl
 import com.glivion.plasticdiary.util.showErrorMessage
 import com.glivion.plasticdiary.util.showSnackBarMessage
 import com.glivion.plasticdiary.view.adapter.home.HomePageAdapter
@@ -42,6 +48,7 @@ class HomeFragment : Fragment(), HomePageCallback {
     private val researchList = ArrayList<Any>()
     private val articleList = ArrayList<Any>()
     private val usageList = ArrayList<Usage>()
+    private val entriesList = ArrayList<BarEntry>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -114,16 +121,39 @@ class HomeFragment : Fragment(), HomePageCallback {
             researchList.clear()
             researchList.addAll(it.research!!)
             homeArrayList.add(HomeObject("Research", null, "research", researchList))
-
-
             homePageAdapter.setUpHomPageItems(homeArrayList)
-            Timber.e("home: $homeArrayList")
 
+            for ((index, usage) in usageList.withIndex()) {
+                entriesList.add(BarEntry((2014 + index).toFloat(), usage.amount!!.toFloat()))
+            }
+            val dataSet = BarDataSet(entriesList, "Usage History")
+            dataSet.apply {
+                colors = ColorTemplate.MATERIAL_COLORS.toMutableList()
+                valueTextColor = ContextCompat.getColor(requireContext(), R.color.text_black)
+                valueTextSize = 15f
+            }
+            val barData = BarData(dataSet)
+            barData.apply {
+                setValueTextSize(12f)
+                barWidth = 0.9f
+            }
+            binding.usageBarChat.apply {
+                data = barData
+                setFitBars(true)
+                animateY(1000)
+                setDrawGridBackground(false)
+                description.isEnabled = false
+                invalidate()
+            }
+            Timber.e("home: $entriesList")
         })
     }
 
     private fun initViews() {
         loadingDialog = LoadingDialog(requireContext())
+
+        val url = getYoutubeThumbnailUrlFromVideoUrl("https://www.youtube.com/watch?v=5FWEgG-ucBA")
+        Timber.e("$url")
 
         homePageAdapter = HomePageAdapter(requireContext(), ArrayList(), this)
 
@@ -196,11 +226,11 @@ class HomeFragment : Fragment(), HomePageCallback {
     }
 
     override fun onSelectArticles(article: Article) {
-      showInWebView(article.url)
+        showInWebView(article.url)
     }
 
     override fun onSelectResearchItem(research: Research) {
-       showInWebView(research.link)
+        showInWebView(research.link)
     }
 
 }

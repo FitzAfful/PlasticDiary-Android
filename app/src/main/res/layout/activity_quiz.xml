@@ -8,21 +8,12 @@
     </data>
 
     <RelativeLayout
-        android:id="@+id/parentLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.ui.WebViewActivity">
-
-        <WebView
-            android:id="@+id/web_view"
+        tools:context=".view.ui.QuizActivity">
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/usage_bar_chat"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminateTint="@color/blue_700"
-            android:layout_centerHorizontal="true"
-            android:indeterminate="true"/>
     </RelativeLayout>
 </layout>

@@ -10,6 +10,7 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/card_bg_grey"
@@ -24,7 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/cover" />
+                app:set_youtube_image="@{video.link}"
+                tools:src="@drawable/cover" />
 
             <ImageView
                 android:id="@+id/play_btn"

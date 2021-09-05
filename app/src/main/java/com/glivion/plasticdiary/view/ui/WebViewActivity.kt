@@ -11,6 +11,8 @@ import com.glivion.plasticdiary.R
 import com.glivion.plasticdiary.databinding.ActivityWebViewBinding
 import com.glivion.plasticdiary.util.WEB_VIEW_URL
 import com.glivion.plasticdiary.util.setSystemBarColor
+import com.glivion.plasticdiary.util.showSnackBarMessage
+import timber.log.Timber
 
 class WebViewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWebViewBinding
@@ -46,6 +48,16 @@ class WebViewActivity : AppCompatActivity() {
                     super.onPageCommitVisible(view, url)
                     binding.progressBar.visibility = View.GONE
                 }
+
+                override fun onReceivedError(
+                    view: WebView?,
+                    errorCode: Int,
+                    description: String?,
+                    failingUrl: String?
+                ) {
+                    super.onReceivedError(view, errorCode, description, failingUrl)
+                    showSnackBarMessage(binding.parentLayout, "Failed to load page: $errorCode")
+                }
             }
             loadUrl(url!!)
         }
@@ -55,6 +67,7 @@ class WebViewActivity : AppCompatActivity() {
         intent?.extras?.let {
             url = it.getString(WEB_VIEW_URL)
         }
+        Timber.e("url: $url")
         initWebView(url)
     }
 

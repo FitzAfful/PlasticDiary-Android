@@ -107,8 +107,13 @@
                     app:strokeColor="@color/border_color"
                     app:strokeWidth="1dp"
                     android:layout_marginTop="10dp"
-                    android:layout_height="250dp">
-                    <!--TODO: show usage stats-->
+                    android:layout_height="270dp">
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:layout_margin="15dp"
+                        android:id="@+id/usage_bar_chat"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.textview.MaterialTextView

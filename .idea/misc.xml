@@ -21,6 +21,7 @@
         <entry key="app/src/main/res/drawable/ic_trophy.xml" value="0.7104166666666667" />
         <entry key="app/src/main/res/layout/activity_intro.xml" value="0.6942708333333333" />
         <entry key="app/src/main/res/layout/activity_map_item.xml" value="0.6765625" />
+        <entry key="app/src/main/res/layout/activity_quiz.xml" value="0.328125" />
         <entry key="app/src/main/res/layout/activity_web_view.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.6138888888888889" />
         <entry key="app/src/main/res/layout/article_item_layout.xml" value="0.25" />
@@ -30,7 +31,7 @@
         <entry key="app/src/main/res/layout/home_item_layout.xml" value="0.4359375" />
         <entry key="app/src/main/res/layout/my_usage_layout.xml" value="0.5861111111111111" />
         <entry key="app/src/main/res/layout/notification_item_layout.xml" value="0.5947916666666667" />
-        <entry key="app/src/main/res/layout/profile_bookmarks_fragment.xml" value="0.6942708333333333" />
+        <entry key="app/src/main/res/layout/profile_bookmarks_fragment.xml" value="0.2591715976331361" />
         <entry key="app/src/main/res/layout/profile_feedback_layout.xml" value="0.6942708333333333" />
         <entry key="app/src/main/res/layout/profile_fragment.xml" value="0.5856410256410256" />
         <entry key="app/src/main/res/layout/profile_settings_fragment.xml" value="0.5947916666666667" />
