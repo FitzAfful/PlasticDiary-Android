@@ -10,6 +10,7 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/card_bg_grey"
@@ -24,13 +25,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/cover" />
+                app:set_youtube_image="@{video.link}"
+                tools:src="@drawable/cover" />
 
             <ImageView
+                android:id="@+id/play_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="70dp"
                 android:src="@drawable/ic_play_button" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -42,9 +45,9 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/sf_pro__display_heavy"
                 android:lineHeight="19dp"
+                android:text="@{video.title}"
                 android:textColor="@color/text_black"
                 android:textSize="16sp"
-                android:text="@{video.title}"
                 tools:text="@string/article_title" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -54,13 +57,13 @@
                 android:layout_below="@+id/article_title"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/arial"
                 android:ellipsize="end"
+                android:fontFamily="@font/arial"
                 android:lineHeight="16dp"
                 android:maxLines="2"
                 android:text="@{video.description}"
-                tools:text="@string/article_subtitle"
-                android:textColor="@color/text_grey_50" />
+                android:textColor="@color/text_grey_50"
+                tools:text="@string/article_subtitle" />
 
             <ImageView
                 android:id="@+id/bookmark"

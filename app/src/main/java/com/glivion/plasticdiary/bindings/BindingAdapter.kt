@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.glivion.plasticdiary.R
 import com.glivion.plasticdiary.model.User
+import com.glivion.plasticdiary.util.getYoutubeThumbnailUrlFromVideoUrl
 
 object BindingAdapter {
     @JvmStatic
@@ -30,9 +31,20 @@ object BindingAdapter {
 
     @JvmStatic
     @BindingAdapter("set_cover_image")
-    fun setCoverImage(imageView: ImageView, image: String) {
+    fun setCoverImage(imageView: ImageView, image: String?) {
         Glide.with(imageView.context)
             .load(image)
+            .centerCrop()
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            //.placeholder(R.drawable.profile_picture)
+            .into(imageView)
+    }
+
+    @JvmStatic
+    @BindingAdapter("set_youtube_image")
+    fun setYoutubePlaceholder(imageView: ImageView, image: String?) {
+        Glide.with(imageView.context)
+            .load(getYoutubeThumbnailUrlFromVideoUrl(image))
             .centerCrop()
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             //.placeholder(R.drawable.profile_picture)

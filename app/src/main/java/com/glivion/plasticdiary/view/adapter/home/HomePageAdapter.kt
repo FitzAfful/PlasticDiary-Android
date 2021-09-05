@@ -8,12 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.glivion.plasticdiary.R
+import com.glivion.plasticdiary.data.callbacks.HomePageCallback
 import com.glivion.plasticdiary.databinding.HomeItemLayoutBinding
 import com.glivion.plasticdiary.model.HomeObject
-import com.glivion.plasticdiary.model.home.FeaturedNews
-import timber.log.Timber
 
-class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>) :
+class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>, val callback: HomePageCallback) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val FEATURED_NEWS = 1
     private val NEWS = 2
@@ -32,7 +31,12 @@ class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>) :
 
     class FeaturedNewsViewHolder(private val binding: HomeItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(homeObject: HomeObject, context: Context, homeAdapter: HomePageAdapter) {
+        fun bind(
+            homeObject: HomeObject,
+            context: Context,
+            homeAdapter: HomePageAdapter,
+            callback: HomePageCallback
+        ) {
             if (homeObject.title.isNullOrEmpty()) {
                 binding.homeHeader.visibility = View.GONE
             }
@@ -40,7 +44,7 @@ class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>) :
                 binding.homeFooter.visibility = View.GONE
             }
 
-            val childAdapter = HomePageChildAdapter(context, homeObject.data )
+            val childAdapter = HomePageChildAdapter(context, homeObject.data, callback )
             binding.apply {
                 homeHeader.text = homeObject.title
                 homeFooter.text = homeObject.footer
@@ -54,14 +58,19 @@ class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>) :
 
     class NewsViewHolder(private val binding: HomeItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(homeObject: HomeObject, context: Context, homeAdapter: HomePageAdapter) {
+        fun bind(
+            homeObject: HomeObject,
+            context: Context,
+            homeAdapter: HomePageAdapter,
+            callback: HomePageCallback
+        ) {
             if (homeObject.title.isNullOrEmpty()) {
                 binding.homeHeader.visibility = View.GONE
             }
             if (homeObject.footer.isNullOrEmpty()) {
                 binding.homeFooter.visibility = View.GONE
             }
-            val childAdapter = HomePageChildAdapter(context, homeObject.data )
+            val childAdapter = HomePageChildAdapter(context, homeObject.data, callback)
             binding.apply {
                 homeHeader.text = homeObject.title
                 homeFooter.text = homeObject.footer
@@ -75,14 +84,19 @@ class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>) :
 
     class VideosViewHolder(private val binding: HomeItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(homeObject: HomeObject, context: Context, homeAdapter: HomePageAdapter) {
+        fun bind(
+            homeObject: HomeObject,
+            context: Context,
+            homeAdapter: HomePageAdapter,
+            callback: HomePageCallback
+        ) {
             if (homeObject.title.isNullOrEmpty()) {
                 binding.homeHeader.visibility = View.GONE
             }
             if (homeObject.footer.isNullOrEmpty()) {
                 binding.homeFooter.visibility = View.GONE
             }
-            val childAdapter = HomePageChildAdapter(context, homeObject.data )
+            val childAdapter = HomePageChildAdapter(context, homeObject.data, callback)
             binding.apply {
                 homeHeader.text = homeObject.title
                 homeFooter.text = homeObject.footer
@@ -96,14 +110,19 @@ class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>) :
 
     class ArticlesViewHolder(private val binding: HomeItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(homeObject: HomeObject, context: Context, homeAdapter: HomePageAdapter) {
+        fun bind(
+            homeObject: HomeObject,
+            context: Context,
+            homeAdapter: HomePageAdapter,
+            callback: HomePageCallback
+        ) {
             if (homeObject.title.isNullOrEmpty()) {
                 binding.homeHeader.visibility = View.GONE
             }
             if (homeObject.footer.isNullOrEmpty()) {
                 binding.homeFooter.visibility = View.GONE
             }
-            val childAdapter = HomePageChildAdapter(context, homeObject.data )
+            val childAdapter = HomePageChildAdapter(context, homeObject.data, callback)
             binding.apply {
                 homeHeader.text = homeObject.title
                 homeFooter.text = homeObject.footer
@@ -116,14 +135,19 @@ class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>) :
     }
     class ResearchViewHolder(private val binding: HomeItemLayoutBinding):
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(homeObject: HomeObject, context: Context, homeAdapter: HomePageAdapter) {
+        fun bind(
+            homeObject: HomeObject,
+            context: Context,
+            homeAdapter: HomePageAdapter,
+            callback: HomePageCallback
+        ) {
             if (homeObject.title.isNullOrEmpty()) {
                 binding.homeHeader.visibility = View.GONE
             }
             if (homeObject.footer.isNullOrEmpty()) {
                 binding.homeFooter.visibility = View.GONE
             }
-            val childAdapter = HomePageChildAdapter(context, homeObject.data )
+            val childAdapter = HomePageChildAdapter(context, homeObject.data, callback)
             binding.apply {
                 homeHeader.text = homeObject.title
                 homeFooter.text = homeObject.footer
@@ -200,19 +224,19 @@ class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>) :
         val homeItem = homePageItems[position]
         when (holder) {
             is FeaturedNewsViewHolder -> {
-                holder.bind(homeItem, context, this)
+                holder.bind(homeItem, context, this, callback)
             }
             is NewsViewHolder -> {
-                holder.bind(homeItem, context,this)
+                holder.bind(homeItem, context,this, callback)
             }
             is VideosViewHolder -> {
-                holder.bind(homeItem, context,this)
+                holder.bind(homeItem, context,this, callback)
             }
             is ArticlesViewHolder -> {
-                holder.bind(homeItem, context,this)
+                holder.bind(homeItem, context,this, callback)
             }
             is ResearchViewHolder -> {
-                holder.bind(homeItem, context,this)
+                holder.bind(homeItem, context,this, callback)
             }
         }
     }

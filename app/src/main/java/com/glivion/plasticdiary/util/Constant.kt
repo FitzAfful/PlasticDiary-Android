@@ -8,3 +8,5 @@ const val AUTH_TOKEN = "AUTH_TOKEN"
 const val BASE_URL = "https://plasticdiary.herokuapp.com/api/"
 const val REQUEST_TIMEOUT = 5L
 const val READ_TIMEOUT = 5L
+
+const val WEB_VIEW_URL = "WEB_VIEW_URL"

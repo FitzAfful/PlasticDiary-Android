@@ -20,11 +20,14 @@ import org.json.JSONObject
 import retrofit2.HttpException
 import java.io.IOException
 import java.time.Instant
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.*
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 fun hideKeyboard(context: Activity) {
     val imm = context.getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -116,6 +119,37 @@ fun getCurrentDateTimeParams(): Quintuple<String, String, String, String, String
     val currentTime = parser.toLocalTime().toString()
 
     return Quintuple(currentDate, currentTime, month, day, dayInWords)
+}
+
+fun getDayAndMonth(date: String?): String {
+
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+    val localDate = LocalDate.parse(date, formatter)
+
+    val month = localDate.month.getDisplayName(
+        TextStyle.SHORT, Locale.US
+    )
+    val day = localDate.dayOfMonth.toString()
+
+    return "$day\n$month"
+}
+
+fun getYoutubeVideoIdFromUrl(url: String): String? {
+
+    val inUrl = url.replace("&feature=youtu.be", "")
+    if (inUrl.lowercase().contains("youtu.be")) {
+        return inUrl.substring(inUrl.lastIndexOf("/") + 1)
+    }
+    val pattern = "(?<=watch\\?v=|/videos/|embed\\/)[^#\\&\\?]*"
+    val compiledPattern: Pattern = Pattern.compile(pattern)
+    val matcher: Matcher = compiledPattern.matcher(inUrl)
+    return if (matcher.find()) {
+        matcher.group()
+    } else null
+}
+
+fun getYoutubeThumbnailUrlFromVideoUrl(videoUrl: String?): String {
+    return "https://img.youtube.com/vi/${getYoutubeVideoIdFromUrl(videoUrl!!)}/0.jpg"
 }
 
 
