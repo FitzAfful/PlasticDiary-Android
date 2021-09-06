@@ -101,9 +101,8 @@ class HomeFragment : Fragment(), HomePageCallback {
 
         viewModel.data.observe(viewLifecycleOwner, {
             binding.swipeRefresh.isRefreshing = false
+
             homeArrayList.clear()
-           // usageList.clear()
-            //usageList.addAll(it.usage!!)
             lastFiveUsagesList.clear()
             lastFiveUsagesList.addAll(it.usage!!.takeLast(5))
             // add featured
