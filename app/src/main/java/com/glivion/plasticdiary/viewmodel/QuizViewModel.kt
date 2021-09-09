@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.glivion.plasticdiary.data.repository.QuizRepository
+import com.glivion.plasticdiary.model.questions.BaseQuizQuestionsObject
 import com.glivion.plasticdiary.model.quiz.BaseQuizObject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -32,6 +33,10 @@ class QuizViewModel  @Inject constructor(
     val data: LiveData<BaseQuizObject>
         get() = _data
 
+    private val _questions by lazy { MutableLiveData<BaseQuizQuestionsObject>() }
+    val questions: LiveData<BaseQuizQuestionsObject>
+        get() = _questions
+
     private val compositeDisposable by lazy { CompositeDisposable() }
 
     init {
@@ -53,6 +58,28 @@ class QuizViewModel  @Inject constructor(
                 .subscribe({
                     _userLoader.postValue(false)
                     _data.postValue(it.body())
+                },{e ->
+                    _userLoader.postValue(false)
+                    _userErrors.postValue(e)
+                })
+        )
+    }
+
+    fun getQuizQuestions(id: String) {
+        _userLoader.postValue(true)
+        compositeDisposable.add(
+            repository.getQuizQuestions(id)
+                .filter {
+                    if (it.isSuccessful) {
+                        true
+                    } else {
+                        throw HttpException(it)
+                    }
+                }.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    _userLoader.postValue(false)
+                    _questions.postValue(it.body())
                 },{e ->
                     _userLoader.postValue(false)
                     _userErrors.postValue(e)
