@@ -3,6 +3,7 @@ package com.glivion.plasticdiary.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.glivion.plasticdiary.contracts.StatusCallbacks
 import com.glivion.plasticdiary.data.repository.QuizRepository
 import com.glivion.plasticdiary.model.questions.BaseQuizQuestionsObject
 import com.glivion.plasticdiary.model.quiz.BaseQuizObject
@@ -14,9 +15,9 @@ import retrofit2.HttpException
 import javax.inject.Inject
 
 @HiltViewModel
-class QuizViewModel  @Inject constructor(
+class QuizViewModel @Inject constructor(
     val repository: QuizRepository
-): ViewModel() {
+) : ViewModel() {
     private val _userErrors by lazy { MutableLiveData<Throwable>() }
     val userErrors: LiveData<Throwable>
         get() = _userErrors
@@ -58,7 +59,7 @@ class QuizViewModel  @Inject constructor(
                 .subscribe({
                     _userLoader.postValue(false)
                     _data.postValue(it.body())
-                },{e ->
+                }, { e ->
                     _userLoader.postValue(false)
                     _userErrors.postValue(e)
                 })
@@ -80,12 +81,36 @@ class QuizViewModel  @Inject constructor(
                 .subscribe({
                     _loadingDialog.postValue(false)
                     _questions.postValue(it.body())
-                },{e ->
+                }, { e ->
                     _loadingDialog.postValue(false)
                     _userErrors.postValue(e)
                 })
         )
     }
+
+    fun submitScore(score: Int, quiz_category_id: Int, listener: StatusCallbacks<String?>) {
+        _loadingDialog.postValue(true)
+        compositeDisposable.add(
+            repository.submitScore(score, quiz_category_id)
+                .filter {
+                    if (it.isSuccessful) {
+                        true
+                    } else {
+                        throw HttpException(it)
+                    }
+                }.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    _loadingDialog.postValue(false)
+                    listener.onComplete(it.body()?.message)
+                }, { e ->
+                    _loadingDialog.postValue(false)
+                    listener.onFailure(e.localizedMessage)
+                    _userErrors.postValue(e)
+                })
+        )
+    }
+
 
     override fun onCleared() {
         super.onCleared()

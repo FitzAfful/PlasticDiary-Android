@@ -1,10 +1,13 @@
 package com.glivion.plasticdiary.view.ui
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.glivion.plasticdiary.R
+import com.glivion.plasticdiary.contracts.StatusCallbacks
 import com.glivion.plasticdiary.databinding.ActivityQuizBinding
 import com.glivion.plasticdiary.model.questions.Question
 import com.glivion.plasticdiary.model.quiz.Category
@@ -15,7 +18,12 @@ import com.glivion.plasticdiary.util.showSnackBarMessage
 import com.glivion.plasticdiary.view.dialog.AnswerBottomSheetDialog
 import com.glivion.plasticdiary.view.dialog.LoadingDialog
 import com.glivion.plasticdiary.viewmodel.QuizViewModel
+import com.google.android.material.button.MaterialButton
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @AndroidEntryPoint
@@ -25,6 +33,7 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
     private var category: Category? = null
     private val loadingDialog = LoadingDialog(this)
     private val questions = ArrayList<Question>()
+    var selectedButton: MaterialButton? = null
     var score = 0
     var index = -1
     var thisQuestion = 0
@@ -48,16 +57,16 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
                 finish()
             }
             optionA.setOnClickListener {
-                showAnswerDialog(index, optionA.text.toString())
+                showAnswerDialog(index, optionA.text.toString(), optionA)
             }
             optionB.setOnClickListener {
-                showAnswerDialog(index, optionB.text.toString())
+                showAnswerDialog(index, optionB.text.toString(), optionB)
             }
             optionC.setOnClickListener {
-                showAnswerDialog(index, optionC.text.toString())
+                showAnswerDialog(index, optionC.text.toString(), optionC)
             }
             optionD.setOnClickListener {
-                showAnswerDialog(index, optionD.text.toString())
+                showAnswerDialog(index, optionD.text.toString(), optionD)
             }
         }
     }
@@ -102,6 +111,10 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
     }
 
     private fun showQuestions(index: Int) {
+        if (questions.isEmpty()) {
+            showSnackBarMessage(binding.parentLayout, "No questions available for this category")
+            return
+        }
         if (index < totalQuestions) {
             thisQuestion++
             binding.apply {
@@ -112,22 +125,58 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
                 optionC.text = questions[index].option3
                 optionD.text = questions[index].option4
             }
-        } /*else {
-            Toast.makeText(this, "Quiz Completed", Toast.LENGTH_SHORT).show()
-        }*/
+        } else {
+            viewModel.submitScore(score, category!!.id, object: StatusCallbacks<String?>{
+                override fun onComplete(data: String?) {
+                    showSnackBarMessage(binding.parentLayout, data)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        delay(2000)
+                        finish()
+                    }
+                }
+
+                override fun onFailure(data: String?) {
+                    showSnackBarMessage(binding.parentLayout, data)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        delay(2000)
+                        finish()
+                    }
+                }
+            })
+        }
     }
 
-    private fun showAnswerDialog(index: Int, option: String) {
+    private fun showAnswerDialog(index: Int, option: String, optionBtn: MaterialButton) {
         var status = false
+        selectedButton = optionBtn
         if (option == questions[index].correct) {
             status = true
             score += 1
+            optionBtn.strokeColor = ColorStateList.valueOf(
+                ContextCompat.getColor(
+                    this,
+                    R.color.heading_text_green
+                )
+            )
+        } else {
+            optionBtn.strokeColor = ColorStateList.valueOf(
+                ContextCompat.getColor(
+                    this,
+                    R.color.logout_btn_color
+                )
+            )
         }
         dialog = AnswerBottomSheetDialog(status, questions[index].comment.toString())
         dialog.showNow(supportFragmentManager, "AnswerBottomSheetDialog")
     }
 
     override fun continueQuiz() {
+        selectedButton?.strokeColor = ColorStateList.valueOf(
+            ContextCompat.getColor(
+                this,
+                R.color.card_bg_grey
+            )
+        )
         dialog.dismiss()
         if (index < totalQuestions) {
             showQuestions(++index)
