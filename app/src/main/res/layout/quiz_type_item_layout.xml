@@ -89,25 +89,28 @@
                 app:iconGravity="end"
                 app:iconTint="@color/white"
                 tools:visibility="visible" />
+
             <LinearLayout
                 android:id="@+id/score_lyt"
-                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/view_results"
                 android:layout_below="@+id/description"
                 android:layout_marginStart="20dp"
-                >
+                android:visibility="gone"
+                android:layout_toEndOf="@+id/view_results"
+                android:orientation="vertical">
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/score"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginHorizontal="10dp"
                     android:fontFamily="@font/sf_pro_display_bold"
-                    android:textSize="18sp"
-                    android:layout_gravity="center"
                     android:text="80%"
-                    android:textColor="@color/text_black" />
+                    android:textColor="@color/text_black"
+                    android:textSize="18sp" />
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/rating"
                     android:layout_width="wrap_content"
@@ -115,8 +118,8 @@
                     android:layout_marginHorizontal="10dp"
                     android:fontFamily="@font/sf_pro_display_bold"
                     android:text="AVERAGE"
-                    android:textSize="12sp"
-                    android:textColor="@color/text_grey_50" />
+                    android:textColor="@color/text_grey_50"
+                    android:textSize="12sp" />
             </LinearLayout>
         </RelativeLayout>
 

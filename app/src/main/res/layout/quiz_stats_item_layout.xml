@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/title"
             android:text="@{description}"
-            tools:text="Average \n Performance"
-            android:textColor="@color/text_grey_night" />
+            android:textColor="@color/text_grey_night"
+            tools:text="Average \n Performance" />
     </RelativeLayout>
 </layout>
