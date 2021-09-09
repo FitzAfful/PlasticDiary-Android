@@ -32,6 +32,7 @@
             android:layout_height="50dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
+            app:set_cover_image="@{leaderboard.img_url}"
             app:shapeAppearanceOverlay="@style/circleImageView"
             tools:srcCompat="@drawable/avatar" />
 

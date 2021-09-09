@@ -12,18 +12,25 @@ import com.glivion.plasticdiary.util.QUIZ_ID
 import com.glivion.plasticdiary.util.setSystemBarColor
 import com.glivion.plasticdiary.util.showErrorMessage
 import com.glivion.plasticdiary.util.showSnackBarMessage
+import com.glivion.plasticdiary.view.dialog.AnswerBottomSheetDialog
 import com.glivion.plasticdiary.view.dialog.LoadingDialog
 import com.glivion.plasticdiary.viewmodel.QuizViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
 @AndroidEntryPoint
-class QuizActivity : AppCompatActivity() {
+class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListener {
     private lateinit var binding: ActivityQuizBinding
     private val viewModel: QuizViewModel by viewModels()
     private var category: Category? = null
     private val loadingDialog = LoadingDialog(this)
     private val questions = ArrayList<Question>()
+    var score = 0
+    var index = -1
+    var thisQuestion = 0
+    var totalQuestions = 0
+    var correctAnswer = 0
+    private lateinit var dialog: AnswerBottomSheetDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         setSystemBarColor(this, R.color.bg_white)
         super.onCreate(savedInstanceState)
@@ -40,7 +47,18 @@ class QuizActivity : AppCompatActivity() {
             close.setOnClickListener {
                 finish()
             }
-            progressCount.text = "Question 1 of 10"
+            optionA.setOnClickListener {
+                showAnswerDialog(index, optionA.text.toString())
+            }
+            optionB.setOnClickListener {
+                showAnswerDialog(index, optionB.text.toString())
+            }
+            optionC.setOnClickListener {
+                showAnswerDialog(index, optionC.text.toString())
+            }
+            optionD.setOnClickListener {
+                showAnswerDialog(index, optionD.text.toString())
+            }
         }
     }
 
@@ -77,7 +95,42 @@ class QuizActivity : AppCompatActivity() {
         viewModel.questions.observe(this, {
             questions.clear()
             questions.addAll(it.questions!!)
+            totalQuestions = questions.size
+            showQuestions(++index)
             Timber.e("questions: ${questions.size}")
         })
+    }
+
+    private fun showQuestions(index: Int) {
+        if (index < totalQuestions) {
+            thisQuestion++
+            binding.apply {
+                progressCount.text = "Question $thisQuestion of $totalQuestions"
+                question.text = questions[index].question
+                optionA.text = questions[index].option1
+                optionB.text = questions[index].option2
+                optionC.text = questions[index].option3
+                optionD.text = questions[index].option4
+            }
+        } /*else {
+            Toast.makeText(this, "Quiz Completed", Toast.LENGTH_SHORT).show()
+        }*/
+    }
+
+    private fun showAnswerDialog(index: Int, option: String) {
+        var status = false
+        if (option == questions[index].correct) {
+            status = true
+            score += 1
+        }
+        dialog = AnswerBottomSheetDialog(status, questions[index].comment.toString())
+        dialog.showNow(supportFragmentManager, "AnswerBottomSheetDialog")
+    }
+
+    override fun continueQuiz() {
+        dialog.dismiss()
+        if (index < totalQuestions) {
+            showQuestions(++index)
+        }
     }
 }

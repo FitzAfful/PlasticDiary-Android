@@ -27,9 +27,10 @@
                 android:layout_height="100dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/circleImageView"
                 app:strokeColor="@color/orange_outline"
                 app:strokeWidth="3dp"
-                app:shapeAppearanceOverlay="@style/circleImageView"
+                app:set_cover_image="@{leaderboard.img_url}"
                 tools:srcCompat="@drawable/avatar" />
 
             <com.google.android.material.textview.MaterialTextView

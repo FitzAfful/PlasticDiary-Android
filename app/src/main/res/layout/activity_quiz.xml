@@ -29,10 +29,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/close"
-            android:maxLength="100"
-            tools:progress="50"
             android:progressBackgroundTint="@color/card_bg_grey"
-            android:progressTint="@color/heading_text_green" />
+            android:progressTint="@color/heading_text_green"
+            tools:progress="10" />
 
         <ImageView
             android:id="@+id/close"
@@ -43,26 +42,79 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/progress_count"
-            android:fontFamily="@font/sf_pro_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/progress_bar"
-            android:textColor="@color/text_grey_50"
             android:layout_marginTop="5dp"
-            android:text="Question 1 of 10"
-            />
+            android:fontFamily="@font/sf_pro_regular"
+            tools:text="Question 1 of 10"
+            android:textColor="@color/text_grey_50" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/sf_pro_display_bold"
             android:layout_below="@+id/progress_count"
-            android:textColor="@color/alternate_text_color"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/sf_pro_display_bold"
+            android:textColor="@color/alternate_text_color"
             android:textSize="25sp"
-            tools:text="@string/question_1"
-            />
+            tools:text="@string/question_1" />
+
+        <LinearLayout
+            android:id="@+id/options_lyt"
+            android:layout_marginVertical="20dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/question">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/option_a"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                app:strokeColor="@color/card_bg_grey"
+                app:strokeWidth="1dp"
+                app:cornerRadius="8dp"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/white"
+                android:layout_height="65dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/option_b"
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                app:strokeColor="@color/card_bg_grey"
+                app:strokeWidth="1dp"
+                app:cornerRadius="8dp"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/white"
+                android:layout_marginTop="10dp"
+                android:layout_height="65dp"/>
+            <com.google.android.material.button.MaterialButton
+                android:layout_marginTop="10dp"
+                android:id="@+id/option_c"
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                app:strokeColor="@color/card_bg_grey"
+                app:strokeWidth="1dp"
+                app:cornerRadius="8dp"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/white"
+                android:layout_height="65dp"/>
+            <com.google.android.material.button.MaterialButton
+                android:layout_marginTop="10dp"
+                android:id="@+id/option_d"
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                app:strokeColor="@color/card_bg_grey"
+                app:strokeWidth="1dp"
+                app:cornerRadius="8dp"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/white"
+                android:layout_height="65dp"/>
+        </LinearLayout>
 
     </RelativeLayout>
 </layout>
