@@ -33,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:fontFamily="@font/sf_pro_rounded_bold"
+                    android:fontFamily="@font/sf_pro__display_heavy"
                     android:text="My Usage"
                     android:textColor="@color/text_black"
                     android:textSize="20sp" />

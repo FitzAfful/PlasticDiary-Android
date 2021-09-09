@@ -27,5 +27,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="question_1">Food is a hot commodity! If we produce food that doesn\’t get eaten, what else is wasted?</string>
+
+    <string name="wrong_answer_tip">It\'s actually 30%. About a third of the food produced on the planet goes to waste.
+        Waste happens in every link of our food supply chain—from the fruit that never makes it off the farm to the vegetables you forgot were in your fridge.
+        TIP: There are lots of things we can do to shop, cook, and eat smarter!</string>
+
     <string name="google_maps_api_key">AIzaSyBs2YjswfAH5yF4UrBZfgTxyVCiLQDtSpc</string>
 </resources>

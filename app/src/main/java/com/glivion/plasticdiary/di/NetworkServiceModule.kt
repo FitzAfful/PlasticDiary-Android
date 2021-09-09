@@ -2,10 +2,7 @@ package com.glivion.plasticdiary.di
 
 import com.glivion.plasticdiary.BuildConfig
 import com.glivion.plasticdiary.data.remote.interceptor.AuthInterceptor
-import com.glivion.plasticdiary.data.remote.service.AuthService
-import com.glivion.plasticdiary.data.remote.service.ExploreService
-import com.glivion.plasticdiary.data.remote.service.HomeService
-import com.glivion.plasticdiary.data.remote.service.SettingService
+import com.glivion.plasticdiary.data.remote.service.*
 import com.glivion.plasticdiary.preference.AppPreference
 import com.glivion.plasticdiary.util.READ_TIMEOUT
 import com.glivion.plasticdiary.util.REQUEST_TIMEOUT
@@ -104,6 +101,20 @@ object NetworkServiceModule {
     ) : SettingService =
         buildService(
             SettingService::class.java,
+            tokenManager,
+            retrofit,
+            okHttpClient
+        )
+
+    @Singleton
+    @Provides
+    fun providesQuizzesService(
+        tokenManager : AppPreference,
+        retrofit : Retrofit,
+        okHttpClient : OkHttpClient,
+    ) : QuizService =
+        buildService(
+            QuizService::class.java,
             tokenManager,
             retrofit,
             okHttpClient

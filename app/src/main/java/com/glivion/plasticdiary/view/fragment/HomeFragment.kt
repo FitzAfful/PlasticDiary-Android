@@ -150,8 +150,7 @@ class HomeFragment : Fragment(), HomePageCallback {
                 notifyDataSetChanged()
                 invalidate()
             }
-            Timber.e("original : ${it.usage}")
-            Timber.e("last 5: ${lastFiveUsagesList.takeLast(5)}")
+
         })
     }
 

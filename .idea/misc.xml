@@ -5,12 +5,14 @@
       <map>
         <entry key="app/src/main/res/drawable/article_icon_border.xml" value="0.6109375" />
         <entry key="app/src/main/res/drawable/bg_notif_circle.xml" value="0.6229166666666667" />
+        <entry key="app/src/main/res/drawable/bg_orange_circle.xml" value="0.4739583333333333" />
         <entry key="app/src/main/res/drawable/card_bg_filled_rounded.xml" value="0.6109375" />
         <entry key="app/src/main/res/drawable/ic_arrow_right_alt.xml" value="0.7104166666666667" />
         <entry key="app/src/main/res/drawable/ic_bolt.xml" value="0.6851282051282052" />
         <entry key="app/src/main/res/drawable/ic_bookmark_border.xml" value="0.7104166666666667" />
         <entry key="app/src/main/res/drawable/ic_chevron_left.xml" value="0.6820512820512821" />
         <entry key="app/src/main/res/drawable/ic_chevron_right.xml" value="0.7104166666666667" />
+        <entry key="app/src/main/res/drawable/ic_close.xml" value="0.4739583333333333" />
         <entry key="app/src/main/res/drawable/ic_comment.xml" value="0.7104166666666667" />
         <entry key="app/src/main/res/drawable/ic_crown.xml" value="0.6546296296296297" />
         <entry key="app/src/main/res/drawable/ic_fire.xml" value="0.6109375" />
@@ -19,9 +21,10 @@
         <entry key="app/src/main/res/drawable/ic_quiz_bolt.xml" value="0.6851282051282052" />
         <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.7104166666666667" />
         <entry key="app/src/main/res/drawable/ic_trophy.xml" value="0.7104166666666667" />
-        <entry key="app/src/main/res/layout/activity_intro.xml" value="0.6942708333333333" />
+        <entry key="app/src/main/res/layout/activity_intro.xml" value="0.6809309309309309" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.4578125" />
         <entry key="app/src/main/res/layout/activity_map_item.xml" value="0.6765625" />
-        <entry key="app/src/main/res/layout/activity_quiz.xml" value="0.328125" />
+        <entry key="app/src/main/res/layout/activity_quiz.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_web_view.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.6138888888888889" />
         <entry key="app/src/main/res/layout/article_item_layout.xml" value="0.25" />
@@ -29,14 +32,20 @@
         <entry key="app/src/main/res/layout/explore_resource_item_layout.xml" value="0.6796875" />
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.36210526315789476" />
         <entry key="app/src/main/res/layout/home_item_layout.xml" value="0.4359375" />
+        <entry key="app/src/main/res/layout/how_it_works_layout.xml" value="0.4578125" />
+        <entry key="app/src/main/res/layout/leader_board_item_layout.xml" value="0.4578125" />
+        <entry key="app/src/main/res/layout/leaderboard_header_layout.xml" value="0.4578125" />
         <entry key="app/src/main/res/layout/my_usage_layout.xml" value="0.5861111111111111" />
         <entry key="app/src/main/res/layout/notification_item_layout.xml" value="0.5947916666666667" />
         <entry key="app/src/main/res/layout/profile_bookmarks_fragment.xml" value="0.2591715976331361" />
         <entry key="app/src/main/res/layout/profile_feedback_layout.xml" value="0.6942708333333333" />
         <entry key="app/src/main/res/layout/profile_fragment.xml" value="0.5856410256410256" />
+        <entry key="app/src/main/res/layout/profile_leaderboard_fragment.xml" value="0.4578125" />
+        <entry key="app/src/main/res/layout/profile_reward_details_fragment.xml" value="0.4578125" />
         <entry key="app/src/main/res/layout/profile_settings_fragment.xml" value="0.5947916666666667" />
         <entry key="app/src/main/res/layout/quiz_fragment.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/quiz_stats_item_layout.xml" value="0.15588235294117647" />
+        <entry key="app/src/main/res/layout/quiz_right_or_wrong_bottom_sheet_layout.xml" value="0.47239583333333335" />
+        <entry key="app/src/main/res/layout/quiz_stats_item_layout.xml" value="0.5" />
         <entry key="app/src/main/res/layout/quiz_type_item_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/research_item_layout.xml" value="0.67" />
         <entry key="app/src/main/res/layout/resource_item_layout.xml" value="0.6942708333333333" />

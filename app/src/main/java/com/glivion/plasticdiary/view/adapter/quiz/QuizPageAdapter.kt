@@ -9,16 +9,16 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.glivion.plasticdiary.R
 import com.glivion.plasticdiary.databinding.QuizTypeItemLayoutBinding
-import com.glivion.plasticdiary.model.quiz.Category
+import com.glivion.plasticdiary.model.quiz.QuizInterface
 
 abstract class QuizPageAdapter(val type: String) :
-    ListAdapter<Category, QuizPageAdapter.QuizPageViewHolder>(
+    ListAdapter<QuizInterface, QuizPageAdapter.QuizPageViewHolder>(
         DIFF_UTIL_CALLBACK
     ) {
 
      class QuizPageViewHolder(private val binding: QuizTypeItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(_category: Category, type: String, adapter: QuizPageAdapter) {
+        fun bind(_category: QuizInterface, type: String, adapter: QuizPageAdapter) {
             if (type == "category") {
                 binding.apply {
                     viewResults.visibility = View.GONE
@@ -48,12 +48,12 @@ abstract class QuizPageAdapter(val type: String) :
 
 
     companion object {
-        val DIFF_UTIL_CALLBACK = object : DiffUtil.ItemCallback<Category>() {
-            override fun areItemsTheSame(oldItem: Category, newItem: Category): Boolean =
-                oldItem == newItem
+        val DIFF_UTIL_CALLBACK = object : DiffUtil.ItemCallback<QuizInterface>() {
+            override fun areItemsTheSame(oldItem: QuizInterface, newItem: QuizInterface): Boolean =
+                oldItem.name == newItem.name
 
-            override fun areContentsTheSame(oldItem: Category, newItem: Category): Boolean =
-                oldItem == newItem
+            override fun areContentsTheSame(oldItem: QuizInterface, newItem: QuizInterface): Boolean =
+                oldItem.name == newItem.name
         }
     }
 
@@ -70,7 +70,7 @@ abstract class QuizPageAdapter(val type: String) :
         holder.bind(category, type, this)
     }
 
-    abstract fun startQuiz(category: Category)
+    abstract fun startQuiz(category: QuizInterface)
 
-    abstract fun viewResults(category: Category)
+    abstract fun viewResults(category: QuizInterface)
 }

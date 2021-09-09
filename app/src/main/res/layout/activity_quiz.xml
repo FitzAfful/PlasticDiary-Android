@@ -8,12 +8,61 @@
     </data>
 
     <RelativeLayout
+        android:id="@+id/parentLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="15dp"
         tools:context=".view.ui.QuizActivity">
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/usage_bar_chat"
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/quiz_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_display_bold"
+            tools:text="Organic waste"
+            android:textColor="@color/text_purple"
+            android:textSize="16sp" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/close"
+            android:maxLength="100"
+            tools:progress="50"
+            android:progressBackgroundTint="@color/card_bg_grey"
+            android:progressTint="@color/heading_text_green" />
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_close"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/progress_count"
+            android:fontFamily="@font/sf_pro_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/progress_bar"
+            android:textColor="@color/text_grey_50"
+            android:layout_marginTop="5dp"
+            android:text="Question 1 of 10"
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_display_bold"
+            android:layout_below="@+id/progress_count"
+            android:textColor="@color/alternate_text_color"
+            android:layout_marginTop="20dp"
+            android:textSize="25sp"
+            tools:text="@string/question_1"
+            />
+
     </RelativeLayout>
 </layout>

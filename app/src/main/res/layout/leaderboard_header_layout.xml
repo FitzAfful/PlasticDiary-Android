@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="leaderboard"
+            type="com.glivion.plasticdiary.model.profile.LeaderboardInterface" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        >
+        <RelativeLayout
+            android:id="@+id/avatar_lyt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:clipToPadding="false">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_avatar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:strokeColor="@color/orange_outline"
+                app:strokeWidth="3dp"
+                app:shapeAppearanceOverlay="@style/circleImageView"
+                tools:srcCompat="@drawable/avatar" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/user_position"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_below="@+id/profile_avatar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="-12dp"
+                android:background="@drawable/bg_orange_circle"
+                android:fontFamily="@font/sf_pro_regular"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                tools:text="0" />
+        </RelativeLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/avatar_lyt"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/sf_pro_display_bold"
+            android:lineHeight="29dp"
+            android:textAlignment="center"
+            android:textColor="@color/text_black"
+            android:textSize="16sp"
+            android:text="@{leaderboard.name}"
+            tools:text="Fritz Gerald Afful" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/user_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/username"
+            android:layout_centerHorizontal="true"
+            tools:text="200 points"
+            android:fontFamily="@font/sf_pro_regular"
+            android:textAlignment="center"
+            android:textColor="@color/text_grey_50"
+            android:textSize="14sp"
+            android:text='@{leaderboard.score + " points"}'
+            app:lineHeight="19sp" />
+
+    </RelativeLayout>
+</layout>

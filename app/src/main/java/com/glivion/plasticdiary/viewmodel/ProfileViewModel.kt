@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.glivion.plasticdiary.data.repository.SettingRepository
+import com.glivion.plasticdiary.model.profile.BaseLeaderboardObject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -27,6 +28,10 @@ class ProfileViewModel @Inject constructor(
     private val _responses by lazy { MutableLiveData<String>() }
     val responses: LiveData<String>
         get() = _responses
+
+    private val _leaderboard by lazy { MutableLiveData<BaseLeaderboardObject>() }
+    val leaderboard: LiveData<BaseLeaderboardObject>
+        get() = _leaderboard
 
     private val compositeDisposable by lazy { CompositeDisposable() }
 
@@ -52,6 +57,29 @@ class ProfileViewModel @Inject constructor(
                     _loadingDialog.postValue(false)
                 },{e ->
                     _loadingDialog.postValue(false)
+                    _userErrors.postValue(e)
+                })
+        )
+    }
+
+    fun getLeaderboard() {
+        _userLoader.postValue(true)
+        compositeDisposable.add(
+            repository.getLeaderboard()
+                .filter {
+                    if (it.isSuccessful) {
+                        true
+                    } else {
+                        throw HttpException(it)
+                    }
+                }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    _userLoader.postValue(false)
+                    _leaderboard.postValue(it.body())
+                },{e ->
+                    _userLoader.postValue(false)
                     _userErrors.postValue(e)
                 })
         )

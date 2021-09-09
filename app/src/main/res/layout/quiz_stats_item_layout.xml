@@ -16,12 +16,12 @@
     </data>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="170dp"
+        android:layout_height="125dp"
         android:background="@drawable/card_bg_filled_rounded"
         android:layout_margin="10dp"
-        android:paddingHorizontal="15dp"
-        android:paddingVertical="15dp">
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/title"
@@ -39,10 +39,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="15dp"
-            android:layout_toEndOf="@+id/title"
+           android:layout_alignParentEnd="true"
             app:set_icon="@{type}"
-            tools:src="@drawable/ic_quiz_bolt"
-            />
+            tools:src="@drawable/ic_quiz_bolt" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/desc"
@@ -50,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/title"
             android:text="@{description}"
-            tools:text="description"
+            tools:text="Average \n Performance"
             android:textColor="@color/text_grey_night" />
     </RelativeLayout>
 </layout>

@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="leaderboard"
+            type="com.glivion.plasticdiary.model.profile.LeaderboardInterface" />
     </data>
 
     <LinearLayout
@@ -15,7 +17,7 @@
         android:background="@color/leader_card_bg">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/position"
+            android:id="@+id/user_position"
             android:layout_width="0dp"
             android:layout_weight="0.2"
             android:layout_height="wrap_content"
@@ -41,6 +43,7 @@
             android:layout_marginStart="10dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/sf_pro_rounded_bold"
+            android:text="@{leaderboard.name}"
             tools:text="Emmanuel Asiamah Owusu"
             android:textColor="@color/text_black" />
 
@@ -50,6 +53,7 @@
             android:layout_gravity="center"
             android:layout_weight="0.8"
             android:layout_height="wrap_content"
+            android:text='@{leaderboard.score + " points"}'
             tools:text="120 points"
             android:textColor="@color/text_grey_50" />
 

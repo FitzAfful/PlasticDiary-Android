@@ -18,6 +18,8 @@
     <color name="alternate_text_color">#0D0D0D</color>
     <color name="logout_btn_color">#B71234</color>
     <color name="orange_outline">#FA9917</color>
+    <color name="bg_grey_30">#F4F4F4</color>
+    <color name="text_purple">#B246AB</color>
 
     <color name="sub_heading_text">#646464</color>
     <color name="heading_text_green">#4BC662</color>

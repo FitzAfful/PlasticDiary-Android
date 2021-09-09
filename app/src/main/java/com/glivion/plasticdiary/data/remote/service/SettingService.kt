@@ -1,11 +1,10 @@
 package com.glivion.plasticdiary.data.remote.service
 
 import com.glivion.plasticdiary.model.BaseAuthResponse
+import com.glivion.plasticdiary.model.profile.BaseLeaderboardObject
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Response
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface SettingService {
     @FormUrlEncoded
@@ -15,4 +14,7 @@ interface SettingService {
         @Field("feedback_option") feedback_option: String,
         @Field("token") token: String
     ): Single<Response<BaseAuthResponse>>
+
+    @GET("leaderboard")
+    fun getLeaderboard(@Query("token") token: String): Single<Response<BaseLeaderboardObject>>
 }
