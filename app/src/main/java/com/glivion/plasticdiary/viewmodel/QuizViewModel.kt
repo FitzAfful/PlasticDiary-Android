@@ -66,7 +66,7 @@ class QuizViewModel  @Inject constructor(
     }
 
     fun getQuizQuestions(id: String) {
-        _userLoader.postValue(true)
+        _loadingDialog.postValue(true)
         compositeDisposable.add(
             repository.getQuizQuestions(id)
                 .filter {
@@ -78,10 +78,10 @@ class QuizViewModel  @Inject constructor(
                 }.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    _userLoader.postValue(false)
+                    _loadingDialog.postValue(false)
                     _questions.postValue(it.body())
                 },{e ->
-                    _userLoader.postValue(false)
+                    _loadingDialog.postValue(false)
                     _userErrors.postValue(e)
                 })
         )
