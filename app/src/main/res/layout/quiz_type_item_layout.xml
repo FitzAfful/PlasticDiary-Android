@@ -72,22 +72,23 @@
                 app:icon="@drawable/ic_arrow_forward"
                 app:iconGravity="end"
                 app:iconTint="@color/white" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/view_results"
                 android:layout_width="174dp"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:layout_below="@+id/description"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/icon"
                 android:text="view results"
                 android:textColor="@color/white"
-                app:backgroundTint="@color/text_grey_50"
-                tools:visibility="visible"
                 android:visibility="gone"
+                app:backgroundTint="@color/text_grey_50"
                 app:cornerRadius="6dp"
                 app:icon="@drawable/ic_arrow_forward"
                 app:iconGravity="end"
-                app:iconTint="@color/white" />
+                app:iconTint="@color/white"
+                tools:visibility="visible" />
             <LinearLayout
                 android:id="@+id/score_lyt"
                 android:orientation="vertical"

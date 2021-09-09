@@ -130,7 +130,7 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
                 override fun onComplete(data: String?) {
                     showSnackBarMessage(binding.parentLayout, data)
                     CoroutineScope(Dispatchers.IO).launch {
-                        delay(2000)
+                        delay(1500)
                         finish()
                     }
                 }
@@ -138,7 +138,7 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
                 override fun onFailure(data: String?) {
                     showSnackBarMessage(binding.parentLayout, data)
                     CoroutineScope(Dispatchers.IO).launch {
-                        delay(2000)
+                        delay(1500)
                         finish()
                     }
                 }
