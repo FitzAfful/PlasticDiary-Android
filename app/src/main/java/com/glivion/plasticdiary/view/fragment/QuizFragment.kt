@@ -9,6 +9,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.glivion.plasticdiary.R
 import com.glivion.plasticdiary.databinding.QuizFragmentBinding
@@ -29,6 +33,8 @@ class QuizFragment : Fragment() {
     private lateinit var binding: QuizFragmentBinding
     private lateinit var categoryAdapter: QuizPageAdapter
     private lateinit var completedAdapter: QuizPageAdapter
+    private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
     private val viewModel: QuizViewModel by viewModels()
     private val categoryList = ArrayList<Category>()
     private val completedList = ArrayList<Completed>()
@@ -87,6 +93,8 @@ class QuizFragment : Fragment() {
     }
 
     private fun initViews() {
+        navController = findNavController()
+        appBarConfiguration = AppBarConfiguration(navController.graph)
         binding.apply {
             performance.apply {
                 type = "performance"
@@ -130,6 +138,10 @@ class QuizFragment : Fragment() {
                     LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 adapter = completedAdapter
             }
+            leaderboard.setOnClickListener {
+                it.findNavController().navigate(R.id.action_quizFragment_to_leaderboardFragment2, null, null)
+            }
+
         }
     }
 

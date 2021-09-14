@@ -9,5 +9,17 @@
         android:id="@+id/quizFragment"
         android:name="com.glivion.plasticdiary.view.fragment.QuizFragment"
         android:label="quiz_fragment"
-        tools:layout="@layout/quiz_fragment" />
+        tools:layout="@layout/quiz_fragment" >
+        <action
+            android:id="@+id/action_quizFragment_to_leaderboardFragment2"
+            app:destination="@id/quizleaderboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizleaderboardFragment"
+        android:name="com.glivion.plasticdiary.view.fragment.profile.LeaderboardFragment"
+        android:label="LeaderboardFragment" >
+        <action
+            android:id="@+id/action_leaderboardFragment2_to_quizFragment"
+            app:destination="@id/quizFragment" />
+    </fragment>
 </navigation>
