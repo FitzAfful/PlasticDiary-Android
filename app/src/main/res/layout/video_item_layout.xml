@@ -17,6 +17,7 @@
         app:cardCornerRadius="10dp">
 
         <RelativeLayout
+            android:background="@color/video_grey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

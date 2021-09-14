@@ -1,7 +1,6 @@
 package com.glivion.plasticdiary.view.fragment
 
 import android.app.AlertDialog
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,13 +23,9 @@ import com.glivion.plasticdiary.databinding.HomeFragmentBinding
 import com.glivion.plasticdiary.databinding.MyUsageLayoutBinding
 import com.glivion.plasticdiary.model.HomeObject
 import com.glivion.plasticdiary.model.home.*
-import com.glivion.plasticdiary.util.WEB_VIEW_URL
-import com.glivion.plasticdiary.util.getDayAndMonth
-import com.glivion.plasticdiary.util.showErrorMessage
-import com.glivion.plasticdiary.util.showSnackBarMessage
+import com.glivion.plasticdiary.util.*
 import com.glivion.plasticdiary.view.adapter.home.HomePageAdapter
 import com.glivion.plasticdiary.view.dialog.LoadingDialog
-import com.glivion.plasticdiary.view.ui.WebViewActivity
 import com.glivion.plasticdiary.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -64,6 +59,10 @@ class HomeFragment : Fragment(), HomePageCallback {
     }
 
     private fun initViewModel() {
+        viewModel.apply {
+            submitStreak("1")
+            getHomePageItems()
+        }
         viewModel.userLoader.observe(viewLifecycleOwner, { isLoading ->
             isLoading.let {
                 binding.swipeRefresh.isRefreshing = it
@@ -157,6 +156,7 @@ class HomeFragment : Fragment(), HomePageCallback {
     private fun initViews() {
         loadingDialog = LoadingDialog(requireContext())
 
+
         val xAxis = binding.usageBarChat.xAxis
         xAxis.apply {
             position = XAxis.XAxisPosition.BOTTOM
@@ -164,8 +164,9 @@ class HomeFragment : Fragment(), HomePageCallback {
             textColor = ContextCompat.getColor(requireContext(), R.color.text_black)
             setDrawAxisLine(false)
             setDrawGridLines(false)
+            setDrawGridLinesBehindData(false)
 
-            valueFormatter = object: IndexAxisValueFormatter(){
+            valueFormatter = object : IndexAxisValueFormatter() {
                 override fun getFormattedValue(value: Float): String {
                     val x = value.toInt()
                     return if (x >= 0 && x <= lastFiveUsagesList.size) {
@@ -190,7 +191,7 @@ class HomeFragment : Fragment(), HomePageCallback {
             textSize = 11f
             formSize = 9f
         }
-        homePageAdapter = HomePageAdapter(requireContext(), ArrayList(), this)
+        homePageAdapter =  HomePageAdapter(requireContext(), ArrayList(), this)
 
         binding.apply {
             swipeRefresh.setOnRefreshListener {
@@ -236,36 +237,48 @@ class HomeFragment : Fragment(), HomePageCallback {
         dialog.show()
     }
 
-    private fun showInWebView(url: String?) {
-        Intent(requireContext(), WebViewActivity::class.java).apply {
-            putExtra(WEB_VIEW_URL, url)
-            startActivity(this)
-        }
-    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     override fun onSelectFeaturedNews(news: FeaturedNews) {
-        showInWebView(news.url)
+        showInWebView(requireContext(), news.url, news.id, "news")
     }
 
     override fun onSelectNewsItem(news: News) {
-        showInWebView(news.url)
+        showInWebView(requireContext(), news.url, news.id, "news")
     }
 
     override fun onSelectVideos(video: Video) {
-        showInWebView(video.link)
+        showInWebView(requireContext(), video.link, video.id, "video")
     }
 
     override fun onSelectArticles(article: Article) {
-        showInWebView(article.url)
+        showInWebView(requireContext(), article.url, article.id, "article")
     }
 
     override fun onSelectResearchItem(research: Research) {
-        showInWebView(research.link)
+        showInWebView(requireContext(), research.link, research.id, "research")
     }
+
+    override fun seeMoreArticles() {
+        val bundle = Bundle().apply {
+            putParcelableArrayList(WEB_VIEW_ARTICLE_LIST, articleList as ArrayList<Article>)
+        }
+        viewMoreItems(requireContext(), "Articles", bundle)
+    }
+
+    override fun seeMoreNews() {
+        val bundle = Bundle().apply {
+            putParcelableArrayList(WEB_VIEW_NEWS_LIST, newsList as ArrayList<News>)
+        }
+        viewMoreItems(requireContext(), "News", bundle)
+    }
+
+    override fun bookmark(id: Int, type: String) {
+        viewModel.bookmark(id, type)
+    }
+
 
 }

@@ -1,5 +1,6 @@
 package com.glivion.plasticdiary.data.callbacks
 
+import com.glivion.plasticdiary.model.explore.Tip
 import com.glivion.plasticdiary.model.home.*
 
 interface HomePageCallback {
@@ -8,4 +9,8 @@ interface HomePageCallback {
     fun onSelectVideos(video: Video)
     fun onSelectArticles(article: Article)
     fun onSelectResearchItem(research: Research)
+    fun onSelectTipItem(tip: Tip){}
+    fun seeMoreArticles()
+    fun seeMoreNews()
+    fun bookmark(id: Int, type: String)
 }

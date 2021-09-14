@@ -5,18 +5,24 @@ import android.os.Bundle
 import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Lifecycle
 import com.glivion.plasticdiary.R
 import com.glivion.plasticdiary.databinding.ActivityWebViewBinding
-import com.glivion.plasticdiary.util.WEB_VIEW_URL
-import com.glivion.plasticdiary.util.setSystemBarColor
-import com.glivion.plasticdiary.util.showSnackBarMessage
+import com.glivion.plasticdiary.util.*
+import com.glivion.plasticdiary.viewmodel.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class WebViewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWebViewBinding
     private var url: String? = null
+    private var id: Int = 0
+    private var contentType: String? = null
+    private  val viewModel:HomeViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         setSystemBarColor(this, android.R.color.transparent)
         super.onCreate(savedInstanceState)
@@ -66,9 +72,32 @@ class WebViewActivity : AppCompatActivity() {
     private fun getIntentParams() {
         intent?.extras?.let {
             url = it.getString(WEB_VIEW_URL)
+            id = it.getInt(WEB_VIEW_ID)
+            contentType = it.getString(WEB_VIEW_TYPE)
         }
         Timber.e("url: $url")
         initWebView(url)
+        initViewModel()
+    }
+
+    private fun initViewModel() {
+        viewModel.singleContentAPI(id, contentType!!)
+        viewModel.userErrors.observe(this, { isError ->
+            if (this.lifecycle.currentState == Lifecycle.State.RESUMED) {
+                isError.let { e ->
+                    Timber.e("initViewModel: ${e.localizedMessage}")
+                    showErrorMessage(binding.parentLayout, e)
+                }
+            }
+        })
+
+
+        viewModel.responses.observe(this, { response ->
+            if (this.lifecycle.currentState == Lifecycle.State.RESUMED) {
+                Timber.e("response: $response")
+                showSnackBarMessage(binding.parentLayout, response)
+            }
+        })
     }
 
     override fun onBackPressed() {

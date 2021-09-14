@@ -73,7 +73,7 @@ class ExploreViewModel @Inject constructor(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     _userLoader.postValue(false)
-                    _responses.postValue("updated")
+                   // _responses.postValue("updated")
                 }, { e ->
                     _userLoader.postValue(false)
                     _userErrors.postValue(e)

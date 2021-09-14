@@ -1,9 +1,12 @@
 package com.glivion.plasticdiary.util
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
+import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
@@ -11,8 +14,12 @@ import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
 import androidx.room.rxjava3.EmptyResultSetException
 import com.glivion.plasticdiary.R
+import com.glivion.plasticdiary.databinding.ViewMoreInfoDialogBinding
+import com.glivion.plasticdiary.view.ui.ViewAllContentTypeActivity
+import com.glivion.plasticdiary.view.ui.WebViewActivity
 import com.google.android.material.snackbar.Snackbar
 import com.tinydavid.deliverymanrider.extensions.Quintuple
 import org.json.JSONException
@@ -150,6 +157,48 @@ fun getYoutubeVideoIdFromUrl(url: String): String? {
 
 fun getYoutubeThumbnailUrlFromVideoUrl(videoUrl: String?): String {
     return "https://img.youtube.com/vi/${getYoutubeVideoIdFromUrl(videoUrl!!)}/0.jpg"
+}
+
+fun showInWebView(context: Context, url: String?, contentID: Int?, contentType: String) {
+    Intent(context, WebViewActivity::class.java).apply {
+        putExtra(WEB_VIEW_URL, url)
+        putExtra(WEB_VIEW_ID, contentID)
+        putExtra(WEB_VIEW_TYPE, contentType)
+        context.startActivity(this)
+    }
+}
+
+fun viewMoreItems(context: Context, contentType: String, data: Bundle) {
+    Intent(context, ViewAllContentTypeActivity::class.java).apply {
+        putExtra(WEB_VIEW_TYPE, contentType)
+        putExtras(data)
+        context.startActivity(this)
+    }
+}
+
+fun openViewMoreInfoDialog(activity: Activity, header: String, body: String) {
+    val builder = AlertDialog.Builder(activity, R.style.myFullscreenAlertDialogStyle)
+    val binding: ViewMoreInfoDialogBinding = DataBindingUtil.inflate(
+        activity.layoutInflater,
+        R.layout.view_more_info_dialog,
+        null,
+        false
+    )
+
+    builder.setView(binding.root)
+    val dialog = builder.create()
+    dialog.setCancelable(true)
+    dialog.setCanceledOnTouchOutside(true)
+
+    binding.apply {
+        close.setOnClickListener {
+            dialog.dismiss()
+        }
+        heading = header
+        content = body
+    }
+
+    dialog.show()
 }
 
 

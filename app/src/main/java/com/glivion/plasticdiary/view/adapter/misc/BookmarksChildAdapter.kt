@@ -1,4 +1,4 @@
-package com.glivion.plasticdiary.view.adapter.home
+package com.glivion.plasticdiary.view.adapter.misc
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,9 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.glivion.plasticdiary.R
 import com.glivion.plasticdiary.data.callbacks.HomePageCallback
 import com.glivion.plasticdiary.databinding.*
+import com.glivion.plasticdiary.model.explore.Tip
 import com.glivion.plasticdiary.model.home.*
 
-class HomePageChildAdapter(
+class BookmarksChildAdapter(
     val context: Context,
     val childItems: ArrayList<Any>?,
     val callback: HomePageCallback
@@ -21,6 +22,7 @@ class HomePageChildAdapter(
     private val VIDEOS = 3
     private val ARTICLES = 4
     private val RESEARCH = 5
+    private val TIPS = 6
     private val NO_DATA_VIEW = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -71,6 +73,15 @@ class HomePageChildAdapter(
                 )
                 viewHolder = ResearchViewHolder(binding)
             }
+            TIPS -> {
+                val binding: TipsItemLayoutBinding = DataBindingUtil.inflate(
+                    LayoutInflater.from(parent.context),
+                    R.layout.tips_item_layout,
+                    parent,
+                    false
+                )
+                viewHolder = TipsViewHolder(binding)
+            }
         }
         return viewHolder
     }
@@ -97,10 +108,14 @@ class HomePageChildAdapter(
                 val research = childItems?.get(position) as Research
                 holder.bind(research, context, callback)
             }
+            is TipsViewHolder -> {
+                val tip = childItems?.get(position) as Tip
+                holder.bind(tip, context, callback)
+            }
         }
     }
 
-    override fun getItemCount(): Int = childItems!!.size
+    override fun getItemCount(): Int = if (childItems != null) childItems.size else 0
 
     override fun getItemId(position: Int): Long = position.toLong()
 
@@ -121,6 +136,9 @@ class HomePageChildAdapter(
             }
             is Research -> {
                 RESEARCH
+            }
+            is Tip -> {
+                TIPS
             }
             else -> NO_DATA_VIEW
         }
@@ -143,6 +161,7 @@ class HomePageChildAdapter(
         fun bind(_news: News, context: Context, callback: HomePageCallback) {
             binding.apply {
                 news = _news
+                root.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
                 articleImage.setOnClickListener {
                     callback.onSelectNewsItem(_news)
                 }
@@ -225,4 +244,21 @@ class HomePageChildAdapter(
             }
         }
     }
+    class TipsViewHolder(private val binding: TipsItemLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(_tips: Tip, context: Context, callback: HomePageCallback) {
+            binding.apply {
+              tips = _tips
+                root.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+                description.apply {
+                    ellipsize = null
+                    maxLines = Integer.MAX_VALUE
+                }
+                binding.viewTip.setOnClickListener {
+                    callback.onSelectTipItem(_tips)
+                }
+            }
+        }
+    }
+
 }

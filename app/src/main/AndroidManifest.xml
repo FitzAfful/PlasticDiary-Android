@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlasticDiary">
         <activity
+            android:name=".view.ui.ViewAllContentTypeActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.ui.QuizDetailsActivity"
             android:exported="true" />
         <activity

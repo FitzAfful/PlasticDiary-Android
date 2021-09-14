@@ -21,19 +21,6 @@
             android:textColor="@color/text_black"
             android:textSize="20sp" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/usage_lyt"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_below="@+id/usage_txt"
-            android:layout_marginTop="10dp"
-            app:cardCornerRadius="10dp"
-            app:strokeColor="@color/border_color"
-            app:strokeWidth="1dp">
-
-        </com.google.android.material.card.MaterialCardView>
-
-
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/cancel"
             android:layout_width="wrap_content"
@@ -48,8 +35,7 @@
             style="@style/TextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/usage_lyt"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="60dp"
             app:hintTextColor="@color/black"
             android:hint="Enter number here"
             app:boxBackgroundColor="@color/border_color">

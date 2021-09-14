@@ -24,6 +24,24 @@ interface HomeService {
         @Field("token") token: String
     ): Single<Response<BaseAuthResponse>>
 
+    @FormUrlEncoded
+    @POST("open-content")
+    fun singleContentAPI(
+        @Field("content_id") content_id: Int,
+        @Field("content_type") content_type: String,
+        @Field("token") token: String
+    ): Single<Response<BaseAuthResponse>>
+
+    @FormUrlEncoded
+    @POST("bookmark")
+    fun bookmark(
+        @Field("content_id") content_id: Int,
+        @Field("content_type") content_type: String,
+        @Field("token") token: String
+    ): Single<Response<BaseAuthResponse>>
+
+
+
     @GET("home")
     fun getHomePageItems(@Query("token") token: String): Single<Response<BaseHomeResponse>>
 }

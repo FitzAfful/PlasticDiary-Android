@@ -19,5 +19,12 @@ class HomeRepository @Inject constructor(
     fun submitStreak(minutes: String): Single<Response<BaseAuthResponse>> = service.streak(minutes,
         getCurrentDateTimeParams().first, appPreference.getUser()?.token!!)
 
+
+    fun singleContentAPI(contentID: Int, contentType: String): Single<Response<BaseAuthResponse>> =
+        service.singleContentAPI(contentID, contentType, appPreference.getUser()?.token!!)
+
+    fun bookmark(contentID: Int, contentType: String): Single<Response<BaseAuthResponse>> =
+        service.bookmark(contentID, contentType, appPreference.getUser()?.token!!)
+
     fun getHomePageItems(): Single<Response<BaseHomeResponse>> = service.getHomePageItems(appPreference.getUser()?.token.toString())
 }

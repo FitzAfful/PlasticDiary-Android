@@ -16,8 +16,7 @@ import com.glivion.plasticdiary.databinding.ExploreFragmentBinding
 import com.glivion.plasticdiary.databinding.SubmitTipLayoutBinding
 import com.glivion.plasticdiary.model.explore.Resource
 import com.glivion.plasticdiary.model.explore.Tip
-import com.glivion.plasticdiary.util.showErrorMessage
-import com.glivion.plasticdiary.util.showSnackBarMessage
+import com.glivion.plasticdiary.util.*
 import com.glivion.plasticdiary.view.adapter.explore.ExploreResourcesAdapter
 import com.glivion.plasticdiary.view.adapter.explore.ExploreTipsAdapter
 import com.glivion.plasticdiary.view.dialog.LoadingDialog
@@ -34,6 +33,7 @@ class ExploreFragment : Fragment() {
     private lateinit var tipsAdapter: ExploreTipsAdapter
     private lateinit var resourcesAdapter: ExploreResourcesAdapter
     private lateinit var loadingDialog: LoadingDialog
+    private val tipsList = ArrayList<Tip>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,13 +49,13 @@ class ExploreFragment : Fragment() {
         loadingDialog = LoadingDialog(requireContext())
         tipsAdapter = object : ExploreTipsAdapter(){
             override fun viewTip(tip: Tip) {
-
+                openViewMoreInfoDialog(requireActivity(), "Tip", tip.content!!)
             }
         }
 
         resourcesAdapter = object : ExploreResourcesAdapter(){
             override fun visitLink(resource: Resource) {
-
+                showInWebView(requireContext(), resource.link, resource.id, "resource")
             }
 
         }
@@ -76,6 +76,12 @@ class ExploreFragment : Fragment() {
             }
             openGoogleMaps.setOnClickListener {
                 startActivity(Intent(requireContext(), MapItemActivity::class.java))
+            }
+            seeAll.setOnClickListener {
+                val bundle = Bundle().apply {
+                    putParcelableArrayList(WEB_VIEW_TIPS_LIST, tipsList)
+                }
+                viewMoreItems(requireContext(), "Tips", bundle)
             }
         }
 
@@ -122,6 +128,8 @@ class ExploreFragment : Fragment() {
         })
 
         viewModel.tipData.observe(viewLifecycleOwner, {tips ->
+            tipsList.clear()
+            tipsList.addAll(tips)
             tipsAdapter.submitList(tips)
         })
         viewModel.resourcesData.observe(viewLifecycleOwner, {resources ->
@@ -158,6 +166,7 @@ class ExploreFragment : Fragment() {
 
         dialog.show()
     }
+
 
     fun getToken() {
         val mUser = FirebaseAuth.getInstance().currentUser

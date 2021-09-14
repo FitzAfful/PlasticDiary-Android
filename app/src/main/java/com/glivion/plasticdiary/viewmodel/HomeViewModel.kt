@@ -35,8 +35,7 @@ private val repository: HomeRepository
     private val compositeDisposable by lazy { CompositeDisposable() }
 
     init {
-        submitStreak("1")
-        getHomePageItems()
+
     }
 
     fun getHomePageItems(){
@@ -83,7 +82,48 @@ private val repository: HomeRepository
         )
     }
 
-    private fun submitStreak(minutes: String) {
+    fun singleContentAPI(contentID: Int, contentType: String) {
+        compositeDisposable.add(
+            repository.singleContentAPI(contentID, contentType)
+                .filter {
+                    if (it.isSuccessful) {
+                        true
+                    } else {
+                        throw HttpException(it)
+                    }
+                }.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    _responses.postValue(it.body()?.message)
+                },{e ->
+                    _userErrors.postValue(e)
+                })
+        )
+    }
+
+    fun bookmark(contentID: Int, contentType: String) {
+        _loadingDialog.postValue(true)
+        compositeDisposable.add(
+            repository.bookmark(contentID, contentType)
+                .filter {
+                    if (it.isSuccessful) {
+                        true
+                    } else {
+                        throw HttpException(it)
+                    }
+                }.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    _responses.postValue(it.body()?.message)
+                    _loadingDialog.postValue(false)
+                },{e ->
+                    _userErrors.postValue(e)
+                    _loadingDialog.postValue(false)
+                })
+        )
+    }
+
+    fun submitStreak(minutes: String) {
         compositeDisposable.add(
             repository.submitStreak(minutes)
                 .filter {

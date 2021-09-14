@@ -42,7 +42,9 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_toEndOf="@+id/icon"
+                android:ellipsize="end"
                 android:fontFamily="@font/sf_pro_regular"
+                android:maxLines="4"
                 android:text="@{tips.content}"
                 android:textColor="@color/text_grey_50"
                 tools:text="@string/tips" />
