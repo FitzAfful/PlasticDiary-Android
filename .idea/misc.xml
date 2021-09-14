@@ -32,7 +32,7 @@
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.1636828644501279" />
         <entry key="app/src/main/res/layout/home_item_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/leader_board_item_layout.xml" value="0.33958333333333335" />
-        <entry key="app/src/main/res/layout/leaderboard_header_layout.xml" value="0.5005208333333333" />
+        <entry key="app/src/main/res/layout/leaderboard_header_layout.xml" value="0.45" />
         <entry key="app/src/main/res/layout/my_usage_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/notification_item_layout.xml" value="0.5947916666666667" />
         <entry key="app/src/main/res/layout/profile_bookmarks_fragment.xml" value="0.6942708333333333" />

@@ -53,7 +53,7 @@ class ViewAllContentTypeActivity : AppCompatActivity(), HomePageCallback {
             newsList = it.getParcelableArrayList(WEB_VIEW_NEWS_LIST)
             tipsList = it.getParcelableArrayList(WEB_VIEW_TIPS_LIST)
         }
-        //homeArrayList.clear()
+        homeArrayList.clear()
         homeArrayList.add(HomeObject(null, null, "articles", articleList as? ArrayList<Any>))
         homeArrayList.add(HomeObject(null, null, "news", newsList as? ArrayList<Any>))
         homeArrayList.add(HomeObject(null, null, "tips", tipsList as? ArrayList<Any>))
@@ -80,7 +80,7 @@ class ViewAllContentTypeActivity : AppCompatActivity(), HomePageCallback {
     }
 
     override fun onSelectTipItem(tip: Tip) {
-
+        openViewMoreInfoDialog(this, "Tip", tip.content!!)
     }
 
     override fun seeMoreArticles() {

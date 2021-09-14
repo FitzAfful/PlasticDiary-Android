@@ -2,6 +2,7 @@ package com.glivion.plasticdiary.view.ui
 
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -112,7 +113,12 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
 
     private fun showQuestions(index: Int) {
         if (questions.isEmpty()) {
+            binding.optionsLyt.visibility = View.GONE
             showSnackBarMessage(binding.parentLayout, "No questions available for this category")
+            CoroutineScope(Dispatchers.IO).launch {
+                delay(1500)
+                finish()
+            }
             return
         }
         if (index < totalQuestions) {
@@ -126,6 +132,7 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
                 optionD.text = questions[index].option4
             }
         } else {
+            binding.optionsLyt.visibility = View.GONE
             viewModel.submitScore(score, category!!.id, object: StatusCallbacks<String?>{
                 override fun onComplete(data: String?) {
                     showSnackBarMessage(binding.parentLayout, data)

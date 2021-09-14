@@ -27,10 +27,11 @@
                 android:layout_height="100dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
+                android:padding="5dp"
+                app:set_cover_image="@{leaderboard.img_url}"
                 app:shapeAppearanceOverlay="@style/circleImageView"
                 app:strokeColor="@color/orange_outline"
                 app:strokeWidth="3dp"
-                app:set_cover_image="@{leaderboard.img_url}"
                 tools:srcCompat="@drawable/avatar" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -39,7 +40,7 @@
                 android:layout_height="25dp"
                 android:layout_below="@+id/profile_avatar"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="-12dp"
+                android:layout_marginTop="-15dp"
                 android:background="@drawable/bg_orange_circle"
                 android:fontFamily="@font/sf_pro_regular"
                 android:gravity="center"
