@@ -1,28 +1,34 @@
 package com.glivion.plasticdiary.view.adapter.quiz
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.glivion.plasticdiary.R
 import com.glivion.plasticdiary.databinding.QuestionDetailLayoutItemBinding
 import com.glivion.plasticdiary.model.questions.Question
+import timber.log.Timber
 
-class QuestionsAdapter(val context: Context): ListAdapter<Question, QuestionsAdapter.QuestionViewHolder>(
-    DIFF_UTIL_CALLBACK) {
+class QuestionsAdapter(val context: Context,
+data: ArrayList<Question>): RecyclerView.Adapter<QuestionsAdapter.QuestionViewHolder>() {
 
+    init {
+        questionsList = data
+    }
     class QuestionViewHolder(private val binding: QuestionDetailLayoutItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(_question: Question, context: Context) {
             binding.apply {
                 question = _question
                 questionNumber.text = "Question ${(adapterPosition + 1)}"
-
-
-               /* when (_question.correct) {
+                binding.optionA.text = _question.option1
+                binding.optionB.text = _question.option2
+                binding.optionC.text = _question.option3
+                binding.optionD.text = _question.option4
+                when (_question.correct) {
                     optionA.text.toString() -> {
                         a.setTextColor(
                             ColorStateList.valueOf(
@@ -81,20 +87,14 @@ class QuestionsAdapter(val context: Context): ListAdapter<Question, QuestionsAda
                             )
                         ))
                     }
-                }*/
+                }
             }
         }
 
     }
 
     companion object {
-        val DIFF_UTIL_CALLBACK = object : DiffUtil.ItemCallback<Question>() {
-            override fun areItemsTheSame(oldItem: Question, newItem: Question): Boolean =
-                oldItem == newItem
-
-            override fun areContentsTheSame(oldItem: Question, newItem: Question): Boolean =
-                oldItem == newItem
-        }
+         private var questionsList = ArrayList<Question>()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestionViewHolder {
@@ -106,7 +106,18 @@ class QuestionsAdapter(val context: Context): ListAdapter<Question, QuestionsAda
     }
 
     override fun onBindViewHolder(holder: QuestionViewHolder, position: Int) {
-        val question = getItem(position)
+        val question = questionsList[position]
         holder.bind(question, context)
+    }
+
+    override fun getItemCount(): Int = questionsList.size
+
+    override fun getItemId(position: Int): Long = position.toLong()
+
+    override fun getItemViewType(position: Int): Int = position
+
+    fun setUpItems(questions: ArrayList<Question>) {
+        questionsList = questions
+        notifyDataSetChanged()
     }
 }

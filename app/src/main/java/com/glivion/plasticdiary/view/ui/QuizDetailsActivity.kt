@@ -62,12 +62,12 @@ class QuizDetailsActivity : AppCompatActivity() {
         viewModel.questions.observe(this, {
             questions.clear()
             questions.addAll(it.questions!!)
-            questionsAdapter.submitList(it.questions)
+            questionsAdapter.setUpItems(questions)
         })
     }
 
     private fun initViews() {
-        questionsAdapter = QuestionsAdapter(this)
+        questionsAdapter = QuestionsAdapter(this, ArrayList())
         binding.apply {
             toolbar.title = completed?.name
             toolbar.setNavigationOnClickListener {

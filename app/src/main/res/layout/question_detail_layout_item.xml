@@ -65,8 +65,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    app:highlight_answer="@{question.correct}"
-                    android:text="@{question.option1}"
                     android:fontFamily="@font/sf_pro_regular"
                     android:textColor="@color/text_grey_50"
                     android:textSize="16sp"
@@ -92,8 +90,6 @@
                     android:layout_height="match_parent"/>
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/option_b"
-                    app:highlight_answer="@{question.correct}"
-                    android:text="@{question.option2}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -122,8 +118,6 @@
                     android:layout_height="match_parent"/>
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/option_c"
-                    app:highlight_answer="@{question.correct}"
-                    android:text="@{question.option3}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -152,9 +146,7 @@
                     android:layout_height="match_parent"/>
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/option_d"
-                    app:highlight_answer="@{question.correct}"
                     android:layout_width="wrap_content"
-                    android:text="@{question.option4}"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/sf_pro_regular"
