@@ -24,6 +24,7 @@ import com.glivion.plasticdiary.util.showErrorMessage
 import com.glivion.plasticdiary.util.showSnackBarMessage
 import com.glivion.plasticdiary.view.adapter.quiz.QuizPageAdapter
 import com.glivion.plasticdiary.view.ui.QuizActivity
+import com.glivion.plasticdiary.view.ui.QuizDetailsActivity
 import com.glivion.plasticdiary.viewmodel.QuizViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -50,6 +51,7 @@ class QuizFragment : Fragment() {
     }
 
     private fun initViewModel() {
+        viewModel.getQuizPageItems()
         viewModel.userLoader.observe(viewLifecycleOwner, { isLoading ->
             isLoading.let {
                 binding.swipeRefresh.isRefreshing = it
@@ -123,8 +125,11 @@ class QuizFragment : Fragment() {
 
                 }
 
-                override fun viewResults(category: QuizInterface) {
-
+                override fun viewResults(completed: QuizInterface) {
+                    Intent(requireContext(), QuizDetailsActivity::class.java).apply {
+                        putExtra(QUIZ_ID, completed as Completed)
+                        startActivity(this)
+                    }
                 }
 
             }

@@ -41,7 +41,7 @@ class QuizViewModel @Inject constructor(
     private val compositeDisposable by lazy { CompositeDisposable() }
 
     init {
-        getQuizPageItems()
+
     }
 
     fun getQuizPageItems() {

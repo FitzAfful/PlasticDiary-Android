@@ -76,7 +76,6 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
         intent?.extras?.let {
             category = it.getParcelable(QUIZ_ID)
         }
-        Timber.e("categoryID: ${category}")
     }
 
     private fun initViewModel() {

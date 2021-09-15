@@ -1,5 +1,6 @@
 package com.glivion.plasticdiary.bindings
 
+import android.content.res.ColorStateList
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
@@ -8,6 +9,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.glivion.plasticdiary.R
 import com.glivion.plasticdiary.model.User
 import com.glivion.plasticdiary.util.getYoutubeThumbnailUrlFromVideoUrl
+import com.google.android.material.textview.MaterialTextView
 
 object BindingAdapter {
     @JvmStatic
@@ -49,5 +51,19 @@ object BindingAdapter {
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             //.placeholder(R.drawable.profile_picture)
             .into(imageView)
+    }
+
+    @JvmStatic
+    @BindingAdapter("highlight_answer")
+    fun highlightAnswer(textView: MaterialTextView, answer: String) {
+        if (textView.text.toString() == answer) {
+            textView.setTextColor(
+                ColorStateList.valueOf(
+                ContextCompat.getColor(
+                    textView.context,
+                    R.color.heading_text_green
+                )
+            ))
+        }
     }
 }

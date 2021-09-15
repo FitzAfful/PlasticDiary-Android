@@ -8,6 +8,7 @@
     </data>
 
     <RelativeLayout
+        android:id="@+id/parentLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.ui.QuizDetailsActivity">
@@ -25,6 +26,7 @@
             android:layout_below="@+id/toolbar"
             android:id="@+id/quiz_recycler_view"
             android:layout_width="match_parent"
+            android:padding="10dp"
             android:layout_height="match_parent"/>
     </RelativeLayout>
 </layout>
