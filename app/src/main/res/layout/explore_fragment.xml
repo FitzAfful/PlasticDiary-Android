@@ -86,7 +86,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/tips_recycler_view"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     tools:listitem="@layout/tips_item_layout"
                     tools:itemCount="1"/>
                 <com.google.android.material.textview.MaterialTextView
@@ -108,6 +108,7 @@
                     android:lineHeight="21dp"
                     android:textColor="@color/text_black"
                     android:textSize="18sp"
+                    android:visibility="gone"
                     android:text="Close to Me" />
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/close_to_you"
@@ -116,6 +117,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:fontFamily="@font/sf_pro_regular"
                     android:lineHeight="21dp"
+                    android:visibility="gone"
                     android:textColor="@color/text_black"
                     android:textSize="16sp"
                     android:text="@string/close_to_you" />
@@ -128,6 +130,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginBottom="?attr/actionBarSize"
                     android:layout_height="150dp"
+                    android:visibility="gone"
                     app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
                     android:src="@drawable/map_view"/>
             </LinearLayout>

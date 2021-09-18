@@ -106,7 +106,6 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
             questions.addAll(it.questions!!)
             totalQuestions = questions.size
             showQuestions(++index)
-            Timber.e("questions: ${questions.size}")
         })
     }
 

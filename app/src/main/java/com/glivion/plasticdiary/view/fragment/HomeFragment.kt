@@ -26,6 +26,7 @@ import com.glivion.plasticdiary.model.home.*
 import com.glivion.plasticdiary.util.*
 import com.glivion.plasticdiary.view.adapter.home.HomePageAdapter
 import com.glivion.plasticdiary.view.dialog.LoadingDialog
+import com.glivion.plasticdiary.view.dialog.StreakBottomSheetDialog
 import com.glivion.plasticdiary.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -47,12 +48,14 @@ class HomeFragment : Fragment(), HomePageCallback {
     private val usageList = ArrayList<Usage>()
     private val lastFiveUsagesList = ArrayList<Usage>()
     private val entriesList = ArrayList<BarEntry>()
+    var currentStreak = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
+
         initViews()
         initViewModel()
         return binding.root
@@ -60,6 +63,7 @@ class HomeFragment : Fragment(), HomePageCallback {
 
     private fun initViewModel() {
         viewModel.apply {
+            getCurrentStreak()
             submitStreak("1")
             getHomePageItems()
         }
@@ -96,6 +100,11 @@ class HomeFragment : Fragment(), HomePageCallback {
                 Timber.e("response: $response")
                 showSnackBarMessage(binding.parentLayout, response)
             }
+        })
+
+        viewModel.streak.observe(viewLifecycleOwner, {
+            currentStreak = it
+            binding.streaksTxt.text = it.toString()
         })
 
         viewModel.data.observe(viewLifecycleOwner, {
@@ -204,6 +213,11 @@ class HomeFragment : Fragment(), HomePageCallback {
                 layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 adapter = homePageAdapter
+            }
+
+            streaksIcon.setOnClickListener {
+                val dialog = StreakBottomSheetDialog(requireContext(), currentStreak)
+                dialog.showNow(childFragmentManager, "StreakBottomSheetDialog")
             }
         }
     }

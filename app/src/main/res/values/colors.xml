@@ -21,6 +21,7 @@
     <color name="bg_grey_30">#F4F4F4</color>
     <color name="text_purple">#B246AB</color>
     <color name="video_grey">#1A555555</color>
+    <color name="grey_10">#ECECFC</color>
 
     <color name="sub_heading_text">#646464</color>
     <color name="heading_text_green">#4BC662</color>

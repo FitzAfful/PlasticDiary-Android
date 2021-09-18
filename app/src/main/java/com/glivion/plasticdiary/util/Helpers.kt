@@ -26,6 +26,7 @@ import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.HttpException
 import java.io.IOException
+import java.text.SimpleDateFormat
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -127,6 +128,30 @@ fun getCurrentDateTimeParams(): Quintuple<String, String, String, String, String
 
     return Quintuple(currentDate, currentTime, month, day, dayInWords)
 }
+
+
+fun getDaysOfTheWeek(): ArrayList<String> {
+    val days = ArrayList<String>()
+    val calender = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+    val firstDay = calender.firstDayOfWeek
+    calender.set(Calendar.DAY_OF_WEEK, firstDay)
+    val monday = SimpleDateFormat("dd", Locale.getDefault()).format(calender.time).toString()
+    days.add(monday)
+    for (i in 1 until 7) {
+        calender.set(Calendar.DAY_OF_WEEK, firstDay + i)
+        val day = SimpleDateFormat("dd", Locale.getDefault()).format(calender.time).toString()
+        days.add(day)
+    }
+
+    return days
+}
+
+fun getToday(): String {
+    val calender = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+    val today = SimpleDateFormat("dd", Locale.getDefault()).format(calender.time).toString()
+    return today
+}
+
 
 fun getDayAndMonth(date: String?): String {
 

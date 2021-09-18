@@ -1,9 +1,9 @@
 package com.glivion.plasticdiary.model.quiz
 
 interface QuizInterface {
-    var description: String
-    var icon: String
+    var description: String?
+    var icon: String?
     var id: Int
-    var name: String
-    var average: String
+    var name: String?
+    var average: String?
 }

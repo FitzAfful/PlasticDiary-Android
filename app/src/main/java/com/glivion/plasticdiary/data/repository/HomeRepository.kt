@@ -3,6 +3,7 @@ package com.glivion.plasticdiary.data.repository
 import com.glivion.plasticdiary.data.remote.service.HomeService
 import com.glivion.plasticdiary.model.BaseAuthResponse
 import com.glivion.plasticdiary.model.home.BaseHomeResponse
+import com.glivion.plasticdiary.model.home.BaseStreakObject
 import com.glivion.plasticdiary.preference.AppPreference
 import com.glivion.plasticdiary.util.getCurrentDateTimeParams
 import io.reactivex.rxjava3.core.Single
@@ -27,4 +28,6 @@ class HomeRepository @Inject constructor(
         service.bookmark(contentID, contentType, appPreference.getUser()?.token!!)
 
     fun getHomePageItems(): Single<Response<BaseHomeResponse>> = service.getHomePageItems(appPreference.getUser()?.token.toString())
+
+    fun getCurrentStreak(): Single<Response<BaseStreakObject>> = service.getCurrentStreak(appPreference.getUser()?.token.toString())
 }

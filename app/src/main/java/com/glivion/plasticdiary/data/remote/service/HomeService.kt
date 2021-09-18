@@ -2,6 +2,7 @@ package com.glivion.plasticdiary.data.remote.service
 
 import com.glivion.plasticdiary.model.BaseAuthResponse
 import com.glivion.plasticdiary.model.home.BaseHomeResponse
+import com.glivion.plasticdiary.model.home.BaseStreakObject
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Response
 import retrofit2.http.*
@@ -44,4 +45,7 @@ interface HomeService {
 
     @GET("home")
     fun getHomePageItems(@Query("token") token: String): Single<Response<BaseHomeResponse>>
+
+    @GET("get-streak")
+    fun getCurrentStreak(@Query("token") token: String): Single<Response<BaseStreakObject>>
 }

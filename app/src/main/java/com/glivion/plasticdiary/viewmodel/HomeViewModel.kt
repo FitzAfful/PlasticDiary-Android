@@ -32,6 +32,10 @@ private val repository: HomeRepository
     val data: LiveData<BaseHomeResponse>
         get() = _data
 
+    private val _streak by lazy { MutableLiveData<Int>() }
+    val streak: LiveData<Int>
+        get() = _streak
+
     private val compositeDisposable by lazy { CompositeDisposable() }
 
     init {
@@ -55,6 +59,25 @@ private val repository: HomeRepository
                     _data.postValue(it.body())
                 },{e ->
                     _userLoader.postValue(false)
+                    _userErrors.postValue(e)
+                })
+        )
+    }
+
+    fun getCurrentStreak(){
+        compositeDisposable.add(
+            repository.getCurrentStreak()
+                .filter {
+                    if (it.isSuccessful) {
+                        true
+                    } else {
+                        throw HttpException(it)
+                    }
+                }.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    _streak.postValue(it.body()?.get(0)?.maxStreak)
+                },{e ->
                     _userErrors.postValue(e)
                 })
         )
