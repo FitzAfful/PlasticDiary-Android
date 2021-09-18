@@ -8,6 +8,7 @@ data class Category(
     override var description: String,
     override var icon: String,
     override var id: Int,
-    override var name: String
+    override var name: String,
+    override var average: String
 ) : QuizInterface, Parcelable
 

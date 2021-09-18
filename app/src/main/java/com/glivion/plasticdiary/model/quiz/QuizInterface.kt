@@ -5,4 +5,5 @@ interface QuizInterface {
     var icon: String
     var id: Int
     var name: String
+    var average: String
 }

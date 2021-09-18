@@ -51,7 +51,7 @@ data: ArrayList<Question>): RecyclerView.Adapter<QuestionsAdapter.QuestionViewHo
                                 R.color.heading_text_green
                             )
                         ))
-                        optionA.setTextColor( ColorStateList.valueOf(
+                        optionB.setTextColor( ColorStateList.valueOf(
                             ContextCompat.getColor(
                                 context,
                                 R.color.heading_text_green

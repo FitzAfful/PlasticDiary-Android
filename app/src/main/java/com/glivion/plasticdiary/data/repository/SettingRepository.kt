@@ -3,6 +3,7 @@ package com.glivion.plasticdiary.data.repository
 import com.glivion.plasticdiary.data.remote.service.SettingService
 import com.glivion.plasticdiary.model.BaseAuthResponse
 import com.glivion.plasticdiary.model.profile.BaseLeaderboardObject
+import com.glivion.plasticdiary.model.profile.BaseUserObject
 import com.glivion.plasticdiary.preference.AppPreference
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Response
@@ -16,4 +17,6 @@ class SettingRepository @Inject constructor(
         "suggestion", appPreference.getUser()?.token!!)
 
     fun getLeaderboard(): Single<Response<BaseLeaderboardObject>> = service.getLeaderboard(appPreference.getUser()?.token!!)
+
+    fun getUserProfileAndBookmarks(): Single<Response<BaseUserObject>> = service.getUserProfileAndBookmarks(appPreference.getUser()?.token!!)
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.glivion.plasticdiary.data.repository.SettingRepository
+import com.glivion.plasticdiary.model.home.BaseHomeResponse
 import com.glivion.plasticdiary.model.profile.BaseLeaderboardObject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -32,6 +33,10 @@ class ProfileViewModel @Inject constructor(
     private val _leaderboard by lazy { MutableLiveData<BaseLeaderboardObject>() }
     val leaderboard: LiveData<BaseLeaderboardObject>
         get() = _leaderboard
+
+    private val _bookmarks by lazy { MutableLiveData<BaseHomeResponse>() }
+    val bookmarks: LiveData<BaseHomeResponse>
+        get() = _bookmarks
 
     private val compositeDisposable by lazy { CompositeDisposable() }
 
@@ -78,6 +83,29 @@ class ProfileViewModel @Inject constructor(
                 .subscribe({
                     _userLoader.postValue(false)
                     _leaderboard.postValue(it.body())
+                },{e ->
+                    _userLoader.postValue(false)
+                    _userErrors.postValue(e)
+                })
+        )
+    }
+
+    fun getUserProfileAndBookmarks() {
+        _userLoader.postValue(true)
+        compositeDisposable.add(
+            repository.getUserProfileAndBookmarks()
+                .filter {
+                    if (it.isSuccessful) {
+                        true
+                    } else {
+                        throw HttpException(it)
+                    }
+                }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    _userLoader.postValue(false)
+                    _bookmarks.postValue(it.body()?.bookmarks)
                 },{e ->
                     _userLoader.postValue(false)
                     _userErrors.postValue(e)

@@ -2,6 +2,7 @@ package com.glivion.plasticdiary.data.remote.service
 
 import com.glivion.plasticdiary.model.BaseAuthResponse
 import com.glivion.plasticdiary.model.profile.BaseLeaderboardObject
+import com.glivion.plasticdiary.model.profile.BaseUserObject
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Response
 import retrofit2.http.*
@@ -17,4 +18,7 @@ interface SettingService {
 
     @GET("leaderboard")
     fun getLeaderboard(@Query("token") token: String): Single<Response<BaseLeaderboardObject>>
+
+    @GET("profile")
+    fun getUserProfileAndBookmarks(@Query("token") token: String): Single<Response<BaseUserObject>>
 }

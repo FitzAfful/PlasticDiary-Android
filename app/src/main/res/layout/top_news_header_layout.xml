@@ -68,6 +68,7 @@
                     android:ellipsize="end"
                     android:lineHeight="16dp"
                     android:maxLines="2"
+                    android:text="@{featured.description}"
                     tools:text="@string/article_subtitle"
                     android:textColor="@color/white" />
 

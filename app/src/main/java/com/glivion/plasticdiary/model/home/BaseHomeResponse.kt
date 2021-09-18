@@ -10,5 +10,5 @@ data class BaseHomeResponse(
     var news: List<News>? = null,
     var research: List<Research>? = null,
     var usage: List<Usage>? = null,
-    var video: List<Video>? = null
+    var  video: List<Video>? = null
 )

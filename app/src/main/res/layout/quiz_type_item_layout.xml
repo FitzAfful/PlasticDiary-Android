@@ -98,6 +98,7 @@
                 android:layout_marginStart="20dp"
                 android:visibility="gone"
                 android:layout_toEndOf="@+id/view_results"
+                tools:visibility="visible"
                 android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -107,7 +108,7 @@
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="10dp"
                     android:fontFamily="@font/sf_pro_display_bold"
-                    android:text="80%"
+                    android:text="@{category.average}"
                     android:textColor="@color/text_black"
                     android:textSize="18sp" />
 

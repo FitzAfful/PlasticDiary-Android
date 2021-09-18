@@ -36,8 +36,7 @@ class QuizDetailsActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        //viewModel.getQuizQuestions(completed?.id.toString())
-        viewModel.getQuizQuestions("5")
+        viewModel.getQuizQuestions(completed?.id.toString())
         viewModel.loadingDialog.observe(this, { isLoading ->
             isLoading.let {
                 if (it) {
