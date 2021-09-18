@@ -25,6 +25,7 @@
             android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="?attr/actionBarSize"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -106,9 +107,9 @@
                     android:layout_marginHorizontal="10dp"
                     android:fontFamily="@font/sf_pro_display_bold"
                     android:lineHeight="21dp"
+                    android:visibility="gone"
                     android:textColor="@color/text_black"
                     android:textSize="18sp"
-                    android:visibility="gone"
                     android:text="Close to Me" />
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/close_to_you"
@@ -117,9 +118,9 @@
                     android:layout_marginHorizontal="10dp"
                     android:fontFamily="@font/sf_pro_regular"
                     android:lineHeight="21dp"
-                    android:visibility="gone"
                     android:textColor="@color/text_black"
                     android:textSize="16sp"
+                    android:visibility="gone"
                     android:text="@string/close_to_you" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -128,7 +129,6 @@
                     android:scaleType="centerCrop"
                     android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="?attr/actionBarSize"
                     android:layout_height="150dp"
                     android:visibility="gone"
                     app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
