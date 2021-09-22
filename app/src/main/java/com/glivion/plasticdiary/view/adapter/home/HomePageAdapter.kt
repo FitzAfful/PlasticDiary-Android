@@ -161,6 +161,9 @@ class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>, val cal
                     layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                     adapter = childAdapter
                 }
+                homeFooter.setOnClickListener {
+                    callback.seeMoreResearch()
+                }
             }
         }
     }

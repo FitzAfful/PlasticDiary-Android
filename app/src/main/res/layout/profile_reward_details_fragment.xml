@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="badges"
+            type="com.glivion.plasticdiary.model.profile.Badges" />
     </data>
 
     <RelativeLayout
@@ -29,10 +31,14 @@
             android:layout_height="131dp"
             android:layout_below="@+id/toolbar"
             android:layout_centerHorizontal="true"
-            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/reward_icon_border"
             android:padding="20dp"
-            android:src="@drawable/ic_reward" />
+            app:set_cover_image="@{badges.icon}"
+            tools:src="@drawable/ic_reward" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/reward_info"
@@ -50,7 +56,8 @@
                 android:fontFamily="@font/sf_pro_regular"
                 android:gravity="center"
                 android:padding="20dp"
-                android:text="You earn this badge when you watch 5 videos"
+                android:text="@{badges.description}"
+                tools:text="You earn this badge when you watch 5 videos"
                 android:textAlignment="center"
                 android:textColor="@color/alternate_text_color" />
         </com.google.android.material.card.MaterialCardView>
@@ -67,54 +74,14 @@
             android:text="Milestones"
             android:textColor="@color/alternate_text_color" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/milestone_recycler_view"
             android:layout_below="@+id/milestones"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:backgroundTint="@color/card_bg_grey"
-            app:cardCornerRadius="10dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/sf_pro_display_semi_bold"
-                    android:paddingStart="18dp"
-                    android:paddingTop="18dp"
-                    android:paddingEnd="10dp"
-                    android:text="20 points"
-                    android:textColor="@color/alternate_text_color" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/sf_pro_regular"
-                    android:paddingTop="5dp"
-                    android:paddingStart="18dp"
-                    android:paddingEnd="18dp"
-                    android:paddingBottom="10dp"
-                    android:text="10 remaining"
-                    android:textColor="@color/text_grey_50" />
-
-                <ProgressBar
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="18dp"
-                    android:paddingEnd="18dp"
-                    android:paddingBottom="20dp"
-                    android:maxLength="100"
-                    android:progress="50"
-                    android:progressBackgroundTint="@color/progress_tint"
-                    android:progressTint="@color/heading_text_green" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/milestone_item_layout"
+            android:layout_marginBottom="?attr/actionBarSize"
+            tools:itemCount="2"/>
 
     </RelativeLayout>
 </layout>

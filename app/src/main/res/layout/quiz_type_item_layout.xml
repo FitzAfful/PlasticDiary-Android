@@ -83,7 +83,7 @@
                 android:text="view results"
                 android:textColor="@color/white"
                 android:visibility="gone"
-                app:backgroundTint="@color/text_grey_50"
+                app:backgroundTint="@color/text_grey_50_night"
                 app:cornerRadius="6dp"
                 app:icon="@drawable/ic_arrow_forward"
                 app:iconGravity="end"

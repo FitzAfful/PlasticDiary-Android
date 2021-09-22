@@ -12,4 +12,5 @@ class PlasticDiaryApp: Application() {
             Timber.plant(Timber.DebugTree())
         }
     }
+
 }

@@ -1,5 +1,9 @@
 package com.glivion.plasticdiary.model.home
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Research(
     var abstract: String? = null,
     var author: String? = null,
@@ -8,4 +12,4 @@ data class Research(
     var link: String? = null,
     var title: String? = null,
     var year: Int? = null
-)
+) : Parcelable

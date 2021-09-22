@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="milestone"
+            type="com.glivion.plasticdiary.model.profile.Milestone" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/milestones"
+        android:backgroundTint="@color/card_bg_grey"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_display_semi_bold"
+                android:paddingStart="18dp"
+                android:paddingTop="18dp"
+                android:paddingEnd="10dp"
+                android:text='@{milestone.points + " points"}'
+                tools:text="20 points"
+                android:textColor="@color/alternate_text_color" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_regular"
+                android:paddingTop="5dp"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="10dp"
+                android:text='@{milestone.completedPoints + " points"}'
+                tools:text="10 remaining"
+                android:textColor="@color/text_grey_50" />
+
+            <ProgressBar
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="20dp"
+                android:maxLength="100"
+                android:progress="0"
+                android:progressBackgroundTint="@color/progress_tint"
+                android:progressTint="@color/heading_text_green" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

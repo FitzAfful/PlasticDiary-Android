@@ -10,9 +10,12 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.glivion.plasticdiary.R
 import com.glivion.plasticdiary.databinding.ProfileRewardDetailsFragmentBinding
+import com.glivion.plasticdiary.model.profile.Badges
 import com.glivion.plasticdiary.util.REWARD_TITLE
+import com.glivion.plasticdiary.view.adapter.profile.MilestoneAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,11 +23,12 @@ class RewardDetailsFragment : Fragment() {
     private  lateinit var binding: ProfileRewardDetailsFragmentBinding
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
-    var title: String? = null
+    private lateinit var milestoneAdapter: MilestoneAdapter
+    var badge: Badges? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let { bundle ->
-            title = bundle.getString(REWARD_TITLE)
+            badge = bundle.getParcelable(REWARD_TITLE)
         }
     }
 
@@ -43,10 +47,21 @@ class RewardDetailsFragment : Fragment() {
         navController = findNavController()
         appBarConfiguration = AppBarConfiguration(navController.graph)
 
-        binding.toolbar.setNavigationOnClickListener {
-            navController.navigateUp(appBarConfiguration)
+        milestoneAdapter = MilestoneAdapter()
+        binding.apply {
+            toolbar.setNavigationOnClickListener {
+                navController.navigateUp(appBarConfiguration)
+            }
+            toolbar.title = badge?.name
+            badges = badge
+            milestoneRecyclerView.apply {
+                layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                adapter = milestoneAdapter
+            }
         }
-        binding.toolbar.title = title
+
+        milestoneAdapter.submitList(badge?.milestones)
+
     }
 
 }

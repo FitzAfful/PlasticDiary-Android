@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             app:hintTextColor="@color/black"
-            android:hint="Enter number here"
+            android:hint="@string/usage_hint"
             app:boxBackgroundColor="@color/border_color">
 
             <com.google.android.material.textfield.TextInputEditText

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="badges"
+            type="com.glivion.plasticdiary.model.profile.Badges" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginHorizontal="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            app:set_cover_image="@{badges.icon}"
+            tools:src="@drawable/ic_reward" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/reward_title"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_regular"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:text="@{badges.name}"
+            tools:text="Viewer" />
+    </LinearLayout>
+</layout>

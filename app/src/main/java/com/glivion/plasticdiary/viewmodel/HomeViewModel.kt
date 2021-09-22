@@ -10,6 +10,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import retrofit2.HttpException
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -117,7 +118,7 @@ private val repository: HomeRepository
                 }.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    _responses.postValue(it.body()?.message)
+                   // _responses.postValue(it.body()?.message)
                 },{e ->
                     _userErrors.postValue(e)
                 })
@@ -158,9 +159,10 @@ private val repository: HomeRepository
                 }.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    _responses.postValue(it.body()?.message)
+                   // _responses.postValue(it.body()?.message)
                 },{e ->
-                    _userErrors.postValue(e)
+                    Timber.e("submitStreak: ${e.message}")
+                    //_userErrors.postValue(e)
                 })
         )
     }

@@ -10,13 +10,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.glivion.plasticdiary.R
 import com.glivion.plasticdiary.databinding.ProfileFeedbackLayoutBinding
 import com.glivion.plasticdiary.databinding.ProfileFragmentBinding
+import com.glivion.plasticdiary.model.profile.Badges
 import com.glivion.plasticdiary.util.REWARD_TITLE
 import com.glivion.plasticdiary.util.showErrorMessage
 import com.glivion.plasticdiary.util.showSnackBarMessage
+import com.glivion.plasticdiary.view.adapter.profile.BadgesAdapter
 import com.glivion.plasticdiary.view.dialog.LoadingDialog
 import com.glivion.plasticdiary.viewmodel.AuthViewModel
 import com.glivion.plasticdiary.viewmodel.ProfileViewModel
@@ -29,6 +33,7 @@ class ProfileFragment : Fragment() {
     private val viewModel: ProfileViewModel by viewModels()
     private val authViewModel: AuthViewModel by viewModels()
     private lateinit var loadingDialog: LoadingDialog
+    private lateinit var badgesAdapter: BadgesAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,6 +46,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun initViewModel() {
+        viewModel.getBadges()
         viewModel.loadingDialog.observe(viewLifecycleOwner, { isLoading ->
             isLoading.let {
                 if (it) {
@@ -48,6 +54,12 @@ class ProfileFragment : Fragment() {
                 } else {
                     loadingDialog.dismissDialog()
                 }
+            }
+        })
+
+        viewModel.userLoader.observe(viewLifecycleOwner, { isLoading ->
+            isLoading.let {
+                binding.swipeRefresh.isRefreshing = it
             }
         })
 
@@ -62,6 +74,11 @@ class ProfileFragment : Fragment() {
             Timber.e("response: $response")
             showSnackBarMessage(binding.parentLayout, response)
         })
+
+        viewModel.badges.observe(viewLifecycleOwner, {
+            Timber.e("badges $it")
+            badgesAdapter.submitList(it)
+        })
     }
 
     private fun initViews() {
@@ -74,6 +91,14 @@ class ProfileFragment : Fragment() {
                 popExit = R.anim.slide_out_right
             }
         }
+        badgesAdapter = object: BadgesAdapter(){
+            override fun viewRewardDetails(badges: Badges) {
+                val title = bundleOf(REWARD_TITLE to badges)
+                findNavController().navigate(R.id.action_profileFragment_to_rewardDetailsFragment, title, options)
+            }
+
+        }
+
         binding.apply {
             user = authViewModel.getCurrentUser()
             bookMarks.setOnClickListener {
@@ -88,22 +113,13 @@ class ProfileFragment : Fragment() {
             feedback.setOnClickListener {
                 openFeedbackDialog()
             }
-            rewardViewer.setOnClickListener {
-                val title = bundleOf(REWARD_TITLE to "Viewer")
-                it.findNavController().navigate(R.id.action_profileFragment_to_rewardDetailsFragment, title, options)
+            swipeRefresh.setOnRefreshListener {
+                viewModel.getBadges()
             }
-            rewardBookmark.setOnClickListener {
-                val title = bundleOf(REWARD_TITLE to "Bookmark")
-                it.findNavController().navigate(R.id.action_profileFragment_to_rewardDetailsFragment, title, options)
-            }
-            rewardBrilliant.setOnClickListener {
-                val title = bundleOf(REWARD_TITLE to "Brilliant")
-                it.findNavController().navigate(R.id.action_profileFragment_to_rewardDetailsFragment, title, options)
-            }
-            rewardWatcher.setOnClickListener {
-                val title = bundleOf(REWARD_TITLE to "Watcher")
-                it.findNavController().navigate(R.id.action_profileFragment_to_rewardDetailsFragment, title, options)
-            }
+           badgesRecyclerView.apply {
+               layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+               adapter = badgesAdapter
+           }
         }
     }
 

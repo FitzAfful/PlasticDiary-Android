@@ -67,7 +67,7 @@ class ExploreFragment : Fragment() {
                 openSubmitTipDialog()
             }
             tipsRecyclerView.apply {
-                layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 adapter = tipsAdapter
             }
             resourcesRecyclerView.apply {

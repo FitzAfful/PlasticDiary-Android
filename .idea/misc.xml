@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/drawable/ic_arrow_right_alt.xml" value="0.7104166666666667" />
         <entry key="app/src/main/res/drawable/ic_bolt.xml" value="0.6851282051282052" />
         <entry key="app/src/main/res/drawable/ic_bookmark_border.xml" value="0.7104166666666667" />
+        <entry key="app/src/main/res/drawable/ic_bookmark_outline.xml" value="0.4864583333333333" />
         <entry key="app/src/main/res/drawable/ic_chevron_left.xml" value="0.6820512820512821" />
         <entry key="app/src/main/res/drawable/ic_chevron_right.xml" value="0.7104166666666667" />
         <entry key="app/src/main/res/drawable/ic_comment.xml" value="0.7104166666666667" />
@@ -19,6 +20,7 @@
         <entry key="app/src/main/res/drawable/ic_newspaper.xml" value="0.17037037037037037" />
         <entry key="app/src/main/res/drawable/ic_play_button.xml" value="0.6546296296296297" />
         <entry key="app/src/main/res/drawable/ic_quiz_bolt.xml" value="0.6851282051282052" />
+        <entry key="app/src/main/res/drawable/ic_reward.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.7104166666666667" />
         <entry key="app/src/main/res/drawable/ic_trophy.xml" value="0.7104166666666667" />
         <entry key="app/src/main/res/layout/activity_intro.xml" value="0.6942708333333333" />
@@ -29,6 +31,7 @@
         <entry key="app/src/main/res/layout/activity_web_view.xml" value="0.3625" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.375" />
         <entry key="app/src/main/res/layout/article_item_layout.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/badge_item_layout.xml" value="0.3223958333333333" />
         <entry key="app/src/main/res/layout/current_streak_bottom_sheet_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/explore_fragment.xml" value="0.335" />
         <entry key="app/src/main/res/layout/explore_resource_item_layout.xml" value="0.6796875" />
@@ -36,25 +39,27 @@
         <entry key="app/src/main/res/layout/home_item_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/leader_board_item_layout.xml" value="0.33958333333333335" />
         <entry key="app/src/main/res/layout/leaderboard_header_layout.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/milestone_item_layout.xml" value="0.375" />
         <entry key="app/src/main/res/layout/my_usage_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/notification_item_layout.xml" value="0.5947916666666667" />
         <entry key="app/src/main/res/layout/profile_bookmarks_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/profile_feedback_layout.xml" value="0.6942708333333333" />
-        <entry key="app/src/main/res/layout/profile_fragment.xml" value="0.5856410256410256" />
+        <entry key="app/src/main/res/layout/profile_fragment.xml" value="0.335" />
         <entry key="app/src/main/res/layout/profile_leaderboard_fragment.xml" value="0.38769230769230767" />
+        <entry key="app/src/main/res/layout/profile_reward_details_fragment.xml" value="0.3223958333333333" />
         <entry key="app/src/main/res/layout/profile_settings_fragment.xml" value="0.21495327102803738" />
         <entry key="app/src/main/res/layout/question_detail_layout_item.xml" value="0.3484375" />
-        <entry key="app/src/main/res/layout/quiz_fragment.xml" value="0.5947916666666667" />
+        <entry key="app/src/main/res/layout/quiz_fragment.xml" value="0.5425065731814198" />
         <entry key="app/src/main/res/layout/quiz_right_or_wrong_bottom_sheet_layout.xml" value="0.371875" />
         <entry key="app/src/main/res/layout/quiz_stats_item_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/quiz_type_item_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/research_item_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/resource_item_layout.xml" value="0.6942708333333333" />
-        <entry key="app/src/main/res/layout/submit_tip_layout.xml" value="0.6942708333333333" />
+        <entry key="app/src/main/res/layout/submit_tip_layout.xml" value="0.45" />
         <entry key="app/src/main/res/layout/tips_item_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/top_news_header_layout.xml" value="0.4624183006535948" />
         <entry key="app/src/main/res/layout/top_news_item_layout.xml" value="0.36553524804177545" />
-        <entry key="app/src/main/res/layout/video_item_layout.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/video_item_layout.xml" value="0.375" />
         <entry key="app/src/main/res/layout/view_more_info_dialog.xml" value="0.31574074074074077" />
       </map>
     </option>

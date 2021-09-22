@@ -14,7 +14,8 @@
     <string name="how_it_works_2"><b>Badges</b> <br> Users will earn badges when they reach a certain number of views for a content or activity.
         E.g. A user will earn a badge for watching 5 videos, 10, 20, 50, 10 etc. Same for news items, articles etc. Users will be able to share their badges to the internet.</br>
     </string>
-    <string name="article_title">Environmental impacts of food waste: Learnings and challenges from a case study on UK</string>
+    <string name="article_title">Environmental impacts of food waste: Learnings and challenges from a case study on UK.
+        Learnings and challenges from a case study on UK.  Learnings and challenges from a case study on UK</string>
     <string name="article_subtitle">Here\'s how workers at SembWaste’s Materials Recovery Facility sort recyclable waste into. Solid waste management is a universal issue</string>
     <string name="article_notif">Take a look at the articles section for fresh insightful articles</string>
     <string name="renewable_energy">Renewable energy is useful energy that is collected from renewable resources, which are naturally replenished on a human</string>
@@ -26,6 +27,8 @@
     <string name="close_to_you">See the most polluted areas, find recycling plants and landfills that are located around you. Tap on the map below</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="usage_hint">How many individual plastics did you use today? Eg. plastic bottles, rubber bags</string>
+    <string name="tip_hint">Share your tips for other users to learn</string>
 
     <string name="question_1">Food is a hot commodity! If we produce food that doesn\’t get eaten, what else is wasted?</string>
 

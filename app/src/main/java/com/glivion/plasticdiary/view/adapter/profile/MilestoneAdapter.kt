@@ -1,0 +1,46 @@
+package com.glivion.plasticdiary.view.adapter.profile
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.glivion.plasticdiary.R
+import com.glivion.plasticdiary.databinding.MilestoneItemLayoutBinding
+import com.glivion.plasticdiary.model.profile.Milestone
+
+class MilestoneAdapter : ListAdapter<Milestone, MilestoneAdapter.MilestoneViewHolder>(DIFF_UTIL_CALLBACK) {
+
+    class MilestoneViewHolder(val binding: MilestoneItemLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(_milestone: Milestone, adapter: MilestoneAdapter) {
+            binding.apply {
+                milestone = _milestone
+            }
+        }
+    }
+
+    companion object {
+        val DIFF_UTIL_CALLBACK = object : DiffUtil.ItemCallback<Milestone>() {
+            override fun areItemsTheSame(oldItem: Milestone, newItem: Milestone): Boolean =
+                oldItem == newItem
+
+            override fun areContentsTheSame(oldItem: Milestone, newItem: Milestone): Boolean =
+                oldItem == newItem
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MilestoneViewHolder {
+        val binding: MilestoneItemLayoutBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context), R.layout.milestone_item_layout, parent, false
+        )
+        return MilestoneViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: MilestoneViewHolder, position: Int) {
+        val milestone = getItem(position)
+        holder.bind(milestone, this)
+    }
+
+}

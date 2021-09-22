@@ -30,18 +30,36 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@+id/icon"
+            android:ellipsize="end"
             android:fontFamily="@font/sf_pro_display_bold"
-            android:lineHeight="13dp"
+            android:maxLines="3"
             android:text="@{article.title}"
-            tools:text="@string/article_title"
             android:textColor="@color/text_black"
-            android:textSize="12sp" />
+            android:textSize="14sp"
+            android:letterSpacing="0.1"
+            app:lineHeight="18sp"
+            tools:text="@string/article_title" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/article_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/article_title"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/icon"
+            android:ellipsize="end"
+            android:fontFamily="@font/sf_pro_regular"
+            android:layout_marginBottom="5dp"
+            android:maxLines="2"
+            android:text="@{article.description}"
+            android:textColor="@color/text_grey_50"
+            tools:text="@string/article_title" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/article_title"
+            android:layout_below="@+id/article_desc"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@+id/icon"
             android:fontFamily="@font/arial"
@@ -52,7 +70,7 @@
             android:id="@+id/read_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/article_title"
+            android:layout_below="@+id/article_desc"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/sf_pro_display_medium"
@@ -60,19 +78,19 @@
             android:textColor="@color/heading_text_green" />
 
         <ImageView
-            android:layout_toEndOf="@+id/date"
             android:id="@+id/bookmark"
-            android:layout_marginTop="3dp"
-            android:layout_below="@+id/article_title"
-            android:layout_marginStart="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_bookmark_outline"/>
+            android:layout_below="@+id/article_desc"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_toEndOf="@+id/date"
+            android:src="@drawable/ic_bookmark_outline" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_below="@+id/icon"
+            android:layout_below="@+id/read_more"
             android:layout_marginTop="15dp"
             android:background="@color/border_color" />
 

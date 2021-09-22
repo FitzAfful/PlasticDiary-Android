@@ -37,25 +37,6 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="10dp">
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/resources"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="10dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:fontFamily="@font/sf_pro_display_bold"
-                    android:lineHeight="21dp"
-                    android:textColor="@color/text_black"
-                    android:textSize="18sp"
-                    android:text="Resources" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/resources_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/explore_resource_item_layout"
-                    tools:itemCount="1"/>
-
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -99,6 +80,25 @@
                     android:textColor="@color/heading_text_green"
                     android:text="Submit tip"
                     android:layout_marginStart="10dp"/>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/resources"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:fontFamily="@font/sf_pro_display_bold"
+                    android:lineHeight="21dp"
+                    android:textColor="@color/text_black"
+                    android:textSize="18sp"
+                    android:text="Resources" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/resources_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/explore_resource_item_layout"
+                    tools:itemCount="1"/>
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/close"
                     android:layout_width="wrap_content"

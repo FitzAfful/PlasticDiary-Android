@@ -11,6 +11,7 @@ interface HomePageCallback {
     fun onSelectResearchItem(research: Research)
     fun onSelectTipItem(tip: Tip){}
     fun seeMoreArticles(){}
+    fun seeMoreResearch(){}
     fun seeMoreNews(){}
     fun bookmark(id: Int, type: String){}
 }

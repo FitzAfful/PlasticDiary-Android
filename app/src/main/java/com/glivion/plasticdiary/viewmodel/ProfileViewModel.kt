@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.glivion.plasticdiary.data.repository.SettingRepository
 import com.glivion.plasticdiary.model.home.BaseHomeResponse
+import com.glivion.plasticdiary.model.profile.BaseBadgesObject
 import com.glivion.plasticdiary.model.profile.BaseLeaderboardObject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -37,6 +38,10 @@ class ProfileViewModel @Inject constructor(
     private val _bookmarks by lazy { MutableLiveData<BaseHomeResponse>() }
     val bookmarks: LiveData<BaseHomeResponse>
         get() = _bookmarks
+
+    private val _badges by lazy { MutableLiveData<BaseBadgesObject>() }
+    val badges: LiveData<BaseBadgesObject>
+        get() = _badges
 
     private val compositeDisposable by lazy { CompositeDisposable() }
 
@@ -106,6 +111,29 @@ class ProfileViewModel @Inject constructor(
                 .subscribe({
                     _userLoader.postValue(false)
                     _bookmarks.postValue(it.body()?.bookmarks)
+                },{e ->
+                    _userLoader.postValue(false)
+                    _userErrors.postValue(e)
+                })
+        )
+    }
+
+    fun getBadges() {
+        _userLoader.postValue(true)
+        compositeDisposable.add(
+            repository.getBadges()
+                .filter {
+                    if (it.isSuccessful) {
+                        true
+                    } else {
+                        throw HttpException(it)
+                    }
+                }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    _userLoader.postValue(false)
+                    _badges.postValue(it.body())
                 },{e ->
                     _userLoader.postValue(false)
                     _userErrors.postValue(e)

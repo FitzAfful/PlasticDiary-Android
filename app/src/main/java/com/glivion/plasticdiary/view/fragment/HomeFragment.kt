@@ -44,7 +44,9 @@ class HomeFragment : Fragment(), HomePageCallback {
     private val newsList = ArrayList<Any>()
     private val videoList = ArrayList<Any>()
     private val researchList = ArrayList<Any>()
+    private val researchList_3 = ArrayList<Any>()
     private val articleList = ArrayList<Any>()
+    private val articleList_3 = ArrayList<Any>()
     private val usageList = ArrayList<Usage>()
     private val lastFiveUsagesList = ArrayList<Usage>()
     private val entriesList = ArrayList<BarEntry>()
@@ -110,6 +112,9 @@ class HomeFragment : Fragment(), HomePageCallback {
         viewModel.data.observe(viewLifecycleOwner, {
             binding.swipeRefresh.isRefreshing = false
 
+            if (it.usage!!.isNotEmpty()) {
+                binding.usageLyt.visibility = View.VISIBLE
+            }
             homeArrayList.clear()
             lastFiveUsagesList.clear()
             lastFiveUsagesList.addAll(it.usage!!.takeLast(5))
@@ -127,12 +132,16 @@ class HomeFragment : Fragment(), HomePageCallback {
             homeArrayList.add(HomeObject("Videos", null, "videos", videoList))
             // articles
             articleList.clear()
+            articleList_3.clear()
             articleList.addAll(it.article!!)
-            homeArrayList.add(HomeObject("Articles", "See more articles", "articles", articleList))
+            articleList_3.addAll(it.article!!.shuffled().take(3))
+            homeArrayList.add(HomeObject("Articles", "See more articles", "articles", articleList_3))
             // research
             researchList.clear()
+            researchList_3.clear()
             researchList.addAll(it.research!!)
-            homeArrayList.add(HomeObject("Research", null, "research", researchList))
+            researchList_3.addAll(it.research!!.shuffled().take(3))
+            homeArrayList.add(HomeObject("Research", "See more", "research", researchList_3))
             homePageAdapter.setUpHomPageItems(homeArrayList)
 
             for ((index, usage) in lastFiveUsagesList.withIndex()) {
@@ -288,6 +297,13 @@ class HomeFragment : Fragment(), HomePageCallback {
             putParcelableArrayList(WEB_VIEW_NEWS_LIST, newsList as ArrayList<News>)
         }
         viewMoreItems(requireContext(), "News", bundle)
+    }
+
+    override fun seeMoreResearch() {
+        val bundle = Bundle().apply {
+            putParcelableArrayList(WEB_VIEW_NEWS_LIST, researchList as ArrayList<Research>)
+        }
+        viewMoreItems(requireContext(), "Research", bundle)
     }
 
     override fun bookmark(id: Int, type: String) {

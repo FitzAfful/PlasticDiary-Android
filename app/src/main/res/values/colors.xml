@@ -11,6 +11,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bg_white">#FFFFFFFF</color>
     <color name="text_grey_50">#757575</color>
+    <color name="text_grey_50_night">#757575</color>
     <color name="text_grey_night">#757575</color>
     <color name="border_color">#DFDFDF</color>
     <color name="card_bg_grey">#E3E3E3</color>
