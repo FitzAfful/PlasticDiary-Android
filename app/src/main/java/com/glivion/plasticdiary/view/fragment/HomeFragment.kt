@@ -271,7 +271,7 @@ class HomeFragment : Fragment(), HomePageCallback {
     }
 
     private fun showUsageSuccessDialog(response: BaseAuthResponse?) {
-        val builder = AlertDialog.Builder(requireActivity(), R.style.myFullscreenAlertDialogStyle)
+        val builder = AlertDialog.Builder(requireActivity())
         val binding: UsageResponseLayoutBinding =
             DataBindingUtil.inflate(layoutInflater, R.layout.usage_response_layout, null, false)
 
