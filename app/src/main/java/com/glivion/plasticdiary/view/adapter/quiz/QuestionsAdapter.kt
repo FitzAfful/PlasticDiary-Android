@@ -73,7 +73,6 @@ data: ArrayList<Question>): RecyclerView.Adapter<QuestionsAdapter.QuestionViewHo
                         ))
                     }
                     optionD.text.toString() -> {
-                        Timber.e("answer: ${_question.correct} selection: ${optionD.text}")
                         d.setTextColor( ColorStateList.valueOf(
                             ContextCompat.getColor(
                                 context,

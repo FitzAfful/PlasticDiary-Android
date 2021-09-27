@@ -30,14 +30,26 @@
             android:text="Cancel"
             android:textColor="@color/text_grey_50" />
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/usage_txt"
+            android:layout_marginTop="60dp"
+            android:letterSpacing="0.1"
+            android:fontFamily="@font/sf_pro_regular"
+            android:text="@string/usage_hint"
+            android:textColor="@color/text_black" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/usageInputLyt"
             style="@style/TextInputLayoutStyle"
             android:layout_width="match_parent"
+            android:layout_below="@+id/info"
+            android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
             app:hintTextColor="@color/black"
-            android:hint="@string/usage_hint"
+            android:hint="Units"
             app:boxBackgroundColor="@color/border_color">
 
             <com.google.android.material.textfield.TextInputEditText

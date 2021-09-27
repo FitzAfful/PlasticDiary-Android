@@ -27,8 +27,10 @@
     <string name="close_to_you">See the most polluted areas, find recycling plants and landfills that are located around you. Tap on the map below</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="usage_hint">How many individual plastics did you use today? Eg. plastic bottles, rubber bags</string>
+    <string name="usage_hint">A unit is a single piece of plastic. Eg. a single rubber bag, a polythene bag, a plastic straw, plastic bottle etc. Please enter the number of plastic units you used today</string>
+    <string name="usage_hint_alt">Please enter the number of plastic units you used today</string>
     <string name="tip_hint">Share your tips for other users to learn</string>
+    <string name="quiz_info">If you leave this page now, the quiz will automatically be ended and scored</string>
 
     <string name="question_1">Food is a hot commodity! If we produce food that doesn\’t get eaten, what else is wasted?</string>
 

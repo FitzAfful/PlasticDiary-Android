@@ -127,5 +127,16 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/quiz_info"
+            android:textColor="@color/heading_text_red"
+            app:fontFamily="@font/sf_pro__display_heavy"
+            android:letterSpacing="0.1"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:layout_height="wrap_content"/>
+
     </RelativeLayout>
 </layout>

@@ -54,7 +54,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="${GOOGLE_MAPS_API_KEY}" />
 
-        <service android:name=".services.TerminateQuizService" android:stopWithTask="false" />
+<!--        <service android:name=".services.TerminateQuizService" android:stopWithTask="false" />-->
 
     </application>
 

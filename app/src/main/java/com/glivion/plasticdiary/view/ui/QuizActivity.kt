@@ -1,5 +1,6 @@
 package com.glivion.plasticdiary.view.ui
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
@@ -12,10 +13,8 @@ import com.glivion.plasticdiary.contracts.StatusCallbacks
 import com.glivion.plasticdiary.databinding.ActivityQuizBinding
 import com.glivion.plasticdiary.model.questions.Question
 import com.glivion.plasticdiary.model.quiz.Category
-import com.glivion.plasticdiary.util.QUIZ_ID
-import com.glivion.plasticdiary.util.setSystemBarColor
-import com.glivion.plasticdiary.util.showErrorMessage
-import com.glivion.plasticdiary.util.showSnackBarMessage
+import com.glivion.plasticdiary.services.TerminateQuizService
+import com.glivion.plasticdiary.util.*
 import com.glivion.plasticdiary.view.dialog.AnswerBottomSheetDialog
 import com.glivion.plasticdiary.view.dialog.LoadingDialog
 import com.glivion.plasticdiary.viewmodel.QuizViewModel
@@ -219,11 +218,11 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
 
     override fun onPause() {
         Timber.e("onPause")
-       /* val intent = Intent(this, TerminateQuizService::class.java).apply {
-            putExtra(QUIZ_ID, category?.id)
-            putExtra(QUIZ_SCORE, score)
+        viewModel.startWorkerForTerminateQuiz(category!!.id, score)
+        CoroutineScope(Dispatchers.IO).launch {
+            delay(1500)
+            finish()
         }
-        startService(intent)*/
         super.onPause()
     }
 
