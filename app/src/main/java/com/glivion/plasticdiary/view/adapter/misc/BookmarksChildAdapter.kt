@@ -1,6 +1,7 @@
 package com.glivion.plasticdiary.view.adapter.misc
 
 import android.content.Context
+import android.text.util.Linkify
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -253,11 +254,13 @@ class BookmarksChildAdapter(
                 description.apply {
                     ellipsize = null
                     maxLines = Integer.MAX_VALUE
+                    text = _tips.content
                 }
-                binding.viewTip.setOnClickListener {
+               viewTip.setOnClickListener {
                     callback.onSelectTipItem(_tips)
                 }
             }
+            Linkify.addLinks(binding.description, Linkify.WEB_URLS)
         }
     }
 

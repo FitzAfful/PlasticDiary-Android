@@ -83,6 +83,7 @@ class ExploreFragment : Fragment() {
                 }
                 viewMoreItems(requireContext(), "Tips", bundle)
             }
+
         }
 
     }

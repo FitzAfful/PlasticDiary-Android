@@ -131,7 +131,10 @@ class HomePageChildAdapter(
         fun bind(news: FeaturedNews, context: Context, callback: HomePageCallback) {
             binding.apply {
                 featured = news
-                binding.parentLayout.setOnClickListener {
+                parentLayout.setOnClickListener {
+                    callback.onSelectFeaturedNews(news)
+                }
+                featuredBtn.setOnClickListener {
                     callback.onSelectFeaturedNews(news)
                 }
             }

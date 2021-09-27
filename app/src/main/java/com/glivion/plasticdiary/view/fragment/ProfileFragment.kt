@@ -46,6 +46,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun initViewModel() {
+        viewModel.getLeaderboard()
         viewModel.getBadges()
         viewModel.loadingDialog.observe(viewLifecycleOwner, { isLoading ->
             isLoading.let {
@@ -76,8 +77,13 @@ class ProfileFragment : Fragment() {
         })
 
         viewModel.badges.observe(viewLifecycleOwner, {
-            Timber.e("badges $it")
             badgesAdapter.submitList(it)
+        })
+        viewModel.leaderboard.observe(viewLifecycleOwner, {
+            val name = it.leaderboard?.thisWeek?.get(0)?.name
+            if (name == viewModel.getUser()?.name) {
+             binding.leaderBadge.visibility = View.VISIBLE
+            }
         })
     }
 

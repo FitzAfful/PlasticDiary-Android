@@ -21,6 +21,8 @@ import com.glivion.plasticdiary.R
 import com.glivion.plasticdiary.data.callbacks.HomePageCallback
 import com.glivion.plasticdiary.databinding.HomeFragmentBinding
 import com.glivion.plasticdiary.databinding.MyUsageLayoutBinding
+import com.glivion.plasticdiary.databinding.UsageResponseLayoutBinding
+import com.glivion.plasticdiary.model.BaseAuthResponse
 import com.glivion.plasticdiary.model.HomeObject
 import com.glivion.plasticdiary.model.home.*
 import com.glivion.plasticdiary.util.*
@@ -109,6 +111,10 @@ class HomeFragment : Fragment(), HomePageCallback {
             binding.streaksTxt.text = it.toString()
         })
 
+        viewModel.category.observe(viewLifecycleOwner, {
+           showUsageSuccessDialog(it)
+        })
+
         viewModel.data.observe(viewLifecycleOwner, {
             binding.swipeRefresh.isRefreshing = false
 
@@ -147,6 +153,8 @@ class HomeFragment : Fragment(), HomePageCallback {
             for ((index, usage) in lastFiveUsagesList.withIndex()) {
                 entriesList.add(BarEntry(index.toFloat(), usage.amount!!.toFloat()))
             }
+
+            Timber.e("$entriesList")
             val dataSet = BarDataSet(entriesList, "Usage History")
             dataSet.apply {
                 colors = ColorTemplate.MATERIAL_COLORS.toMutableList()
@@ -171,6 +179,7 @@ class HomeFragment : Fragment(), HomePageCallback {
         })
     }
 
+
     private fun initViews() {
         loadingDialog = LoadingDialog(requireContext())
 
@@ -188,6 +197,7 @@ class HomeFragment : Fragment(), HomePageCallback {
                 override fun getFormattedValue(value: Float): String {
                     val x = value.toInt()
                     return if (x >= 0 && x <= lastFiveUsagesList.size) {
+                        Timber.e("x: $x $lastFiveUsagesList")
                         getDayAndMonth(lastFiveUsagesList[x].date.toString())
                     } else {
                         ""
@@ -255,6 +265,26 @@ class HomeFragment : Fragment(), HomePageCallback {
                 dialog.dismiss()
                 viewModel.submitUsage(number)
             }
+        }
+
+        dialog.show()
+    }
+
+    private fun showUsageSuccessDialog(response: BaseAuthResponse?) {
+        val builder = AlertDialog.Builder(requireActivity(), R.style.myFullscreenAlertDialogStyle)
+        val binding: UsageResponseLayoutBinding =
+            DataBindingUtil.inflate(layoutInflater, R.layout.usage_response_layout, null, false)
+
+        builder.setView(binding.root)
+        val dialog = builder.create()
+        dialog.setCancelable(true)
+        dialog.setCanceledOnTouchOutside(true)
+
+        binding.apply {
+            close.setOnClickListener {
+                dialog.dismiss()
+            }
+            usageSuccessTxt.text = response?.message
         }
 
         dialog.show()

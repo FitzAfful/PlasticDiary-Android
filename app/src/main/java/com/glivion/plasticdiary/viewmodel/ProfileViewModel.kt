@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.glivion.plasticdiary.data.repository.SettingRepository
+import com.glivion.plasticdiary.model.User
 import com.glivion.plasticdiary.model.home.BaseHomeResponse
 import com.glivion.plasticdiary.model.profile.BaseBadgesObject
 import com.glivion.plasticdiary.model.profile.BaseLeaderboardObject
@@ -140,6 +141,8 @@ class ProfileViewModel @Inject constructor(
                 })
         )
     }
+
+    fun getUser(): User? = repository.getUser()
 
     override fun onCleared() {
         super.onCleared()

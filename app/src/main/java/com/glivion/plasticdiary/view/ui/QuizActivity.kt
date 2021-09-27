@@ -55,7 +55,23 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
         binding.apply {
             quizTitle.text = category?.name
             close.setOnClickListener {
-                finish()
+                viewModel.submitScore(score, category!!.id, object: StatusCallbacks<String?>{
+                    override fun onComplete(data: String?) {
+                        showSnackBarMessage(binding.parentLayout, data)
+                        CoroutineScope(Dispatchers.IO).launch {
+                            delay(1500)
+                            finish()
+                        }
+                    }
+
+                    override fun onFailure(data: String?) {
+                        showSnackBarMessage(binding.parentLayout, data)
+                        CoroutineScope(Dispatchers.IO).launch {
+                            delay(1500)
+                            finish()
+                        }
+                    }
+                })
             }
             optionA.setOnClickListener {
                 showAnswerDialog(index, optionA.text.toString(), optionA)
@@ -122,6 +138,7 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
         if (index < totalQuestions) {
             thisQuestion++
             binding.apply {
+                currentScore.text = "Score: $score"
                 progressCount.text = "Question $thisQuestion of $totalQuestions"
                 question.text = questions[index].question
                 optionA.text = questions[index].option1
@@ -130,7 +147,10 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
                 optionD.text = questions[index].option4
             }
         } else {
-            binding.optionsLyt.visibility = View.GONE
+            binding.apply {
+                currentScore.text = "Score: $score"
+                optionsLyt.visibility = View.GONE
+            }
             viewModel.submitScore(score, category!!.id, object: StatusCallbacks<String?>{
                 override fun onComplete(data: String?) {
                     showSnackBarMessage(binding.parentLayout, data)
@@ -187,4 +207,6 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
             showQuestions(++index)
         }
     }
+
+
 }

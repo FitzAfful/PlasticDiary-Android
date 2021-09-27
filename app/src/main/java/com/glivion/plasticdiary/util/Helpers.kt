@@ -7,6 +7,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.text.util.Linkify
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
@@ -221,7 +222,9 @@ fun openViewMoreInfoDialog(activity: Activity, header: String, body: String) {
         }
         heading = header
         content = body
+        description.text = body
     }
+    Linkify.addLinks(binding.description, Linkify.WEB_URLS)
 
     dialog.show()
 }

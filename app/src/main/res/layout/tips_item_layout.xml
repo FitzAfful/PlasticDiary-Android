@@ -44,8 +44,9 @@
                 android:layout_toEndOf="@+id/icon"
                 android:ellipsize="end"
                 android:fontFamily="@font/sf_pro_regular"
+                android:textColorLink="@color/blue_700"
+                android:linksClickable="true"
                 android:maxLines="4"
-                android:text="@{tips.content}"
                 android:textColor="@color/text_grey_50"
                 tools:text="@string/tips" />
 

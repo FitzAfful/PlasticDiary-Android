@@ -114,7 +114,7 @@
                 <View
                     android:layout_width="2dp"
                     android:background="@color/card_bg_grey"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="9dp"
                     android:layout_height="match_parent"/>
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/option_c"

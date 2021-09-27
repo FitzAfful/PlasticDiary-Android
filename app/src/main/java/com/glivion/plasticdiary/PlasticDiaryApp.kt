@@ -13,4 +13,9 @@ class PlasticDiaryApp: Application() {
         }
     }
 
+    override fun onTerminate() {
+        super.onTerminate()
+        Timber.e("app terminated")
+    }
+
 }

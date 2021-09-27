@@ -1,5 +1,6 @@
 package com.glivion.plasticdiary.view.adapter.explore
 
+import android.text.util.Linkify
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -19,7 +20,9 @@ abstract class ExploreTipsAdapter: ListAdapter<Tip, ExploreTipsAdapter.TipViewHo
                 viewTip.setOnClickListener {
                     adapter.viewTip(tip)
                 }
+                description.text = tip.content
             }
+            Linkify.addLinks(binding.description, Linkify.WEB_URLS)
             binding.executePendingBindings()
         }
     }

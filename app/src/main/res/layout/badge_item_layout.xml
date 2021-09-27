@@ -16,9 +16,10 @@
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginTop="5dp"
+            android:scaleType="fitXY"
             app:set_cover_image="@{badges.icon}"
             tools:src="@drawable/ic_reward" />
         <com.google.android.material.textview.MaterialTextView
@@ -26,9 +27,9 @@
             android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/sf_pro_regular"
+            android:fontFamily="@font/sf_pro_display_bold"
             android:textSize="18sp"
-            android:gravity="center"
+            android:layout_gravity="center"
             android:text="@{badges.name}"
             tools:text="Viewer" />
     </LinearLayout>

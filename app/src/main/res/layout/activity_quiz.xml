@@ -47,8 +47,19 @@
             android:layout_below="@+id/progress_bar"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/sf_pro_regular"
-            tools:text="Question 1 of 10"
-            android:textColor="@color/text_grey_50" />
+            android:textColor="@color/text_grey_50"
+            tools:text="Question 1 of 10" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/current_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/progress_bar"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/sf_pro_display_bold"
+            android:textColor="@color/text_black"
+            tools:text="Score: 100" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/question"
@@ -79,7 +90,7 @@
                 app:cornerRadius="8dp"
                 android:textAllCaps="false"
                 android:backgroundTint="@color/white"
-                android:layout_height="65dp"/>
+                android:layout_height="wrap_content"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/option_b"
@@ -91,7 +102,7 @@
                 android:textAllCaps="false"
                 android:backgroundTint="@color/white"
                 android:layout_marginTop="10dp"
-                android:layout_height="65dp"/>
+                android:layout_height="wrap_content"/>
             <com.google.android.material.button.MaterialButton
                 android:layout_marginTop="10dp"
                 android:id="@+id/option_c"
@@ -102,7 +113,7 @@
                 app:cornerRadius="8dp"
                 android:textAllCaps="false"
                 android:backgroundTint="@color/white"
-                android:layout_height="65dp"/>
+                android:layout_height="wrap_content"/>
             <com.google.android.material.button.MaterialButton
                 android:layout_marginTop="10dp"
                 android:id="@+id/option_d"
@@ -113,7 +124,7 @@
                 app:cornerRadius="8dp"
                 android:textAllCaps="false"
                 android:backgroundTint="@color/white"
-                android:layout_height="65dp"/>
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
     </RelativeLayout>

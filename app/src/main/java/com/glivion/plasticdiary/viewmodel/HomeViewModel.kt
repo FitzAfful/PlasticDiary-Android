@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.glivion.plasticdiary.data.repository.HomeRepository
+import com.glivion.plasticdiary.model.BaseAuthResponse
 import com.glivion.plasticdiary.model.home.BaseHomeResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -32,10 +33,12 @@ private val repository: HomeRepository
     private val _data by lazy { MutableLiveData<BaseHomeResponse>() }
     val data: LiveData<BaseHomeResponse>
         get() = _data
-
     private val _streak by lazy { MutableLiveData<Int>() }
     val streak: LiveData<Int>
         get() = _streak
+    private val _category by lazy { MutableLiveData<BaseAuthResponse>() }
+    val category: LiveData<BaseAuthResponse>
+        get() = _category
 
     private val compositeDisposable by lazy { CompositeDisposable() }
 
@@ -97,7 +100,7 @@ private val repository: HomeRepository
                 }.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    _responses.postValue(it.body()?.message)
+                    _category.postValue(it.body())
                     _loadingDialog.postValue(false)
                 },{e ->
                     _loadingDialog.postValue(false)

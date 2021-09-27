@@ -155,4 +155,10 @@ class QuizFragment : Fragment() {
         // TODO: Use the ViewModel
     }
 
+    override fun onResume() {
+        super.onResume()
+        Timber.e("resuming")
+        viewModel.getQuizPageItems()
+    }
+
 }

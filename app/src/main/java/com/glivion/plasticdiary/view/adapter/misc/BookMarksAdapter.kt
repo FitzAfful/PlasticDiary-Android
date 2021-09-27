@@ -40,12 +40,13 @@ class BookMarksAdapter(
             context: Context,
             callback: HomePageCallback
         ) {
-            if (homeObject.title.isNullOrEmpty()) {
+            if (homeObject.title.isNullOrEmpty() || homeObject.data.isNullOrEmpty() ) {
                 binding.homeHeader.visibility = View.GONE
             }
             if (homeObject.footer.isNullOrEmpty()) {
                 binding.homeFooter.visibility = View.GONE
             }
+
 
             val childAdapter = BookmarksChildAdapter(context, homeObject.data, callback)
             binding.apply {
@@ -67,7 +68,7 @@ class BookMarksAdapter(
             context: Context,
             callback: HomePageCallback
         ) {
-            if (homeObject.title.isNullOrEmpty()) {
+            if (homeObject.title.isNullOrEmpty() || homeObject.data.isNullOrEmpty()) {
                 binding.homeHeader.visibility = View.GONE
             }
             if (homeObject.footer.isNullOrEmpty()) {
@@ -96,7 +97,7 @@ class BookMarksAdapter(
             context: Context,
             callback: HomePageCallback
         ) {
-            if (homeObject.title.isNullOrEmpty()) {
+            if (homeObject.title.isNullOrEmpty() || homeObject.data.isNullOrEmpty()) {
                 binding.homeHeader.visibility = View.GONE
             }
             if (homeObject.footer.isNullOrEmpty()) {
@@ -122,7 +123,7 @@ class BookMarksAdapter(
             context: Context,
             callback: HomePageCallback
         ) {
-            if (homeObject.title.isNullOrEmpty()) {
+            if (homeObject.title.isNullOrEmpty() || homeObject.data.isNullOrEmpty()) {
                 binding.homeHeader.visibility = View.GONE
             }
             if (homeObject.footer.isNullOrEmpty()) {
@@ -151,7 +152,7 @@ class BookMarksAdapter(
             context: Context,
             callback: HomePageCallback
         ) {
-            if (homeObject.title.isNullOrEmpty()) {
+            if (homeObject.title.isNullOrEmpty() || homeObject.data.isNullOrEmpty()) {
                 binding.homeHeader.visibility = View.GONE
             }
             if (homeObject.footer.isNullOrEmpty()) {
@@ -177,7 +178,7 @@ class BookMarksAdapter(
             context: Context,
             callback: HomePageCallback
         ) {
-            if (homeObject.title.isNullOrEmpty()) {
+            if (homeObject.title.isNullOrEmpty() || homeObject.data.isNullOrEmpty()) {
                 binding.homeHeader.visibility = View.GONE
             }
             if (homeObject.footer.isNullOrEmpty()) {

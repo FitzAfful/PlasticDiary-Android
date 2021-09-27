@@ -2,6 +2,7 @@ package com.glivion.plasticdiary.data.repository
 
 import com.glivion.plasticdiary.data.remote.service.SettingService
 import com.glivion.plasticdiary.model.BaseAuthResponse
+import com.glivion.plasticdiary.model.User
 import com.glivion.plasticdiary.model.profile.BaseBadgesObject
 import com.glivion.plasticdiary.model.profile.BaseLeaderboardObject
 import com.glivion.plasticdiary.model.profile.BaseUserObject
@@ -22,4 +23,6 @@ class SettingRepository @Inject constructor(
     fun getUserProfileAndBookmarks(): Single<Response<BaseUserObject>> = service.getUserProfileAndBookmarks(appPreference.getUser()?.token!!)
 
     fun getBadges(): Single<Response<BaseBadgesObject>> = service.getBadges(appPreference.getUser()?.token!!)
+
+    fun getUser():User? = appPreference.getUser()
 }
