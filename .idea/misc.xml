@@ -23,7 +23,7 @@
         <entry key="app/src/main/res/drawable/ic_reward.xml" value="0.3385416666666667" />
         <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.7104166666666667" />
         <entry key="app/src/main/res/drawable/ic_trophy.xml" value="0.7104166666666667" />
-        <entry key="app/src/main/res/layout/activity_intro.xml" value="0.6942708333333333" />
+        <entry key="app/src/main/res/layout/activity_intro.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_map_item.xml" value="0.6765625" />
         <entry key="app/src/main/res/layout/activity_quiz.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_quiz_details.xml" value="0.3255208333333333" />

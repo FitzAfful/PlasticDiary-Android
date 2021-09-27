@@ -86,6 +86,7 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
                 showAnswerDialog(index, optionD.text.toString(), optionD)
             }
         }
+
     }
 
     private fun getIntentParams() {
@@ -96,6 +97,8 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
 
     private fun initViewModel() {
         viewModel.getQuizQuestions(category?.id.toString())
+        viewModel.terminateQuiz = true
+        viewModel.categoryID = category!!.id
         viewModel.loadingDialog.observe(this, { isLoading ->
             isLoading.let {
                 if (it) {
@@ -139,6 +142,7 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
             thisQuestion++
             binding.apply {
                 currentScore.text = "Score: $score"
+                viewModel.score = score
                 progressCount.text = "Question $thisQuestion of $totalQuestions"
                 question.text = questions[index].question
                 optionA.text = questions[index].option1
@@ -208,5 +212,19 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
         }
     }
 
+    override fun onBackPressed() {
+        viewModel.startWorkerForTerminateQuiz(category!!.id, score)
+        super.onBackPressed()
+    }
+
+    override fun onPause() {
+        Timber.e("onPause")
+       /* val intent = Intent(this, TerminateQuizService::class.java).apply {
+            putExtra(QUIZ_ID, category?.id)
+            putExtra(QUIZ_SCORE, score)
+        }
+        startService(intent)*/
+        super.onPause()
+    }
 
 }

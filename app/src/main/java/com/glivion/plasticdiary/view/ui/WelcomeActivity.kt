@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.glivion.plasticdiary.R
 import com.glivion.plasticdiary.databinding.ActivityWelcomeBinding
+import com.glivion.plasticdiary.services.TerminateQuizService
 import com.glivion.plasticdiary.util.setSystemBarColor
 import com.glivion.plasticdiary.util.showSnackBarMessage
 import com.glivion.plasticdiary.view.dialog.LoadingDialog

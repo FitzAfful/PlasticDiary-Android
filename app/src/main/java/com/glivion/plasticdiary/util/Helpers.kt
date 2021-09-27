@@ -2,6 +2,8 @@ package com.glivion.plasticdiary.util
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -14,6 +16,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.room.rxjava3.EmptyResultSetException
@@ -65,6 +69,40 @@ fun showSnackBarMessage(view: View?, message: String?) {
     val textView = sbView.findViewById<TextView>(R.id.snackbar_text)
     textView.setTextColor(Color.WHITE)
     snackbar.show()
+}
+
+fun formatHttpError(e: Throwable): String {
+    var message = ""
+    try {
+        when (e) {
+            is IOException -> {
+                message = "No internet connection: ${e.message}"
+            }
+            is HttpException -> {
+                val errorBody = e.response()!!.errorBody()!!.string()
+                val jsonObject = JSONObject(errorBody)
+                message = when (e.code()) {
+                    404 -> "Not found"
+                    500 -> "An unexpected error occurred... please try again later"
+                    400 -> jsonObject.getString("error")
+                    else -> jsonObject.getString("message")
+                }
+            }
+            is EmptyResultSetException -> {
+                message = e.message.toString()
+            }
+        }
+    } catch (e1: IOException) {
+        e1.printStackTrace()
+    } catch (e1: JSONException) {
+        e1.printStackTrace()
+    } catch (e1: Exception) {
+        e1.printStackTrace()
+    }
+    if (message.isEmpty()) {
+        message = "Cannot retrieve info at this time. Please try again later"
+    }
+    return message
 }
 
 fun showErrorMessage(view: View, e: Throwable) {
@@ -227,6 +265,35 @@ fun openViewMoreInfoDialog(activity: Activity, header: String, body: String) {
     Linkify.addLinks(binding.description, Linkify.WEB_URLS)
 
     dialog.show()
+}
+
+fun makeStatusNotification(title: String, message: String, context: Context) {
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val name = VERBOSE_NOTIFICATION_CHANNEL_NAME
+        val description = VERBOSE_NOTIFICATION_CHANNEL_DESCRIPTION
+        val importance = NotificationManager.IMPORTANCE_HIGH
+        val channel = NotificationChannel(CHANNEL_ID, name, importance)
+        channel.description = description
+
+        // Add the channel
+        val notificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager?
+
+        notificationManager?.createNotificationChannel(channel)
+    }
+
+    // Create the notification
+    val builder = NotificationCompat.Builder(context, CHANNEL_ID)
+        .setSmallIcon(R.drawable.ic_launcher_foreground)
+        .setContentTitle(title)
+        .setContentText(message)
+        .setStyle(NotificationCompat.BigTextStyle().bigText(message))
+        .setPriority(NotificationCompat.PRIORITY_HIGH)
+        .setVibrate(LongArray(0))
+
+    // Show the notification
+    NotificationManagerCompat.from(context).notify(NOTIFICATION_ID, builder.build())
 }
 
 

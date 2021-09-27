@@ -24,11 +24,12 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ghost_background"
             app:tint="@color/text_black" />
+
         <ImageView
             android:id="@+id/icon_4"
-            android:layout_below="@+id/welcome_subtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/welcome_subtitle"
             android:src="@drawable/ghost_background"
             app:tint="@color/text_black" />
         <ImageView
