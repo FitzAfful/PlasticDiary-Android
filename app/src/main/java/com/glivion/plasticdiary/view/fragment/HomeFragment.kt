@@ -37,6 +37,7 @@ import timber.log.Timber
 import java.util.*
 import kotlin.collections.ArrayList
 
+
 @AndroidEntryPoint
 class HomeFragment : Fragment(), HomePageCallback {
     private lateinit var binding: HomeFragmentBinding
@@ -161,10 +162,12 @@ class HomeFragment : Fragment(), HomePageCallback {
 
             for ((index, usage) in lastFiveUsagesList.withIndex()) {
                 entriesList.add(BarEntry(index.toFloat(), usage.amount!!.toFloat()))
+                val pair = Pair(getDayAndMonth(usage.date),usage.amount!!.toFloat())
             }
 
+
             Timber.e("$entriesList")
-            val dataSet = BarDataSet(entriesList, "Usage History")
+            /*val dataSet = BarDataSet(entriesList, "Usage History")
             dataSet.apply {
                 colors = ColorTemplate.MATERIAL_COLORS.toMutableList()
                 valueTextColor = ContextCompat.getColor(requireContext(), R.color.text_black)
@@ -184,14 +187,14 @@ class HomeFragment : Fragment(), HomePageCallback {
                 notifyDataSetChanged()
                 invalidate()
             }
-
+*/
         })
     }
 
 
     private fun initViews() {
         loadingDialog = LoadingDialog(requireContext())
-        val xAxis = binding.usageBarChat.xAxis
+       /* val xAxis = binding.usageBarChat.xAxis
         xAxis.apply {
             position = XAxis.XAxisPosition.BOTTOM
             textSize = 10f
@@ -225,7 +228,7 @@ class HomeFragment : Fragment(), HomePageCallback {
             textColor = ContextCompat.getColor(requireContext(), R.color.text_black)
             textSize = 11f
             formSize = 9f
-        }
+        }*/
         homePageAdapter = HomePageAdapter(requireContext(), ArrayList(), this)
 
         binding.apply {
@@ -286,7 +289,6 @@ class HomeFragment : Fragment(), HomePageCallback {
         val dialog = builder.create()
         dialog.setCancelable(true)
         dialog.setCanceledOnTouchOutside(true)
-        //Timber.e("category: ${response?.usage_category}")
         binding.apply {
             close.setOnClickListener {
                 binding.viewKonfetti.stopGracefully()
