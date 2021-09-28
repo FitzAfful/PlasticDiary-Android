@@ -76,7 +76,7 @@ class QuizFragment : Fragment() {
             }
         })
         viewModel.data.observe(viewLifecycleOwner, {
-            Timber.e("resume: $it")
+            Timber.e("data: $it")
             binding.apply {
                 performance.
                 apply {
@@ -157,10 +157,7 @@ class QuizFragment : Fragment() {
     }
 
     override fun onResume() {
-        Timber.e("resuming")
         viewModel.getQuizPageItems()
-        categoryAdapter.notifyDataSetChanged()
-        completedAdapter.notifyDataSetChanged()
         super.onResume()
     }
 

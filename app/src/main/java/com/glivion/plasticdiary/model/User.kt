@@ -11,6 +11,8 @@ data class User(
     var name: String? = null,
     var platform: String? = null,
     var token: String? = null,
+    var uid: String? = null,
+    var message_token: String? = null,
     @SerializedName("updated_at")
     var updatedAt: String? = null
 )

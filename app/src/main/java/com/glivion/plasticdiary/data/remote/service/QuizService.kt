@@ -9,11 +9,12 @@ import retrofit2.http.*
 
 interface QuizService {
     @GET("get-quiz")
-    fun getQuizPageItems(@Query("token") token: String): Single<Response<BaseQuizObject>>
+    fun getQuizPageItems(@Query("token") token: String, @Query("uid") uid: String): Single<Response<BaseQuizObject>>
 
     @GET("get-question")
     fun getQuizQuestions(
         @Query("token") token: String,
+        @Query("uid") uid: String,
         @Query("question_category_id") question_category_id: String
     ): Single<Response<BaseQuizQuestionsObject>>
 
@@ -22,6 +23,7 @@ interface QuizService {
     fun submitScore(
         @Field("score") score: Int,
         @Field("quiz_category_id") quiz_category_id: Int,
-        @Field("token") token: String
+        @Field("token") token: String,
+        @Field("uid") uid: String
     ): Single<Response<BaseAuthResponse>>
 }

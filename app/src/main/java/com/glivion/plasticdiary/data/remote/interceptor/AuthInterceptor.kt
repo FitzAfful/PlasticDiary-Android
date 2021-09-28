@@ -16,6 +16,7 @@ class AuthInterceptor @Inject constructor(private val appPreference: AppPreferen
         appPreference.getUser()?.token.let {
             requestBuilder.addHeader("Authorization", "Bearer $it")
         }
+
         return chain.proceed(requestBuilder.build())
     }
 }

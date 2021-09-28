@@ -14,7 +14,8 @@ interface HomeService {
     fun submitUsage(
         @Field("amount") amount: String,
         @Field("date") date: String,
-        @Field("token") token: String
+        @Field("token") token: String,
+        @Field("uid") uid: String
     ): Single<Response<BaseAuthResponse>>
 
     @FormUrlEncoded
@@ -22,7 +23,8 @@ interface HomeService {
     fun streak(
         @Field("minutes") minutes: String,
         @Field("date") date: String,
-        @Field("token") token: String
+        @Field("token") token: String,
+        @Field("uid") uid: String
     ): Single<Response<BaseAuthResponse>>
 
     @FormUrlEncoded
@@ -30,7 +32,8 @@ interface HomeService {
     fun singleContentAPI(
         @Field("content_id") content_id: Int,
         @Field("content_type") content_type: String,
-        @Field("token") token: String
+        @Field("token") token: String,
+        @Field("uid") uid: String
     ): Single<Response<BaseAuthResponse>>
 
     @FormUrlEncoded
@@ -38,14 +41,15 @@ interface HomeService {
     fun bookmark(
         @Field("content_id") content_id: Int,
         @Field("content_type") content_type: String,
-        @Field("token") token: String
+        @Field("token") token: String,
+        @Field("uid") uid: String
     ): Single<Response<BaseAuthResponse>>
 
 
 
     @GET("home")
-    fun getHomePageItems(@Query("token") token: String): Single<Response<BaseHomeResponse>>
+    fun getHomePageItems(@Query("token") token: String, @Query("uid") uid: String,): Single<Response<BaseHomeResponse>>
 
     @GET("get-streak")
-    fun getCurrentStreak(@Query("token") token: String): Single<Response<BaseStreakObject>>
+    fun getCurrentStreak(@Query("token") token: String, @Query("uid") uid: String): Single<Response<BaseStreakObject>>
 }

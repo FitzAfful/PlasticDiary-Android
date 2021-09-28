@@ -16,11 +16,19 @@ class AuthRepository @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val appPreference: AppPreference,
     private val authService: AuthService
-){
-    fun signInWithSocialAuthCredentials(credential: AuthCredential): Task<AuthResult> = firebaseAuth.signInWithCredential(credential)
+) {
+    fun signInWithSocialAuthCredentials(credential: AuthCredential): Task<AuthResult> =
+        firebaseAuth.signInWithCredential(credential)
 
-    fun registerUserWithAPI(name: String, image_url: String, token: String, platform: String): Single<Response<BaseAuthResponse>> =
-        authService.registerUser(name, image_url, token, platform)
+    fun registerUserWithAPI(
+        name: String,
+        image_url: String,
+        token: String,
+        uid: String,
+        message_token: String,
+        platform: String
+    ): Single<Response<BaseAuthResponse>> =
+        authService.registerUser(name, image_url, token, uid, message_token, platform)
 
     fun saveUserPreference(user: String) = appPreference.saveUser(user)
 

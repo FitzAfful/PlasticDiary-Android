@@ -26,7 +26,7 @@ class AppPreference @Inject constructor(context: Context) {
     }
 
     fun deleteToken() {
-        editor.remove(AUTH_USER).commit()
+        editor.remove(AUTH_USER).apply()
     }
 
 }

@@ -17,6 +17,7 @@ interface ExploreService {
     @POST("submit-tip")
     fun submitTip(
         @Field("tip") tip: String,
-        @Field("token") token: String
+        @Field("token") token: String,
+        @Field("uid") uid: String
     ): Single<Response<BaseAuthResponse>>
 }

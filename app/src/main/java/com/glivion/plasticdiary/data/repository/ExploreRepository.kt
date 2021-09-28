@@ -38,7 +38,7 @@ class ExploreRepository @Inject constructor(
 
     fun getExplorePageItems(): Single<Response<BaseExploreResponse>> = service.getExplorePageItems()
 
-    fun submitTip(tip:String): Single<Response<BaseAuthResponse>> = service.submitTip(tip, appPreference.getUser()?.token!!)
+    fun submitTip(tip:String): Single<Response<BaseAuthResponse>> = service.submitTip(tip, appPreference.getUser()?.token!!, appPreference.getUser()?.uid!!)
 
     @RequiresApi(Build.VERSION_CODES.M)
     fun isConnectedToInternet(): Boolean = utils.isConnectedToInternet()

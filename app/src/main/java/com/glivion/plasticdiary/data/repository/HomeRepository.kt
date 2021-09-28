@@ -15,19 +15,19 @@ class HomeRepository @Inject constructor(
     private val appPreference: AppPreference
 ) {
     fun submitUsage(amount: String): Single<Response<BaseAuthResponse>> = service.submitUsage(amount,
-        getCurrentDateTimeParams().first, appPreference.getUser()?.token!!)
+        getCurrentDateTimeParams().first, appPreference.getUser()?.token!!, appPreference.getUser()?.uid!!)
 
     fun submitStreak(minutes: String): Single<Response<BaseAuthResponse>> = service.streak(minutes,
-        getCurrentDateTimeParams().first, appPreference.getUser()?.token!!)
+        getCurrentDateTimeParams().first, appPreference.getUser()?.token!!, appPreference.getUser()?.uid!!)
 
 
     fun singleContentAPI(contentID: Int, contentType: String): Single<Response<BaseAuthResponse>> =
-        service.singleContentAPI(contentID, contentType, appPreference.getUser()?.token!!)
+        service.singleContentAPI(contentID, contentType, appPreference.getUser()?.token!!, appPreference.getUser()?.uid!!)
 
     fun bookmark(contentID: Int, contentType: String): Single<Response<BaseAuthResponse>> =
-        service.bookmark(contentID, contentType, appPreference.getUser()?.token!!)
+        service.bookmark(contentID, contentType, appPreference.getUser()?.token!!, appPreference.getUser()?.uid!!)
 
-    fun getHomePageItems(): Single<Response<BaseHomeResponse>> = service.getHomePageItems(appPreference.getUser()?.token.toString())
+    fun getHomePageItems(): Single<Response<BaseHomeResponse>> = service.getHomePageItems(appPreference.getUser()?.token.toString(), appPreference.getUser()?.uid!!)
 
-    fun getCurrentStreak(): Single<Response<BaseStreakObject>> = service.getCurrentStreak(appPreference.getUser()?.token.toString())
+    fun getCurrentStreak(): Single<Response<BaseStreakObject>> = service.getCurrentStreak(appPreference.getUser()?.token.toString(), appPreference.getUser()?.uid!!)
 }

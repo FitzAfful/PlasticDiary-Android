@@ -61,6 +61,7 @@ class RewardDetailsFragment : Fragment() {
         }
 
         milestoneAdapter.submitList(badge?.milestones)
+        milestoneAdapter.notifyDataSetChanged()
 
     }
 

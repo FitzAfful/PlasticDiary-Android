@@ -44,7 +44,7 @@ class TerminateQuizWorker @AssistedInject constructor(
                     val jsonObject = JSONObject(errorBody!!)
                     val message = jsonObject.getString("error")
                     makeStatusNotification(
-                        "An error occurred",
+                        "Something went wrong 😕",
                         message,
                         applicationContext
                     )

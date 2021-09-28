@@ -14,9 +14,9 @@ class QuizRepository @Inject constructor(
     val service: QuizService,
     val appPreference: AppPreference
 ): QuizInterface{
-    override fun getQuizPageItems(): Single<Response<BaseQuizObject>> = service.getQuizPageItems(appPreference.getUser()?.token.toString())
+    override fun getQuizPageItems(): Single<Response<BaseQuizObject>> = service.getQuizPageItems(appPreference.getUser()?.token.toString(), appPreference.getUser()?.uid!!)
 
-    override fun getQuizQuestions(id: String): Single<Response<BaseQuizQuestionsObject>> = service.getQuizQuestions(appPreference.getUser()?.token.toString(), id)
+    override fun getQuizQuestions(id: String): Single<Response<BaseQuizQuestionsObject>> = service.getQuizQuestions(appPreference.getUser()?.token.toString(),appPreference.getUser()?.uid!!, id)
 
-    override fun submitScore(score: Int, quiz_category_id: Int): Single<Response<BaseAuthResponse>> = service.submitScore(score, quiz_category_id, appPreference.getUser()?.token.toString())
+    override fun submitScore(score: Int, quiz_category_id: Int): Single<Response<BaseAuthResponse>> = service.submitScore(score, quiz_category_id, appPreference.getUser()?.token.toString(), appPreference.getUser()?.uid!!)
 }

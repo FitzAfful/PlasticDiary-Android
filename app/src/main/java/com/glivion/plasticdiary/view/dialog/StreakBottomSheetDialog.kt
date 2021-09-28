@@ -80,7 +80,7 @@ class StreakBottomSheetDialog(
             isCancelable = true
         }
         binding.apply {
-            totalStreaks.text = "$streak days"
+            totalStreaks.text = "$streak day(s)"
             streakInfo.text = "$streak days in this app this year"
         }
     }

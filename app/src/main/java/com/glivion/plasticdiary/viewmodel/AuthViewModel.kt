@@ -17,6 +17,7 @@ import com.google.android.gms.common.Scopes
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.AuthResult
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -43,8 +44,12 @@ class AuthViewModel @Inject constructor(
         get() = _userLoader
 
     private val compositeDisposable by lazy { CompositeDisposable() }
-
+    private var fcmToken: String? = null
     val user = User()
+
+    init {
+        getUserMessagingToken()
+    }
 
     fun signInWithSocialAuthCredentials(
         credential: AuthCredential,
@@ -70,6 +75,8 @@ class AuthViewModel @Inject constructor(
                             user.imgUrl = authUser?.photoUrl.toString()
                             user.platform = "Android"
                             user.token = account.idToken
+                            user.uid = authUser?.uid
+                            user.message_token = fcmToken
                             registerUserWithAPI(user)
 
                         } catch (e: GoogleAuthException) {
@@ -88,7 +95,7 @@ class AuthViewModel @Inject constructor(
     private fun registerUserWithAPI(user: User) {
         Timber.e("user $user")
         compositeDisposable.add(
-            repository.registerUserWithAPI(user.name!!, user.imgUrl!!, user.token!!, user.platform!!)
+            repository.registerUserWithAPI(user.name!!, user.imgUrl!!, user.token!!, user.uid!!, user.message_token!!, user.platform!!)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
@@ -116,6 +123,19 @@ class AuthViewModel @Inject constructor(
                     _userErrors.postValue(it.message)
                 })
         )
+    }
+
+    fun getUserMessagingToken() {
+        FirebaseMessaging.getInstance().token
+            .addOnCompleteListener { task: Task<String?> ->
+                if (task.isSuccessful) {
+                    fcmToken = task.result
+                    Timber.e("FCMToken: $fcmToken")
+                }
+            }
+            .addOnFailureListener { e: Exception ->
+                Timber.e(e.message)
+            }
     }
 
     fun getCurrentUser(): User? = repository.getSignedInUser()

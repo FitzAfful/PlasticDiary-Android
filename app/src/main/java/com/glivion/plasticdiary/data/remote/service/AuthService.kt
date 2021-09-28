@@ -14,6 +14,8 @@ interface AuthService {
         @Field("name") name: String,
         @Field("img_url") img_url: String,
         @Field("token") token: String,
+        @Field("uid") uid: String,
+        @Field("message_token") message_token: String,
         @Field("platform") platform: String
     ): Single<Response<BaseAuthResponse>>
 }

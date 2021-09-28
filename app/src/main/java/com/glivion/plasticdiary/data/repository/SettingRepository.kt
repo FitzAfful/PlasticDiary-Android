@@ -16,13 +16,13 @@ class SettingRepository @Inject constructor(
     private val appPreference: AppPreference
 ){
     fun submitFeedback(feedback: String): Single<Response<BaseAuthResponse>> = service.submitFeedback(feedback,
-        "suggestion", appPreference.getUser()?.token!!)
+        "suggestion", appPreference.getUser()?.token!!, appPreference.getUser()?.uid!!)
 
-    fun getLeaderboard(): Single<Response<BaseLeaderboardObject>> = service.getLeaderboard(appPreference.getUser()?.token!!)
+    fun getLeaderboard(): Single<Response<BaseLeaderboardObject>> = service.getLeaderboard(appPreference.getUser()?.token!!, appPreference.getUser()?.uid!!)
 
-    fun getUserProfileAndBookmarks(): Single<Response<BaseUserObject>> = service.getUserProfileAndBookmarks(appPreference.getUser()?.token!!)
+    fun getUserProfileAndBookmarks(): Single<Response<BaseUserObject>> = service.getUserProfileAndBookmarks(appPreference.getUser()?.token!!, appPreference.getUser()?.uid!!)
 
-    fun getBadges(): Single<Response<BaseBadgesObject>> = service.getBadges(appPreference.getUser()?.token!!)
+    fun getBadges(): Single<Response<BaseBadgesObject>> = service.getBadges(appPreference.getUser()?.token!!, appPreference.getUser()?.uid!!)
 
     fun getUser():User? = appPreference.getUser()
 }

@@ -37,13 +37,13 @@ object NetworkServiceModule {
             .writeTimeout(READ_TIMEOUT, TimeUnit.MINUTES)
             .readTimeout(READ_TIMEOUT, TimeUnit.MINUTES)
             .addInterceptor(loggingInterceptor)
-//            .addInterceptor { chain ->
-//                val authResponse = chain.proceed(chain.request())
-//                if (authResponse.code == 401 || authResponse.code == 403) {
-//                    tokenManager.deleteToken()
-//                }
-//                authResponse
-//            }
+            .addInterceptor { chain ->
+                val authResponse = chain.proceed(chain.request())
+                if (authResponse.code == 401 || authResponse.code == 403) {
+                    tokenManager.deleteToken()
+                }
+                authResponse
+            }
             .build()
 
         val newRetrofit = retrofit.newBuilder().client(client).build()

@@ -54,6 +54,13 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="${GOOGLE_MAPS_API_KEY}" />
 
+        <service android:name=".services.FCMMessagingService" android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"
+                    android:stopWithTask="false"/>
+            </intent-filter>
+        </service>
+
 <!--        <service android:name=".services.TerminateQuizService" android:stopWithTask="false" />-->
 
     </application>

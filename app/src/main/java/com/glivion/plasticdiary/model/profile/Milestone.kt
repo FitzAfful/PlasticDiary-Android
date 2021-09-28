@@ -9,6 +9,6 @@ data class Milestone(
     @SerializedName("completed_on")
     var completedOn: String? = null,
     @SerializedName("completed_points")
-    var completedPoints: Int? = null,
-    var points: Int? = null
+    var completedPoints: Int = 0,
+    var points: Int = 0
 ) : Parcelable

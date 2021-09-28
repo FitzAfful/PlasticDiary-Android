@@ -14,15 +14,16 @@ interface SettingService {
     fun submitFeedback(
         @Field("message") message: String,
         @Field("feedback_option") feedback_option: String,
-        @Field("token") token: String
+        @Field("token") token: String,
+        @Field("uid") uid: String
     ): Single<Response<BaseAuthResponse>>
 
     @GET("leaderboard")
-    fun getLeaderboard(@Query("token") token: String): Single<Response<BaseLeaderboardObject>>
+    fun getLeaderboard(@Query("token") token: String, @Query("uid") uid: String): Single<Response<BaseLeaderboardObject>>
 
     @GET("profile")
-    fun getUserProfileAndBookmarks(@Query("token") token: String): Single<Response<BaseUserObject>>
+    fun getUserProfileAndBookmarks(@Query("token") token: String, @Query("uid") uid: String): Single<Response<BaseUserObject>>
 
     @GET("badges")
-    fun getBadges(@Query("token") token: String): Single<Response<BaseBadgesObject>>
+    fun getBadges(@Query("token") token: String, @Query("uid") uid: String): Single<Response<BaseBadgesObject>>
 }

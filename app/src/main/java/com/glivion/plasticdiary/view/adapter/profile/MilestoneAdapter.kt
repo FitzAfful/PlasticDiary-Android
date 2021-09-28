@@ -1,6 +1,7 @@
 package com.glivion.plasticdiary.view.adapter.profile
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
@@ -9,15 +10,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.glivion.plasticdiary.R
 import com.glivion.plasticdiary.databinding.MilestoneItemLayoutBinding
 import com.glivion.plasticdiary.model.profile.Milestone
+import timber.log.Timber
 
-class MilestoneAdapter : ListAdapter<Milestone, MilestoneAdapter.MilestoneViewHolder>(DIFF_UTIL_CALLBACK) {
+class MilestoneAdapter :
+    ListAdapter<Milestone, MilestoneAdapter.MilestoneViewHolder>(DIFF_UTIL_CALLBACK) {
 
     class MilestoneViewHolder(val binding: MilestoneItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(_milestone: Milestone, adapter: MilestoneAdapter) {
+        fun bind(_milestone: Milestone) {
+            val progress = (_milestone.completedPoints.toFloat() / _milestone.points.toFloat()) * 100
+            Timber.e("points: $progress")
             binding.apply {
                 milestone = _milestone
+                progressBar.progress = progress.toInt()
             }
+            if (_milestone.completedPoints >= _milestone.points) {
+                binding.apply {
+                    remainingPoints.visibility = View.GONE
+                    milestoneCompleted.visibility = View.VISIBLE
+                    progressBar.visibility = View.GONE
+                }
+            }
+            binding.executePendingBindings()
         }
     }
 
@@ -40,7 +54,7 @@ class MilestoneAdapter : ListAdapter<Milestone, MilestoneAdapter.MilestoneViewHo
 
     override fun onBindViewHolder(holder: MilestoneViewHolder, position: Int) {
         val milestone = getItem(position)
-        holder.bind(milestone, this)
+        holder.bind(milestone)
     }
 
 }
