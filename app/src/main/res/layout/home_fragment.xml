@@ -113,12 +113,16 @@
                         app:strokeWidth="1dp"
                         tools:visibility="visible">
 
-                        <!--<com.github.mikephil.charting.charts.BarChart
-                            android:visibility="gone"
+                       <!-- <com.github.mikephil.charting.charts.LineChart
+                            android:id="@+id/line_chart_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            />-->
+                        <com.github.mikephil.charting.charts.BarChart
                             android:layout_margin="15dp"
                             android:id="@+id/usage_bar_chat"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />-->
+                            android:layout_height="match_parent" />
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.textview.MaterialTextView

@@ -16,6 +16,7 @@ import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.glivion.plasticdiary.R
@@ -55,6 +56,8 @@ class HomeFragment : Fragment(), HomePageCallback {
     private val usageList = ArrayList<Usage>()
     private val lastFiveUsagesList = ArrayList<Usage>()
     private val entriesList = ArrayList<BarEntry>()
+    private val entries = ArrayList<Entry>()
+
     var currentStreak = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -159,15 +162,54 @@ class HomeFragment : Fragment(), HomePageCallback {
             researchList_3.addAll(it.research!!.shuffled().take(3))
             homeArrayList.add(HomeObject("Research", "See more", "research", researchList_3))
             homePageAdapter.setUpHomPageItems(homeArrayList)
-
+            entriesList.clear()
+            entries.clear()
             for ((index, usage) in lastFiveUsagesList.withIndex()) {
                 entriesList.add(BarEntry(index.toFloat(), usage.amount!!.toFloat()))
-                val pair = Pair(getDayAndMonth(usage.date),usage.amount!!.toFloat())
+                entries.add(Entry(index.toFloat(), usage.amount!!.toFloat()))
             }
 
+            /*val lineDataSet = LineDataSet(entries, "Usage Data")
+            lineDataSet.apply {
+                //mode = LineDataSet.Mode.CUBIC_BEZIER
+                cubicIntensity = 0.2f
+                setDrawFilled(true)
+                setDrawCircles(false)
+                lineWidth = 1.8f
+                circleRadius = 4f
+                setCircleColor(ContextCompat.getColor(requireContext(), R.color.white))
+                highLightColor = Color.rgb(244, 117, 117)
+                color = Color.WHITE
+                fillColor = Color.WHITE
+                fillAlpha = 100
+                setDrawHorizontalHighlightIndicator(false)
+                fillFormatter =
+                    IFillFormatter { dataSet, dataProvider -> binding.lineChartView.axisLeft.axisMinimum }
+            }
 
-            Timber.e("$entriesList")
-            /*val dataSet = BarDataSet(entriesList, "Usage History")
+            val lineData = LineData(lineDataSet)
+            lineData.apply {
+                setValueTextSize(9f)
+                setDrawValues(false)
+            }
+            binding.lineChartView.apply {
+                data = lineData
+                setViewPortOffsets(0F,0F,0F,0F)
+                setBackgroundColor(Color.rgb(104, 241, 175))
+                description.isEnabled = false
+                setTouchEnabled(true)
+                isDragEnabled = true
+                setScaleEnabled(true)
+                setDrawGridBackground(false)
+                legend.isEnabled = true
+                animateXY(1000,1000)
+                notifyDataSetChanged()
+                invalidate()
+            }
+*/
+
+            Timber.e("$entries")
+            val dataSet = BarDataSet(entriesList, "Usage History")
             dataSet.apply {
                 colors = ColorTemplate.MATERIAL_COLORS.toMutableList()
                 valueTextColor = ContextCompat.getColor(requireContext(), R.color.text_black)
@@ -176,7 +218,7 @@ class HomeFragment : Fragment(), HomePageCallback {
             val barData = BarData(dataSet)
             barData.apply {
                 setValueTextSize(12f)
-                barWidth = 0.9f
+                barWidth = 0.4f
             }
             binding.usageBarChat.apply {
                 data = barData
@@ -184,24 +226,27 @@ class HomeFragment : Fragment(), HomePageCallback {
                 animateY(1000)
                 setDrawGridBackground(false)
                 description.isEnabled = false
+                setDrawBorders(false)
+                setPinchZoom(false)
+                axisRight.isEnabled = false
                 notifyDataSetChanged()
                 invalidate()
             }
-*/
         })
     }
 
 
     private fun initViews() {
         loadingDialog = LoadingDialog(requireContext())
-       /* val xAxis = binding.usageBarChat.xAxis
+        val xAxis = binding.usageBarChat.xAxis
         xAxis.apply {
             position = XAxis.XAxisPosition.BOTTOM
+            setLabelCount(lastFiveUsagesList.size, false)
             textSize = 10f
             textColor = ContextCompat.getColor(requireContext(), R.color.text_black)
             setDrawAxisLine(false)
             setDrawGridLines(false)
-            setDrawGridLinesBehindData(false)
+
 
             valueFormatter = object : IndexAxisValueFormatter() {
                 override fun getFormattedValue(value: Float): String {
@@ -215,20 +260,42 @@ class HomeFragment : Fragment(), HomePageCallback {
                 }
             }
         }
-        val yAxisRight = binding.usageBarChat.axisRight
-        val yAxisLeft = binding.usageBarChat.axisLeft
+
+       /* val yAxisRight = binding.usageBarChat.axisRight
         yAxisRight.apply {
-            textColor = ContextCompat.getColor(requireContext(), R.color.text_black)
-        }
+            isEnabled = false
+            setDrawAxisLine(false)
+        }*/
+        val yAxisLeft = binding.usageBarChat.axisLeft
         yAxisLeft.apply {
             textColor = ContextCompat.getColor(requireContext(), R.color.text_black)
+            setDrawAxisLine(false)
         }
         val legend = binding.usageBarChat.legend
         legend.apply {
             textColor = ContextCompat.getColor(requireContext(), R.color.text_black)
             textSize = 11f
             formSize = 9f
-        }*/
+        }
+
+        /*val x: XAxis = binding.lineChartView.xAxis
+        x.apply {
+            setLabelCount(6, false)
+            textColor = Color.WHITE
+            position = XAxis.XAxisPosition.BOTTOM_INSIDE
+            setDrawGridLines(false)
+            axisLineColor = Color.WHITE
+        }
+
+        val y: YAxis = binding.lineChartView.axisLeft
+        y.setLabelCount(6, false)
+        y.textColor = Color.WHITE
+        y.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART)
+        y.setDrawGridLines(false)
+        y.axisLineColor = Color.WHITE
+
+        binding.lineChartView.axisRight.isEnabled = false*/
+
         homePageAdapter = HomePageAdapter(requireContext(), ArrayList(), this)
 
         binding.apply {
