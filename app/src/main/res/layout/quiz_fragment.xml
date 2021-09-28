@@ -95,15 +95,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
                     android:fontFamily="@font/sf_pro_display_bold"
-                    android:lineHeight="21dp"
+                    app:lineHeight="21sp"
                     android:textColor="@color/text_black"
                     android:textSize="18sp"
+                    android:visibility="gone"
                     android:text="Completed" />
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/completed_recycler_view"
                     android:layout_width="match_parent"
                     tools:listitem="@layout/quiz_type_item_layout"
                     tools:itemCount="1"
+                    android:visibility="gone"
                     android:layout_marginBottom="10dp"
                     android:layout_height="wrap_content"/>
             </LinearLayout>

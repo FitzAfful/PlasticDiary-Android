@@ -85,7 +85,8 @@ class QuizFragment : Fragment() {
                 }
 
                 quizzes.apply {
-                    placeholder = "${it.quizzesTaken?.taken}/${it.quizzesTaken?.totalQuizzes}"
+                    //placeholder = "${it.quizzesTaken?.taken}/${it.quizzesTaken?.totalQuizzes}"
+                    placeholder = "${it.quizzesTaken?.taken}"
                     description = "Quizzes\nTaken"
 
                 }
