@@ -16,7 +16,6 @@ import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
-import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.glivion.plasticdiary.R
@@ -56,7 +55,6 @@ class HomeFragment : Fragment(), HomePageCallback {
     private val usageList = ArrayList<Usage>()
     private val lastFiveUsagesList = ArrayList<Usage>()
     private val entriesList = ArrayList<BarEntry>()
-    private val entries = ArrayList<Entry>()
 
     var currentStreak = 0
     override fun onCreateView(
@@ -118,7 +116,9 @@ class HomeFragment : Fragment(), HomePageCallback {
         })
 
         viewModel.category.observe(viewLifecycleOwner, {
-            showUsageSuccessDialog(it)
+            if (viewLifecycleOwner.lifecycle.currentState == Lifecycle.State.RESUMED) {
+                showUsageSuccessDialog(it)
+            }
         })
 
         viewModel.data.observe(viewLifecycleOwner, {
@@ -163,52 +163,12 @@ class HomeFragment : Fragment(), HomePageCallback {
             homeArrayList.add(HomeObject("Research", "See more", "research", researchList_3))
             homePageAdapter.setUpHomPageItems(homeArrayList)
             entriesList.clear()
-            entries.clear()
             for ((index, usage) in lastFiveUsagesList.withIndex()) {
                 entriesList.add(BarEntry(index.toFloat(), usage.amount!!.toFloat()))
-                entries.add(Entry(index.toFloat(), usage.amount!!.toFloat()))
             }
 
-            /*val lineDataSet = LineDataSet(entries, "Usage Data")
-            lineDataSet.apply {
-                //mode = LineDataSet.Mode.CUBIC_BEZIER
-                cubicIntensity = 0.2f
-                setDrawFilled(true)
-                setDrawCircles(false)
-                lineWidth = 1.8f
-                circleRadius = 4f
-                setCircleColor(ContextCompat.getColor(requireContext(), R.color.white))
-                highLightColor = Color.rgb(244, 117, 117)
-                color = Color.WHITE
-                fillColor = Color.WHITE
-                fillAlpha = 100
-                setDrawHorizontalHighlightIndicator(false)
-                fillFormatter =
-                    IFillFormatter { dataSet, dataProvider -> binding.lineChartView.axisLeft.axisMinimum }
-            }
 
-            val lineData = LineData(lineDataSet)
-            lineData.apply {
-                setValueTextSize(9f)
-                setDrawValues(false)
-            }
-            binding.lineChartView.apply {
-                data = lineData
-                setViewPortOffsets(0F,0F,0F,0F)
-                setBackgroundColor(Color.rgb(104, 241, 175))
-                description.isEnabled = false
-                setTouchEnabled(true)
-                isDragEnabled = true
-                setScaleEnabled(true)
-                setDrawGridBackground(false)
-                legend.isEnabled = true
-                animateXY(1000,1000)
-                notifyDataSetChanged()
-                invalidate()
-            }
-*/
-
-            Timber.e("$entries")
+            Timber.e("$entriesList")
             val dataSet = BarDataSet(entriesList, "Usage History")
             dataSet.apply {
                 colors = ColorTemplate.MATERIAL_COLORS.toMutableList()
