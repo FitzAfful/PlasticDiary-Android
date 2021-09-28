@@ -1,6 +1,7 @@
 package com.glivion.plasticdiary.view.fragment
 
 import android.app.AlertDialog
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -31,6 +32,7 @@ import com.glivion.plasticdiary.view.dialog.LoadingDialog
 import com.glivion.plasticdiary.view.dialog.StreakBottomSheetDialog
 import com.glivion.plasticdiary.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import nl.dionsegijn.konfetti.emitters.StreamEmitter
 import timber.log.Timber
 import java.util.*
 import kotlin.collections.ArrayList
@@ -112,7 +114,7 @@ class HomeFragment : Fragment(), HomePageCallback {
         })
 
         viewModel.category.observe(viewLifecycleOwner, {
-           showUsageSuccessDialog(it)
+            showUsageSuccessDialog(it)
         })
 
         viewModel.data.observe(viewLifecycleOwner, {
@@ -141,7 +143,14 @@ class HomeFragment : Fragment(), HomePageCallback {
             articleList_3.clear()
             articleList.addAll(it.article!!)
             articleList_3.addAll(it.article!!.shuffled().take(3))
-            homeArrayList.add(HomeObject("Articles", "See more articles", "articles", articleList_3))
+            homeArrayList.add(
+                HomeObject(
+                    "Articles",
+                    "See more articles",
+                    "articles",
+                    articleList_3
+                )
+            )
             // research
             researchList.clear()
             researchList_3.clear()
@@ -217,7 +226,7 @@ class HomeFragment : Fragment(), HomePageCallback {
             textSize = 11f
             formSize = 9f
         }
-        homePageAdapter =  HomePageAdapter(requireContext(), ArrayList(), this)
+        homePageAdapter = HomePageAdapter(requireContext(), ArrayList(), this)
 
         binding.apply {
             swipeRefresh.setOnRefreshListener {
@@ -277,12 +286,24 @@ class HomeFragment : Fragment(), HomePageCallback {
         val dialog = builder.create()
         dialog.setCancelable(true)
         dialog.setCanceledOnTouchOutside(true)
-
+        //Timber.e("category: ${response?.usage_category}")
         binding.apply {
             close.setOnClickListener {
+                binding.viewKonfetti.stopGracefully()
                 dialog.dismiss()
             }
             usageSuccessTxt.text = response?.message
+
+            if (response?.usage_category == "Excellent") {
+                viewKonfetti.build()
+                    .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+                    .setDirection(0.0, 359.0)
+                    .setSpeed(1f, 5f)
+                    .setFadeOutEnabled(true)
+                    .setTimeToLive(2000L)
+                    .setPosition(-50f, viewKonfetti.width + 50f, -50f, -50f)
+                    .streamFor(300, StreamEmitter.INDEFINITE)
+            }
         }
 
         dialog.show()

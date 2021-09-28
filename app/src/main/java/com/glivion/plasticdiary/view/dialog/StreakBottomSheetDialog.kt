@@ -81,7 +81,7 @@ class StreakBottomSheetDialog(
         }
         binding.apply {
             totalStreaks.text = "$streak day(s)"
-            streakInfo.text = "$streak days in this app this year"
+            streakInfo.text = "$streak day(s) in this app this year"
         }
     }
 
