@@ -67,7 +67,7 @@ class HomeFragment : Fragment(), HomePageCallback {
 
     private fun initViewModel() {
         viewModel.apply {
-            getCurrentStreak()
+            saveCurrentStreak()
             submitStreak("1")
             getHomePageItems()
         }
@@ -182,8 +182,6 @@ class HomeFragment : Fragment(), HomePageCallback {
 
     private fun initViews() {
         loadingDialog = LoadingDialog(requireContext())
-
-
         val xAxis = binding.usageBarChat.xAxis
         xAxis.apply {
             position = XAxis.XAxisPosition.BOTTOM

@@ -4,6 +4,7 @@ const val DATABASE_NAME = "plastic_db"
 const val REWARD_TITLE = "REWARD_TITLE"
 const val AUTH_USER = "AUTH_USER"
 const val AUTH_TOKEN = "AUTH_TOKEN"
+const val CURRENT_STREAK = "CURRENT_STREAK"
 
 const val QUIZ_ID = "QUIZ_ID"
 const val QUIZ_TITLE = "QUIZ_TITLE"

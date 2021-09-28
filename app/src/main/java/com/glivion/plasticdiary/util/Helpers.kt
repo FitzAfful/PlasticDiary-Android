@@ -165,7 +165,9 @@ fun getCurrentDateTimeParams(): Quintuple<String, String, String, String, String
 
     val currentTime = parser.toLocalTime().toString()
 
-    return Quintuple(currentDate, currentTime, month, day, dayInWords)
+    val yesterday = parser.minusDays(1).toLocalDate().toString()
+
+    return Quintuple(currentDate, currentTime, month, day, yesterday)
 }
 
 
@@ -204,6 +206,7 @@ fun getDayAndMonth(date: String?): String {
 
     return "$day\n$month"
 }
+
 
 fun getYoutubeVideoIdFromUrl(url: String): String? {
 

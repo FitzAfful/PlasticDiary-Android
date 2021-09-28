@@ -5,7 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.glivion.plasticdiary.data.repository.HomeRepository
 import com.glivion.plasticdiary.model.BaseAuthResponse
+import com.glivion.plasticdiary.model.Streak
 import com.glivion.plasticdiary.model.home.BaseHomeResponse
+import com.glivion.plasticdiary.util.getCurrentDateTimeParams
+import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -168,6 +171,26 @@ private val repository: HomeRepository
                     //_userErrors.postValue(e)
                 })
         )
+    }
+
+     fun saveCurrentStreak() {
+        val currentStreak = repository.getUsersCurrentStreak()
+        val today = getCurrentDateTimeParams().first
+        val yesterday = getCurrentDateTimeParams().fifth
+        var points = 0
+        if (currentStreak?.lastVisited == null) {
+            points += 1
+        } else {
+            points = if (currentStreak.lastVisited != yesterday) {
+                1
+            } else {
+                currentStreak.points!!.toInt() + 1
+            }
+        }
+         val streak = Streak(points.toString(), today)
+         val streakJson = Gson().toJson(streak)
+         repository.saveCurrentStreak(streakJson)
+         _streak.postValue(points)
     }
 
     override fun onCleared() {
