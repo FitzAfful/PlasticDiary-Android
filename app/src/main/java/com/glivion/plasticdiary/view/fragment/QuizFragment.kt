@@ -76,7 +76,6 @@ class QuizFragment : Fragment() {
             }
         })
         viewModel.data.observe(viewLifecycleOwner, {
-            Timber.e("data: $it")
             binding.apply {
                 performance.
                 apply {

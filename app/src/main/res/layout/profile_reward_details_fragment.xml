@@ -48,8 +48,9 @@
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/reward_icon_border"
                     android:padding="20dp"
+                    android:scaleType="centerCrop"
                     app:set_cover_image="@{badges.icon}"
-                    tools:src="@drawable/ic_reward" />
+                    tools:src="@drawable/award" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/reward_info"

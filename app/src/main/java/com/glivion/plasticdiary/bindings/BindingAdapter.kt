@@ -26,7 +26,6 @@ object BindingAdapter {
     fun setProfileImage(imageView: ImageView, user: User) {
        Glide.with(imageView.context)
            .load(user.imgUrl)
-           .centerCrop()
            .placeholder(R.drawable.profile_picture)
            .into(imageView)
     }

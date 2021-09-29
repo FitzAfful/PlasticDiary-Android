@@ -19,9 +19,8 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="5dp"
-            android:scaleType="fitXY"
             app:set_cover_image="@{badges.icon}"
-            tools:src="@drawable/ic_reward" />
+            tools:src="@drawable/award" />
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/reward_title"
             android:layout_marginTop="8dp"
