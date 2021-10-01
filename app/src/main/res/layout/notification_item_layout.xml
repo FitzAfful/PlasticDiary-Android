@@ -9,6 +9,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:visibility="gone"
+        tools:visibility="visible"
         android:id="@+id/parentLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,8 +62,8 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
-                app:tint="@color/text_black"
-                android:src="@drawable/ic_close" />
+                android:src="@drawable/ic_close"
+                app:tint="@color/text_black" />
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

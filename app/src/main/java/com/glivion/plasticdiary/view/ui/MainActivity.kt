@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             intent?.extras?.let {
                 remoteMessage = it.getParcelable(REMOTE_MSG)
             }
-
+            val animSlideDown = AnimationUtils.loadAnimation(this@MainActivity, R.anim.slide_down)
             binding.notification.apply {
                 parentLayout.visibility = View.VISIBLE
                 title.text = remoteMessage?.notification?.title
@@ -55,6 +56,7 @@ class MainActivity : AppCompatActivity() {
                 close.setOnClickListener {
                     parentLayout.visibility = View.GONE
                 }
+                parentLayout.startAnimation(animSlideDown)
             }
             Timber.e("message: ${remoteMessage?.notification?.title} body: ${remoteMessage?.notification?.body}")
         }
