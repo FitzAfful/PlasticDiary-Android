@@ -31,7 +31,7 @@
             android:layout_below="@+id/article_image"
             android:ellipsize="end"
             android:fontFamily="@font/sf_pro__display_heavy"
-            android:lineHeight="19dp"
+            app:lineHeight="19dp"
             android:maxLines="2"
             android:text="@{news.title}"
             tools:text="@string/article_title"

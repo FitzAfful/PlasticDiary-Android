@@ -13,6 +13,9 @@ const val QUIZ_SCORE = "QUIZ_SCORE"
 const val TERMINATE_QUIZ_TAG_OUTPUT = "TERMINATE_QUIZ_TAG_OUTPUT"
 const val TERMINATE_QUIZ_WORK_NAME = "record_score_on_app_closed"
 
+const val FCM_TITLE = "FCM_TITLE"
+const val FCM_DATA = "FCM_DATA"
+const val REMOTE_MSG = "REMOTE_MSG"
 const val NOTIFICATION_ID = 1
 @JvmField val VERBOSE_NOTIFICATION_CHANNEL_NAME: CharSequence =
     "Verbose Plastic App Notifications"

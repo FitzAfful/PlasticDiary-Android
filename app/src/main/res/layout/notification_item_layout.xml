@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
     <com.google.android.material.card.MaterialCardView
+        android:visibility="gone"
+        android:id="@+id/parentLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -25,31 +28,32 @@
                 android:layout_height="50dp"
                 android:background="@drawable/bg_notif_circle"
                 android:padding="10dp"
-                android:src="@drawable/ic_newspaper"
-                app:tint="@color/heading_text_green" />
+                android:backgroundTint="@color/purple_200"
+                android:src="@drawable/ic_bolt"
+                app:tint="@color/purple_200" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/article_title"
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/icon"
                 android:fontFamily="@font/sf_pro_display_semi_bold"
-                android:lineHeight="13dp"
-                android:text="New articles available!"
                 android:textColor="@color/text_black"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                app:lineHeight="13dp"
+                tools:text="New articles available!" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/notif_description"
+                android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/article_title"
+                android:layout_below="@+id/title"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_toEndOf="@+id/icon"
                 android:fontFamily="@font/sf_pro_regular"
-                android:text="@string/article_notif"
+                tools:text="@string/article_notif"
                 android:textColor="@color/text_grey_50" />
 
             <ImageView
@@ -57,6 +61,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
+                app:tint="@color/text_black"
                 android:src="@drawable/ic_close" />
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>

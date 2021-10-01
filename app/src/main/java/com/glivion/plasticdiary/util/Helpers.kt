@@ -32,10 +32,7 @@ import org.json.JSONObject
 import retrofit2.HttpException
 import java.io.IOException
 import java.text.SimpleDateFormat
-import java.time.Instant
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.ZoneOffset
+import java.time.*
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.*
@@ -206,7 +203,15 @@ fun getDayAndMonth(date: String?): String {
 
     return "$day\n$month"
 }
+fun getTimeStamp(): OffsetDateTime {
+    val dateTime = DateTimeFormatter
+        .ofPattern("yyyy-MM-dd HH:mm:ss")
+        .withZone(ZoneOffset.UTC)
+        .format(Instant.now())
 
+    return LocalDateTime.parse(dateTime.replace(" ", "T"))
+        .atOffset(ZoneOffset.UTC)
+}
 
 fun getYoutubeVideoIdFromUrl(url: String): String? {
 

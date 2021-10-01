@@ -33,6 +33,8 @@ import com.glivion.plasticdiary.view.dialog.StreakBottomSheetDialog
 import com.glivion.plasticdiary.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import nl.dionsegijn.konfetti.emitters.StreamEmitter
+import nl.dionsegijn.konfetti.models.Shape
+import nl.dionsegijn.konfetti.models.Size
 import timber.log.Timber
 import java.util.*
 import kotlin.collections.ArrayList
@@ -138,10 +140,6 @@ class HomeFragment : Fragment(), HomePageCallback {
             newsList.clear()
             newsList.addAll(it.news!!)
             homeArrayList.add(HomeObject(null, "See more news", "news", newsList))
-            // videos
-            videoList.clear()
-            videoList.addAll(it.video!!)
-            homeArrayList.add(HomeObject("Videos", null, "videos", videoList))
             // articles
             articleList.clear()
             articleList_3.clear()
@@ -155,6 +153,11 @@ class HomeFragment : Fragment(), HomePageCallback {
                     articleList_3
                 )
             )
+            // videos
+            videoList.clear()
+            videoList.addAll(it.video!!)
+            homeArrayList.add(HomeObject("Videos", null, "videos", videoList))
+
             // research
             researchList.clear()
             researchList_3.clear()
@@ -220,12 +223,6 @@ class HomeFragment : Fragment(), HomePageCallback {
                 }
             }
         }
-
-       /* val yAxisRight = binding.usageBarChat.axisRight
-        yAxisRight.apply {
-            isEnabled = false
-            setDrawAxisLine(false)
-        }*/
         val yAxisLeft = binding.usageBarChat.axisLeft
         yAxisLeft.apply {
             textColor = ContextCompat.getColor(requireContext(), R.color.text_black)
@@ -238,23 +235,6 @@ class HomeFragment : Fragment(), HomePageCallback {
             formSize = 9f
         }
 
-        /*val x: XAxis = binding.lineChartView.xAxis
-        x.apply {
-            setLabelCount(6, false)
-            textColor = Color.WHITE
-            position = XAxis.XAxisPosition.BOTTOM_INSIDE
-            setDrawGridLines(false)
-            axisLineColor = Color.WHITE
-        }
-
-        val y: YAxis = binding.lineChartView.axisLeft
-        y.setLabelCount(6, false)
-        y.textColor = Color.WHITE
-        y.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART)
-        y.setDrawGridLines(false)
-        y.axisLineColor = Color.WHITE
-
-        binding.lineChartView.axisRight.isEnabled = false*/
 
         homePageAdapter = HomePageAdapter(requireContext(), ArrayList(), this)
 
@@ -323,15 +303,21 @@ class HomeFragment : Fragment(), HomePageCallback {
             }
             usageSuccessTxt.text = response?.message
 
+            val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.ic_confetti)
+            val drawableShape = Shape.DrawableShape(drawable!!, false)
             if (response?.usage_category == "Excellent") {
+
                 viewKonfetti.build()
                     .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
                     .setDirection(0.0, 359.0)
                     .setSpeed(1f, 5f)
+                    .setMaxAcceleration(1.0f)
                     .setFadeOutEnabled(true)
                     .setTimeToLive(2000L)
+                    .addShapes(drawableShape)
+                    .addSizes(Size(35))
                     .setPosition(-50f, viewKonfetti.width + 50f, -50f, -50f)
-                    .streamFor(300, StreamEmitter.INDEFINITE)
+                    .streamFor(200, StreamEmitter.INDEFINITE)
             }
         }
 

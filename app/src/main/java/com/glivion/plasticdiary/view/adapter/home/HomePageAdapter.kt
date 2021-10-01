@@ -16,8 +16,8 @@ class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>, val cal
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val FEATURED_NEWS = 1
     private val NEWS = 2
-    private val VIDEOS = 3
-    private val ARTICLES = 4
+    private val ARTICLES = 3
+    private val VIDEOS = 4
     private val RESEARCH = 5
     private val NO_DATA_VIEW = -1
 
@@ -139,6 +139,7 @@ class HomePageAdapter(val context: Context, data: ArrayList<HomeObject>, val cal
             }
         }
     }
+
     class ResearchViewHolder(private val binding: HomeItemLayoutBinding):
         RecyclerView.ViewHolder(binding.root) {
         fun bind(
