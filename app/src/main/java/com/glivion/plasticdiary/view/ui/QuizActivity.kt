@@ -227,15 +227,15 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
             DataBindingUtil.inflate(layoutInflater, R.layout.quiz_completed_dialog_layout, null, false)
         builder.setView(binding.root)
         val dialog = builder.create()
-        dialog.setCancelable(true)
-        dialog.setCanceledOnTouchOutside(true)
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
         binding.apply {
             close.setOnClickListener {
                 binding.viewKonfetti.stopGracefully()
                 dialog.dismiss()
                 finish()
             }
-            usageSuccessTxt.text = "Congratulations you've completed your quiz \nScore: $score"
+            usageSuccessTxt.text = "Score: $score"
 
             val drawable = ContextCompat.getDrawable(this@QuizActivity, R.drawable.ic_confetti)
             val drawableShape = Shape.DrawableShape(drawable!!, false)

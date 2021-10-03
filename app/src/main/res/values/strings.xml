@@ -39,4 +39,5 @@
         TIP: There are lots of things we can do to shop, cook, and eat smarter!</string>
 
     <string name="google_maps_api_key">AIzaSyBs2YjswfAH5yF4UrBZfgTxyVCiLQDtSpc</string>
+    <string name="congratulations">Congratulations you\'ve completed your quiz</string>
 </resources>

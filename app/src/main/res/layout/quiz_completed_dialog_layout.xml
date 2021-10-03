@@ -45,11 +45,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/sf_pro_regular"
+                android:fontFamily="@font/sf_pro__display_heavy"
                 android:paddingHorizontal="10dp"
                 android:textColor="@color/text_black"
+                android:textSize="20sp"
                 app:lineHeight="25sp"
-                tools:text="@string/how_it_works_1" />
+                tools:text="Score: 100" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_regular"
+                android:paddingHorizontal="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/text_black"
+                app:lineHeight="25sp"
+                android:text="@string/congratulations" />
         </LinearLayout>
     </RelativeLayout>
 </layout>
