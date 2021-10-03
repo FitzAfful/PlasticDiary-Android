@@ -230,7 +230,6 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
         dialog.setCancelable(true)
         dialog.setCanceledOnTouchOutside(true)
         binding.apply {
-            //root.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
             close.setOnClickListener {
                 binding.viewKonfetti.stopGracefully()
                 dialog.dismiss()
