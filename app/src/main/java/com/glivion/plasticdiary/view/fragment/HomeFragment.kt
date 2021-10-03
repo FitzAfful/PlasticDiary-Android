@@ -170,8 +170,6 @@ class HomeFragment : Fragment(), HomePageCallback {
                 entriesList.add(BarEntry(index.toFloat(), usage.amount!!.toFloat()))
             }
 
-
-            Timber.e("$entriesList")
             val dataSet = BarDataSet(entriesList, "Usage History")
             dataSet.apply {
                 colors = ColorTemplate.MATERIAL_COLORS.toMutableList()
@@ -215,7 +213,6 @@ class HomeFragment : Fragment(), HomePageCallback {
                 override fun getFormattedValue(value: Float): String {
                     val x = value.toInt()
                     return if (x >= 0 && x <= lastFiveUsagesList.size) {
-                        Timber.e("x: $x $lastFiveUsagesList")
                         getDayAndMonth(lastFiveUsagesList[x].date.toString())
                     } else {
                         ""

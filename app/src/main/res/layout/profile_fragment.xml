@@ -82,24 +82,13 @@
                     android:textSize="24sp"
                     tools:text="Fritz Gerald Afful" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/user_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/username"
-                    android:layout_centerHorizontal="true"
-                    android:fontFamily="@font/sf_pro_regular"
-                    android:textAlignment="center"
-                    android:textColor="@color/text_grey_50"
-                    android:textSize="16sp"
-                    app:lineHeight="19sp"
-                    tools:text="email@user.com" />
+
                 <!--Rewards layout-->
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/badges_recycler_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/user_email"
+                        android:layout_below="@+id/username"
                         android:layout_marginHorizontal="20dp"
                         android:layout_marginTop="10dp"
                         tools:itemCount="1"

@@ -8,6 +8,8 @@ import com.glivion.plasticdiary.model.BaseAuthResponse
 import com.glivion.plasticdiary.model.Streak
 import com.glivion.plasticdiary.model.home.BaseHomeResponse
 import com.glivion.plasticdiary.util.getCurrentDateTimeParams
+import com.google.android.gms.tasks.Task
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -46,7 +48,7 @@ private val repository: HomeRepository
     private val compositeDisposable by lazy { CompositeDisposable() }
 
     init {
-
+        getUserMessagingToken()
     }
 
     fun getHomePageItems(){
@@ -191,6 +193,45 @@ private val repository: HomeRepository
          val streakJson = Gson().toJson(streak)
          repository.saveCurrentStreak(streakJson)
          _streak.postValue(points)
+    }
+
+    private fun getUserMessagingToken() {
+        FirebaseMessaging.getInstance().token
+            .addOnCompleteListener { task: Task<String?> ->
+                if (task.isSuccessful) {
+                    val token = task.result
+                    if (repository.getUser()?.message_token != token) {
+                        val user = repository.getUser()
+                        user?.message_token = token
+                        val userJson = Gson().toJson(user)
+                        repository.saveUserPreference(userJson)
+                        updateUserToken(token!!)
+                    }
+                    Timber.e("FCMToken: $token")
+                }
+            }
+            .addOnFailureListener { e: Exception ->
+                Timber.e(e.message)
+            }
+    }
+
+    private fun updateUserToken(token: String) {
+        compositeDisposable.add(
+            repository.updateUserToken(token)
+                .filter {
+                    if (it.isSuccessful) {
+                        true
+                    } else {
+                        throw HttpException(it)
+                    }
+                }.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                   Timber.e("message: ${it.body()?.message}")
+                },{e ->
+                    _userErrors.postValue(e)
+                })
+        )
     }
 
     override fun onCleared() {

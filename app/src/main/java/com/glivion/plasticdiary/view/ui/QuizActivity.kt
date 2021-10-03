@@ -1,6 +1,8 @@
 package com.glivion.plasticdiary.view.ui
 
+import android.app.AlertDialog
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -10,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import com.glivion.plasticdiary.R
 import com.glivion.plasticdiary.contracts.StatusCallbacks
 import com.glivion.plasticdiary.databinding.ActivityQuizBinding
+import com.glivion.plasticdiary.databinding.QuizCompletedDialogLayoutBinding
 import com.glivion.plasticdiary.model.questions.Question
 import com.glivion.plasticdiary.model.quiz.Category
 import com.glivion.plasticdiary.util.QUIZ_ID
@@ -25,6 +28,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import nl.dionsegijn.konfetti.emitters.StreamEmitter
+import nl.dionsegijn.konfetti.models.Shape
+import nl.dionsegijn.konfetti.models.Size
 import timber.log.Timber
 
 @AndroidEntryPoint
@@ -55,28 +61,7 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
         binding.apply {
             quizTitle.text = category?.name
             close.setOnClickListener {
-                if (questions.isNotEmpty()) {
-                    viewModel.submitScore(score, category!!.id, object : StatusCallbacks<String?> {
-                        override fun onComplete(data: String?) {
-                            showSnackBarMessage(binding.parentLayout, data)
-                            CoroutineScope(Dispatchers.IO).launch {
-                                delay(1500)
-                                finish()
-                            }
-                        }
-
-                        override fun onFailure(data: String?) {
-                            showSnackBarMessage(binding.parentLayout, data)
-                            CoroutineScope(Dispatchers.IO).launch {
-                                delay(1500)
-                                finish()
-                            }
-                        }
-                    })
-                } else {
-                    finish()
-                }
-
+                finish()
             }
             optionA.setOnClickListener {
                 showAnswerDialog(index, optionA.text.toString(), optionA)
@@ -162,13 +147,14 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
                 currentScore.text = "Score: $score"
                 optionsLyt.visibility = View.GONE
             }
-            viewModel.submitScore(score, category!!.id, object: StatusCallbacks<String?>{
+            viewModel.submitScore(score, category!!.id, object : StatusCallbacks<String?> {
                 override fun onComplete(data: String?) {
                     showSnackBarMessage(binding.parentLayout, data)
-                    CoroutineScope(Dispatchers.IO).launch {
+                    showQuizCompletedDialog()
+                    /*CoroutineScope(Dispatchers.IO).launch {
                         delay(1500)
                         finish()
-                    }
+                    }*/
                 }
 
                 override fun onFailure(data: String?) {
@@ -220,9 +206,6 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
     }
 
     override fun onBackPressed() {
-        if (questions.isNotEmpty()) {
-            viewModel.startWorkerForTerminateQuiz(category!!.id, score)
-        }
         super.onBackPressed()
     }
 
@@ -236,6 +219,42 @@ class QuizActivity : AppCompatActivity(), AnswerBottomSheetDialog.ItemClickListe
             finish()
         }
         super.onPause()
+    }
+
+    private fun showQuizCompletedDialog() {
+        val builder = AlertDialog.Builder(this, R.style.myFullscreenAlertDialogStyle)
+        val binding: QuizCompletedDialogLayoutBinding =
+            DataBindingUtil.inflate(layoutInflater, R.layout.quiz_completed_dialog_layout, null, false)
+        builder.setView(binding.root)
+        val dialog = builder.create()
+        dialog.setCancelable(true)
+        dialog.setCanceledOnTouchOutside(true)
+        binding.apply {
+            //root.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+            close.setOnClickListener {
+                binding.viewKonfetti.stopGracefully()
+                dialog.dismiss()
+                finish()
+            }
+            usageSuccessTxt.text = "Congratulations you've completed your quiz \nScore: $score"
+
+            val drawable = ContextCompat.getDrawable(this@QuizActivity, R.drawable.ic_confetti)
+            val drawableShape = Shape.DrawableShape(drawable!!, false)
+
+            viewKonfetti.build()
+                .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+                .setDirection(0.0, 359.0)
+                .setSpeed(1f, 5f)
+                .setMaxAcceleration(1.0f)
+                .setFadeOutEnabled(true)
+                .setTimeToLive(2000L)
+                .addShapes(drawableShape)
+                .addSizes(Size(35))
+                .setPosition(-50f, viewKonfetti.width + 50f, -50f, -50f)
+                .streamFor(250, StreamEmitter.INDEFINITE)
+        }
+
+        dialog.show()
     }
 
 }

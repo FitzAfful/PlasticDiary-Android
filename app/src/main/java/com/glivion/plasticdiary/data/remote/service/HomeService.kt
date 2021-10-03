@@ -19,6 +19,14 @@ interface HomeService {
     ): Single<Response<BaseAuthResponse>>
 
     @FormUrlEncoded
+    @POST("update-token")
+    fun updateUserToken(
+        @Field("message_token") message_token: String,
+        @Field("token") token: String,
+        @Field("uid") uid: String
+    ): Single<Response<BaseAuthResponse>>
+
+    @FormUrlEncoded
     @POST("streak")
     fun streak(
         @Field("minutes") minutes: String,

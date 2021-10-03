@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.glivion.plasticdiary.R
 import com.glivion.plasticdiary.databinding.MilestoneItemLayoutBinding
 import com.glivion.plasticdiary.model.profile.Milestone
-import timber.log.Timber
 
 class MilestoneAdapter :
     ListAdapter<Milestone, MilestoneAdapter.MilestoneViewHolder>(DIFF_UTIL_CALLBACK) {
@@ -19,7 +18,6 @@ class MilestoneAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(_milestone: Milestone) {
             val progress = (_milestone.completedPoints.toFloat() / _milestone.points.toFloat()) * 100
-            Timber.e("points: $progress")
             binding.apply {
                 milestone = _milestone
                 progressBar.progress = progress.toInt()

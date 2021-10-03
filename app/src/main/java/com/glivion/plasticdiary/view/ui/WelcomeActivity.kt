@@ -37,6 +37,7 @@ class WelcomeActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_welcome)
         binding.lifecycleOwner = this
         Timber.e("token: ${viewModel.getCurrentUser()?.token}")
+        Timber.e("uid: ${viewModel.getCurrentUser()?.uid}")
 
         initViews()
         initViewModel()

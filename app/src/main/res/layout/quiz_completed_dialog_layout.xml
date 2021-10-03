@@ -10,23 +10,13 @@
     <RelativeLayout
         android:id="@+id/parentLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="match_parent">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:visibility="gone"
-            android:id="@+id/how_it_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/sf_pro_rounded_bold"
-            android:text="How it works"
-            android:textColor="@color/text_black" />
 
         <nl.dionsegijn.konfetti.KonfettiView
             android:id="@+id/viewKonfetti"
             android:layout_width="match_parent"
-            android:layout_height="170dp" />
+            android:layout_height="match_parent" />
 
         <ImageView
             android:id="@+id/close"
@@ -34,18 +24,27 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:fontFamily="@font/sf_pro_regular"
-            android:src="@drawable/ic_close"
             android:padding="10dp"
+            android:src="@drawable/ic_close"
             app:tint="@color/text_black" />
+
+        <ImageView
+            android:id="@+id/memoji"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_above="@+id/usage_success_txt"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:src="@drawable/ic_confetti" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/usage_success_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/close"
-            android:paddingHorizontal="10dp"
+            android:layout_centerInParent="true"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/sf_pro_regular"
+            android:paddingHorizontal="10dp"
             android:textColor="@color/text_black"
             app:lineHeight="25sp"
             tools:text="@string/how_it_works_1" />

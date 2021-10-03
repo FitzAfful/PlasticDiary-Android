@@ -19,8 +19,12 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="5dp"
-            app:set_cover_image="@{badges.icon}"
-            tools:src="@drawable/award" />
+            app:set_milestone_image="@{badges}"
+            tools:src="@drawable/award"
+            android:adjustViewBounds="true"
+
+            android:padding="5dp"
+            />
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/reward_title"
             android:layout_marginTop="8dp"
