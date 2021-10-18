@@ -193,44 +193,45 @@ class HomeFragment : Fragment(), HomePageCallback {
                 notifyDataSetChanged()
                 invalidate()
             }
+
+            val xAxis = binding.usageBarChat.xAxis
+            xAxis.apply {
+                position = XAxis.XAxisPosition.BOTTOM
+                setLabelCount(lastFiveUsagesList.size, false)
+                textSize = 10f
+                textColor = ContextCompat.getColor(requireContext(), R.color.text_black)
+                setDrawAxisLine(false)
+                setDrawGridLines(false)
+
+                valueFormatter = object : IndexAxisValueFormatter() {
+                    override fun getFormattedValue(value: Float): String {
+                        val x = value.toInt()
+                        return if (x >= 0 && x <= lastFiveUsagesList.size) {
+                            getDayAndMonth(lastFiveUsagesList[x].date.toString())
+                        } else {
+                            ""
+                        }
+                    }
+                }
+            }
+            val yAxisLeft = binding.usageBarChat.axisLeft
+            yAxisLeft.apply {
+                textColor = ContextCompat.getColor(requireContext(), R.color.text_black)
+                setDrawAxisLine(false)
+            }
+            val legend = binding.usageBarChat.legend
+            legend.apply {
+                textColor = ContextCompat.getColor(requireContext(), R.color.text_black)
+                textSize = 11f
+                formSize = 9f
+            }
         })
     }
 
 
     private fun initViews() {
         loadingDialog = LoadingDialog(requireContext())
-        val xAxis = binding.usageBarChat.xAxis
-        xAxis.apply {
-            position = XAxis.XAxisPosition.BOTTOM
-            setLabelCount(lastFiveUsagesList.size, false)
-            textSize = 10f
-            textColor = ContextCompat.getColor(requireContext(), R.color.text_black)
-            setDrawAxisLine(false)
-            setDrawGridLines(false)
 
-
-            valueFormatter = object : IndexAxisValueFormatter() {
-                override fun getFormattedValue(value: Float): String {
-                    val x = value.toInt()
-                    return if (x >= 0 && x <= lastFiveUsagesList.size) {
-                        getDayAndMonth(lastFiveUsagesList[x].date.toString())
-                    } else {
-                        ""
-                    }
-                }
-            }
-        }
-        val yAxisLeft = binding.usageBarChat.axisLeft
-        yAxisLeft.apply {
-            textColor = ContextCompat.getColor(requireContext(), R.color.text_black)
-            setDrawAxisLine(false)
-        }
-        val legend = binding.usageBarChat.legend
-        legend.apply {
-            textColor = ContextCompat.getColor(requireContext(), R.color.text_black)
-            textSize = 11f
-            formSize = 9f
-        }
 
 
         homePageAdapter = HomePageAdapter(requireContext(), ArrayList(), this)
