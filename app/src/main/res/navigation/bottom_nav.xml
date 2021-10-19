@@ -9,4 +9,8 @@
     <include app:graph="@navigation/quiz_nav" />
     <include app:graph="@navigation/explore_nav" />
     <include app:graph="@navigation/profile_nav" />
+    <fragment
+        android:id="@+id/homeLeaderboardFragment"
+        android:name="com.glivion.plasticdiary.view.fragment.profile.LeaderboardFragment"
+        android:label="LeaderboardFragment" />
 </navigation>

@@ -31,8 +31,8 @@ class FCMMessagingService: FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
-        Timber.e("remote message ${remoteMessage.data}")
-        Timber.e("remote message ${remoteMessage.notification.toString()}")
+        Timber.e("remote message ${remoteMessage.data["data"]}")
+        Timber.e("remote message ${remoteMessage.data["type"]}")
         handleNotification(remoteMessage)
     }
 
